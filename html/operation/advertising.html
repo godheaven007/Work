@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">运营</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">园区建设</a></dd>
+                        <dd><a href="javascript:;">园企互动</a></dd>
+                        <dd><a href="javascript:;">合同</a></dd>
+                        <dd><a href="javascript:;">电表</a></dd>
+                        <dd><a href="javascript:;">收费</a></dd>
+                        <dd><a href="javascript:;">入驻记录</a></dd>
+                        <dd><a href="javascript:;">退租验收</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="#"><cite>合同</cite></a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>在租</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>详情</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="advertising">
+                                <h2 class="mt-15 mb-10 position-rel">火炬小程序广告位（750*420）
+                                    <span class="c-gray-light font-14">说明：所有广告图均不在展示期时，前端显示第一个广告图</span>
+                                    <div class="right-box" style="top: -7px">
+                                        <a href="#" class="layui-btn layui-btn-normal">发布新广告</a>
+                                    </div>
+                                </h2>
+                                <!-- 小程序短图 -->
+                                <div class="ad-box">
+                                    <img class="pic" src="http://assets.spp.com/css/oa/cms/images/u1077.png">
+                                    <ul>
+                                        <li><span class="txt-01">标题：</span><span class="txt-02 txt-ellipsis">滴滴合作宣传广告</span></li>
+                                        <li><span class="txt-01">展示日期：</span>2019-05-01 ~ 2019-06-30<img class="label" src="http://ibs.o.com/assets/css/images/label-inshow.png"></li>
+                                        <li><span class="txt-01">排序：</span>10</li>
+                                    </ul>
+                                    <div class="btns">
+                                        <a href="#" class="c-link">修改</a>
+                                        <a href="#" class="c-link ml-15">删除</a>
+                                    </div>
+                                </div>
+                                <div class="ad-box">
+                                    <img class="pic" src="http://assets.spp.com/css/oa/cms/images/u1077.png">
+                                    <ul>
+                                        <li><span class="txt-01">标题：</span><span class="txt-02 txt-ellipsis">滴滴合作宣传广告滴滴合作宣传广告滴滴合作宣传广告</span></li>
+                                        <li><span class="txt-01">展示日期：</span>2019-05-01 ~ 2019-06-30<img class="label" src="http://ibs.o.com/assets/css/images/label-noshow.png"></li>
+                                        <li><span class="txt-01">排序：</span>10</li>
+                                    </ul>
+                                    <div class="btns">
+                                        <a href="#" class="c-link">修改</a>
+                                        <a href="#" class="c-link ml-15">删除</a>
+                                    </div>
+                                </div>
+                                <div class="ad-box">
+                                    <img class="pic" src="http://assets.spp.com/css/oa/cms/images/u1077.png">
+                                    <ul>
+                                        <li><span class="txt-01">标题：</span><span class="txt-02 txt-ellipsis">滴滴合作宣传广告</span></li>
+                                        <li><span class="txt-01">展示日期：</span>2019-05-01 ~ 2019-06-30<img class="label" src="http://ibs.o.com/assets/css/images/label-inshow.png"></li>
+                                        <li><span class="txt-01">排序：</span>10</li>
+                                    </ul>
+                                    <div class="btns">
+                                        <a href="#" class="c-link">修改</a>
+                                        <a href="#" class="c-link ml-15">删除</a>
+                                    </div>
+                                </div>
+                                <div class="ad-box">
+                                    <img class="pic" src="http://assets.spp.com/css/oa/cms/images/u1077.png">
+                                    <ul>
+                                        <li><span class="txt-01">标题：</span><span class="txt-02 txt-ellipsis">滴滴合作宣传广告滴滴合作宣传广告滴滴合作宣传广告</span></li>
+                                        <li><span class="txt-01">展示日期：</span>2019-05-01 ~ 2019-06-30<img class="label" src="http://ibs.o.com/assets/css/images/label-noshow.png"></li>
+                                        <li><span class="txt-01">排序：</span>10</li>
+                                    </ul>
+                                    <div class="btns">
+                                        <a href="#" class="c-link">修改</a>
+                                        <a href="#" class="c-link ml-15">删除</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <!-- 小程序短图 end-->
+                                <!-- banner长图 -->
+                                <div class="ad-box-l">
+                                    <img class="pic" src="http://assets.spp.com/css/oa/cms/images/1920-460(1).png">
+                                    <ul>
+                                        <li><span class="txt-01">标题：</span><span class="txt-02 txt-ellipsis">滴滴合作宣传广告</span></li>
+                                        <li><span class="txt-01">展示日期：</span>2019-05-01 ~ 2019-06-30<img class="label" src="http://ibs.o.com/assets/css/images/label-inshow.png"></li>
+                                        <li><span class="txt-01">排序：</span>10</li>
+                                    </ul>
+                                    <div class="btns">
+                                        <a href="#" class="c-link">修改</a>
+                                        <a href="#" class="c-link ml-15">删除</a>
+                                    </div>
+                                </div>
+                                <div class="ad-box-l">
+                                    <img class="pic" src="http://assets.spp.com/css/oa/cms/images/1920-600(1).png">
+                                    <ul>
+                                        <li><span class="txt-01">标题：</span><span class="txt-02 txt-ellipsis">滴滴合作宣传广告</span></li>
+                                        <li><span class="txt-01">展示日期：</span>2019-05-01 ~ 2019-06-30<img class="label" src="http://ibs.o.com/assets/css/images/label-inshow.png"></li>
+                                        <li><span class="txt-01">排序：</span>10</li>
+                                    </ul>
+                                    <div class="btns">
+                                        <a href="#" class="c-link">修改</a>
+                                        <a href="#" class="c-link ml-15">删除</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <!-- banner长图 end -->
+                                <!-- 暂无广告图 -->
+                                <div class="no-advertising"><i class="ico-pic"></i>暂无广告图</div>
+                                <!-- 暂无广告图 end -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

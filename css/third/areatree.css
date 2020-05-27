@@ -1,0 +1,284 @@
+.area-tree-mask{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    color: #000;
+    z-index: 999;
+}
+
+.area-tree-wrap,
+.area-tree-wrap div,
+.area-tree-wrap li{box-sizing: border-box;}
+
+.area-tree-wrap {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 601px;
+    height: 600px;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    font-size: 14px;
+    color: #666;
+    background-color: #fff;
+}
+.area-tree-wrap .area-tree-struct-item {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 22px;
+}
+
+.area-tree-wrap .area-tree-head {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+.area-tree-wrap .area-tree-head .area-tree-close {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: url(images/ico_tree_close.png) no-repeat center center;
+    cursor: pointer;
+}
+
+.area-tree-wrap .area-tree-middle {
+    overflow: hidden;
+    height: 500px;
+    padding: 15px 0;
+}
+.area-tree-struct,
+.area-treeViewWrap {
+    height: 430px;
+    overflow-y: scroll;
+}
+.area-tree-wrap .area-tree-struct-wrap,
+.area-tree-wrap .area-tree-view-wrap {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+.area-tree-wrap .area-tree-struct-wrap {
+    padding-left: 20px;
+    border-right: 1px solid #ddd;
+}
+/* 搜索 */
+.area-tree-wrap .area-tree-search {
+    position: relative;
+    width: 240px;
+    height: 50px;
+}
+.area-tree-wrap .area-tree-search input {
+    width: 220px;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 12px;
+    padding-right: 20px;
+    border: 1px solid #ddd;
+    color: #666;
+    outline: none;
+    border-radius: 2px;
+}
+.area-tree-wrap .area-tree-search .area-tree-search-icon{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: url(images/icons_oper.png) no-repeat center center;
+    background-position: -20px -22px;
+    cursor: pointer;
+}
+.area-treeResultWrap {
+    /*width: 252px;*/
+    /*max-height: 180px;*/
+    /*background: #fff;*/
+    /*border: 1px solid #ddd;*/
+    /*border-top: none;*/
+
+    display: none;
+    position: relative;
+    width: 299px;
+    height: 450px;
+    background: #fff;
+    /*padding-left: 20px;*/
+    padding-left: 12px;
+    overflow-y: scroll;
+    margin-top: 16px;
+    margin-left: -20px;
+    z-index: 20;
+}
+.area-tree-search-result {
+    width: 280px;
+    padding-bottom: 22px;
+}
+.area-tree-search-result > li {
+    line-height: 28px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.area-tree-search-result > li:hover {
+    background-color: rgba(221,221,221,.1);
+
+}
+.area-tree-search-result .area-tree-search-item {
+    position: relative;
+}
+.area-tree-search-result .area-tree-search-item span {
+    position: absolute;
+    left: 4px;
+    top: 7px;
+    width: 12px;
+    height: 12px;
+}
+/* 树形结构 */
+.area-tree-wrap .area-tree-struct li,
+.area-tree-wrap .area-tree-search-result li{
+    position: relative;
+    padding-left: 20px;
+    line-height: 28px;
+}
+.area-tree-wrap .area-tree-struct li > div {
+    overflow: hidden;
+}
+
+.area-tree-wrap .area-tree-struct li .area-tree-struct-item:hover,
+.area-tree-wrap .area-tree-search-result li .area-tree-struct-item:hover{
+    background-color: rgba(221,221,221,.1);
+}
+
+.area-tree-wrap .area-tree-struct-item .area-tree-icon-1{
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 14px;
+    height: 14px;
+    background: url(images/ico-folder.png) center center no-repeat;
+    background-size: contain;
+}
+.area-tree-wrap .area-tree-struct-item .area-tree-icon-2{
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 14px;
+    height: 14px;
+    background: url(images/ico-tree-park.png) center center no-repeat;
+    background-size: contain;
+}
+.area-tree-wrap .area-tree-struct-item .area-tree-icon-select {
+    position: absolute;
+    top: 5px;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+    background: url(images/ico-tree-select.png) center center no-repeat;
+    cursor: pointer;
+}
+.area-tree-wrap .area-tree-struct-item.active .area-tree-icon-select{
+    background: url(images/ico-tree-select-active.png) center center no-repeat;
+    background-size: contain;
+}
+.area-tree-wrap .area-tree-struct li.hasChildren,
+.area-tree-wrap .area-tree-search-result li.hasChildren{
+    cursor: pointer;
+}
+.area-tree-wrap .area-tree-struct li.expandable,
+.area-tree-wrap .area-tree-search-result li.expandable{
+    background: url(images/ico_tree_expand.png) no-repeat 4px 9px;
+}
+.area-tree-wrap .area-tree-struct li.collapsable,
+.area-tree-wrap .area-tree-search-result li.collapsable{
+    background: url(images/ico_tree_collaps.png) no-repeat 4px 9px;
+}
+
+/* 部门成员显示 */
+.area-tree-wrap .area-tree-view-wrap {
+    padding: 0 20px;
+}
+.area-tree-wrap .area-tree-view-wrap .area-tree-view-title {
+    height: 50px;
+    line-height: 32px;
+}
+.area-tree-wrap .area-tree-view-item {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.area-tree-wrap .area-tree-view-item .area-tree-view-branch {
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 14px;
+    height: 14px;
+    background: url(images/ico-folder.png) center center no-repeat;
+    background-size: contain;
+}
+.area-tree-wrap .area-tree-view-item .area-tree-view-leaf {
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 14px;
+    height: 14px;
+    background: url(images/ico-tree-park.png) center center no-repeat;
+    background-size: contain;
+}
+.area-tree-wrap .area-tree-view-item .area-tree-view-item-close {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: url(images/ico-tree-close2.png) no-repeat center center;
+    cursor: pointer;
+}
+
+/* 底部按钮 */
+.area-tree-wrap .area-tree-bottom {
+    height: 50px;
+    padding: 9px 0;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 6px 6px;
+}
+.area-tree-wrap .area-tree-btn{
+    float: right;
+    width: 72px;
+    height: 32px;
+    line-height: 32px;
+    margin-right: 25px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+}
+.area-tree-wrap .area-tree-btn.area-tree-btn-confirm {
+    background-color: #1e9fff;
+    color: #fff;
+    border: 1px solid transparent;
+}
+.area-tree-wrap .area-tree-btn.area-tree-btn-confirm:hover{
+    opacity: .8;
+}
+.area-tree-wrap .area-tree-btn.area-tree-btn-confirm.disabled {
+    background-color: #aeb1ac;
+    cursor: not-allowed;
+}

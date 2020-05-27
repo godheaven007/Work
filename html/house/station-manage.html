@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="javascript:;">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">房源</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">房源</a></dd>
+                        <dd><a href="javascript:;">电表管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">系统设置</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="#"><cite>主页</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>房源</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>管理房间</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend class="c-gray-dark">博济·J6软件创业园/1号楼/1层</legend>
+                            </fieldset>
+                            <form class="layui-form">
+                                <div class="ibs-collapse">
+                                    <h2 class="ibs-colla-title2">
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline text-w-250">
+                                                <input type="text" name="" value="联合办公A区" autocomplete="off" class="layui-input">
+                                            </div>
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label text-w-100 c-gray-light">单个工位折合为</label>
+                                                <div class="layui-input-inline text-w-100">
+                                                    <input type="tel" name="" value="1.52" autocomplete="off" class="layui-input">
+                                                </div>
+                                                <div class="layui-form-mid layui-word-aux">㎡</div>
+                                            </div>
+                                            <div class="group-right">
+                                                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">批量添加工位</a>
+                                                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">删除区域</a>
+                                            </div>
+                                        </div>
+                                    </h2>
+                                    <div class="ibs-colla-content station-manage">
+                                        <dl class="clearfix">
+                                            <dd><input type="text" class="layui-input station" name="" value="LA001" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#" class="disabled">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA002" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA003" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA004" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA005" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA006" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA007" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA008" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA009" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd class="add">
+                                                <i class="iconfont ibs-ico-add"></i>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="ibs-collapse">
+                                    <h2 class="ibs-colla-title2">
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline text-w-250">
+                                                <input type="text" name="" placeholder="输入区域名称" autocomplete="off" class="layui-input">
+                                            </div>
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label text-w-100 c-gray-light">单个工位折合为</label>
+                                                <div class="layui-input-inline text-w-100">
+                                                    <input type="tel" name="" value="1.52" autocomplete="off" class="layui-input">
+                                                </div>
+                                                <div class="layui-form-mid layui-word-aux">㎡</div>
+                                            </div>
+                                            <div class="group-right">
+                                                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">批量添加工位</a>
+                                                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">删除区域</a>
+                                            </div>
+                                        </div>
+                                    </h2>
+                                    <div class="ibs-colla-content station-manage">
+                                        <dl class="clearfix">
+                                            <dd><input type="text" class="layui-input station" name="" value="LA001" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#" class="disabled">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA002" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd><input type="text" class="layui-input station" name="" value="LA003" autocomplete="off">
+                                                <div class="btn-edit">
+                                                    <a href="#">前移</a>
+                                                    <span>|</span>
+                                                    <a href="#">后移</a>
+                                                    <span>|</span>
+                                                    <a href="#">插入</a>
+                                                    <span>|</span>
+                                                    <a href="#">删除</a>
+                                                </div>
+                                            </dd>
+                                            <dd class="add">
+                                                <i class="iconfont ibs-ico-add"></i>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="mt-20">
+                                    <input type="button" class="layui-btn layui-btn-sm" value="添加区域" name="">
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <div class="layui-footer">
+                                            <input type="button" class="layui-btn" name="" value="保存">
+                                            <input type="reset" class="layui-btn layui-btn-primary" name="" value="取消">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

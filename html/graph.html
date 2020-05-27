@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./echarts.js"></script>
+    <script src="./jquery.js"></script>
+    <style>
+        *{margin: 0; padding: 0;}
+        .graph{
+            width: 1000px;
+            height: 400px;
+            margin: 50px auto;
+            /*border: 1px solid #eee;*/
+        }
+    </style>
+</head>
+<body>
+
+    <div id="graph3" class="graph">
+
+    </div>
+
+    <div id="graph" class="graph">
+
+    </div>
+
+    <div id="graph2" class="graph">
+
+    </div>
+
+    <script>
+
+        function getBarOption() {
+            return {
+                title: [
+                    {
+                        text: '2019年回款 6852 万',
+                        top: 'top',
+                        left: 'center',
+                        textStyle: {
+                            fontWeight: 'normal',
+                            fontSize: 18
+                        }
+                    }
+                ],
+                color: ['#80b3dd'],
+                tooltip: {
+                    formatter: '2019年{b}<br>回款{c}万',
+                },
+                grid: {
+                    show: false
+                },
+                xAxis: {
+                    data: ["1月", "2月", "3月", "4月", "5月", "6月", '7月', '8月', '9月', '10月', '11月', '12月'],
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#aaa'
+                        }
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+                yAxis: {
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#aaa'
+                        }
+                    },
+                    splitLine: {
+                        show: true
+                    }
+                },
+                series: [{
+                    type: 'bar',
+                    barCategoryGap: '50%',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: '#999'
+                            }
+                        }
+                    },
+                    data: [5, 20, 36, 10, 10, 19, 23, 21, 34, 120, 40, 20]
+                }]
+            };
+        }
+
+        function getLineOption() {
+            return {
+                title: [
+                    {
+                        text: '近1年出租率趋势图',
+                        top: 'top',
+                        left: 'center',
+                        textStyle: {
+                            fontWeight: 'normal',
+                            fontSize: 18
+                        }
+                    }
+                ],
+                color: ['#80b3dd'],
+                tooltip: {
+                    formatter: '2019年{b}<br>出租率{c}%',
+                },
+                xAxis: {
+                    type: 'category',
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#aaa'
+                        }
+                    },
+                    data: ["1月", "2月", "3月", "4月", "5月", "6月", '7月', '8月', '9月', '10月', '11月', '12月']
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#aaa'
+                        }
+                    },
+                    axisLabel: {
+                        formatter: '{value}%'
+                    }
+                },
+                series: [{
+                    type: 'line',
+                    label: {
+                        show: true,
+                        position: 'top',
+                        textStyle: {
+                            color: '#999'
+                        },
+                        formatter: '{c}%'
+                    },
+                    data: [12, 20, 22, 50, -20, 52, 0, 100, 67, -30, 11, 35]
+                }]
+            };
+
+        }
+
+        function getUnionOption() {
+
+            var colors = ['#80b3dd', '#ffb26d', '#aaaaaa'];
+            var zs = [2.0, 4.9, 7.0, 23.2, 25.6, 6.7, 35.6, 22.2, 32.6, 20.0, 6.4, 3.3],
+                tz = [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                jzs = [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, -23.4, 23.0, 16.5, 12.0, 6.2];
+
+            var concat = zs.concat(tz).concat(jzs);
+            concat.sort(function (a, b) {
+                return a - b;
+            });
+
+            return {
+                color: colors,
+                title: [
+                    {
+                        text: '近1年招商退租趋势图（单位：㎡）',
+                        top: 'top',
+                        left: 'center',
+                        textStyle: {
+                            fontWeight: 'normal',
+                            fontSize: 18
+                        }
+                    }
+                ],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                toolbox: {
+                    feature: {
+                        dataView: {show: true, readOnly: false},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                legend: {
+                    top: '25',
+                    data:['招商','退租','净招商']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color: '#aaa'
+                            }
+                        },
+                        data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        min: concat[0],
+                        max: concat[concat.length - 1],
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color: '#aaa'
+                            }
+                        }
+                    },
+                    {
+                        type: 'value',
+                        min: concat[0],
+                        max: concat[concat.length - 1],
+                        axisLine: {show: false},
+                        axisTick: {show: false},
+                        axisLabel: {show: false}
+                    },
+                    {
+                        type: 'value',
+                        min: concat[0],
+                        max: concat[concat.length - 1],
+                        axisLine: {show: false},
+                        axisTick: {show: false},
+                        axisLabel: {show: false}
+                    }
+                ],
+                series: [
+                    {
+                        name:'招商',
+                        type:'bar',
+                        barGap: '0%',
+                        data: zs
+                    },
+                    {
+                        name:'退租',
+                        type:'bar',
+                        barGap: '0%',
+                        yAxisIndex: 1,
+                        data: tz
+                    },
+                    {
+                        name:'净招商',
+                        type:'line',
+                        yAxisIndex: 2,
+                        data: jzs
+                    }
+                ]
+            };
+        }
+    </script>
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+        $j(function () {
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('graph'));
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(getBarOption());
+
+
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('graph2'));
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(getLineOption());
+
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('graph3'));
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(getUnionOption());
+
+        });
+    </script>
+</body>
+</html>

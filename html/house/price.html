@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="javascript:;">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">房源</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">房源</a></dd>
+                        <dd><a href="javascript:;">电表管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">系统设置</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="#"><cite>主页</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>房源</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>设置底价</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <form class="layui-form">
+                            <div class="layui-card-header">
+                                <input type="checkbox" name="" title="全选" lay-skin="primary">
+                                <span class="font-b ml-10">博济·J6软件创业园/1号楼</span>
+                                <div class="btn-group-right">
+                                    <button class="layui-btn layui-btn-sm disabled">批量设置底价</button>
+                                </div>
+                            </div>
+                            <div class="layui-card-body padding-0">
+                                <div class="house-list mt-0">
+                                    <div class="ibs-colla-content block">
+                                        <dl class="floor">
+                                            <dt class="title">
+                                                <input type="checkbox" name="" title="全选" lay-skin="primary">
+                                                <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i><span class="vm">1层</span>
+                                            </dt>
+                                            <dd class="content">
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>房间</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <div class="room rented">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                <span class="room-name" title="101">101</span>
+                                                            </div>
+                                                            <div class="base-price active">
+                                                                <input type="text" name="title" value="2.5" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/㎡/天</div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room for-rent">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                <span class="room-name" title="仓库仓库仓库">仓库仓库仓库</span>
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="2.5" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/㎡/天</div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room no-price">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                <span class="room-name" title="103">103</span>
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" placeholder="暂无底价" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit"></div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room rented">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                <span class="room-name" title="104">104</span>
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="2.5" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/㎡/天</div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room rented">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                <span class="room-name" title="105">105</span>
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="2.5" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/㎡/天</div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room rented">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                <span class="room-name" title="106">106</span>
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="2.5" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/㎡/天</div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room rented">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                <span class="room-name" title="107">107</span>
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="2.5" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/㎡/天</div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>联合办公A区</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <div class="room rented">
+                                                                <input type="radio" name="role" value="" title="">
+                                                                LA01
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="2500" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/月</div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room for-rent">
+                                                                <input type="radio" name="role" value="" title="">
+                                                                LA02
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="500" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/月</div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room no-price">
+                                                                <input type="radio" name="role" value="" title="">
+                                                                LA03
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" placeholder="暂无底价" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit"></div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                            </dd>
+                                        </dl>
+                                        <dl class="floor">
+                                            <dt class="title">
+                                                <input type="checkbox" name="" title="全选" lay-skin="primary">
+                                                <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i><span class="vm">2层</span>
+                                            </dt>
+                                            <dd class="content">
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>房间</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <div class="room rented">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                201
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="2.5" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/㎡/天</div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room rented">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                202
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" value="2.5" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit">元/㎡/天</div>
+                                                                <div class="select-unit">
+                                                                    <a href="#">按面积设置底价</a>
+                                                                    <a href="#">设置一口价</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                            </dd>
+                                        </dl>
+                                        <dl class="floor">
+                                            <dt class="title">
+                                                <input type="checkbox" name="" title="全选" lay-skin="primary">
+                                                <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i><span class="vm">3层</span>
+                                            </dt>
+                                            <dd class="content">
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>联合办公A区</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <div class="room no-price">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                LA31
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" placeholder="暂无底价" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room no-price">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                LA32
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" placeholder="暂无底价" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="room no-price">
+                                                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                                                LA33
+                                                            </div>
+                                                            <div class="base-price">
+                                                                <input type="text" name="title" placeholder="暂无底价" autocomplete="off" class="layui-input disable">
+                                                                <div class="unit"></div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                            </dd>
+                                        </dl>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

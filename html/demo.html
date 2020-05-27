@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>O'Park园区管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+        layui.use(['rate'], function(){
+          var rate = layui.rate;
+          rate.render({
+            elem: '#intention'
+            ,value: 3
+            ,text: true
+            ,setText: function(value){ //自定义文本的回调
+              var arrs = {
+                '1': '较弱'
+                ,'2': '较弱'
+                ,'3': '一般'
+                ,'4': '强烈'
+                ,'5': '准客户'
+              };
+              this.span.text(arrs[value] || ( value + "星"));
+            }
+          })
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }}
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="" title="公告">
+                    <i class="iconfont ibs-ico-news"></i>
+                    <script type="text/html" template="" lay-url="">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">5</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">5</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/header-default.png" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-meter2"></i><span class="vm">工作台</span></a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont ibs-ico-approval"></i><span class="vm">审批</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-park"></i><span class="vm">房源</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-business"></i><span class="vm">招商</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">意向客户</a></dd>
+                        <dd><a href="javascript:;">拟签约客户</a></dd>
+                        <dd><a href="javascript:;">成交客户</a></dd>
+                        <dd><a href="javascript:;">跟进记录</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-center"></i><span class="vm">运营</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">园区建设</a></dd>
+                        <dd><a href="javascript:;">园企互动</a></dd>
+                        <dd><a href="javascript:;">客户</a></dd>
+                        <dd><a href="javascript:;">合同</a></dd>
+                        <dd><a href="javascript:;">电表</a></dd>
+                        <dd><a href="javascript:;">收费</a></dd>
+                        <dd><a href="javascript:;">付费</a></dd>
+                        <dd><a href="javascript:;">孵化成果</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href=""><i class="iconfont ibs-ico-xietong"></i><span class="vm">园企互动</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-business"></i><span class="vm">物业</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">设备设施</a></dd>
+                        <dd><a href="javascript:;">巡检管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href=""><i class="iconfont ibs-ico-set-approve"></i><span class="vm">合同</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-money"></i><span class="vm">财务</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">收款</a></dd>
+                        <dd><a href="javascript:;">支出</a></dd>
+                        <dd><a href="javascript:;">校核</a></dd>
+                        <dd><a href="javascript:;">退租</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-statistics2"></i><span class="vm">数据中心</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业库</a></dd>
+                        <dd><a href="javascript:;">预警分析</a></dd>
+                        <dd><a href="javascript:;">收入分析</a></dd>
+                        <dd><a href="javascript:;">招商分析</a></dd>
+                        <dd><a href="javascript:;">退租分析</a></dd>
+                        <dd><a href="javascript:;">租赁分析</a></dd>
+                        <dd><a href="javascript:;">报表导出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">系统设置</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">用户中心</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">个人资料</a></dd>
+                        <dd><a href="javascript:;">修改密码</a></dd>
+                        <dd><a href="javascript:;">更换手机号</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body workbench">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="javascript:;">一级导航</a>
+                <span lay-separator="">/</span>
+                <a href="javascript:;"><cite>二级导航</cite></a>
+                <a href="javascript:;" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+
+            <!-- 提示栏 -->
+            <blockquote class="ibs-elem-quote">
+                <div id="test-util-countdown-ret"><span class="font-16 font-b c-orange pb-10">已退回</span><br>摘要： [博济·江南智造园]申能国际文化有限公司招商签约申请</div>
+            </blockquote>
+            <blockquote class="ibs-elem-quote">
+                <div><span class="font-b">预开票作废</span>： xxx于 2019-11-01 提交了发票作废申请，确认发票已归还到财务部门。<input type="button" class="layui-btn layui-btn-sm layui-btn-danger ml-15" name="" value="确认发票作废"></div>
+            </blockquote>
+
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            Tab选项卡
+                            <span class="layui-badge ml-5">8</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body padding-0">
+                            <div class="layui-tab tab-card">
+                                <ul class="layui-tab-title">
+                                    <li class="layui-this">标签1</li>
+                                    <li>标签2</li>
+                                    <li>标签3</li>
+                                </ul>
+                                <div class="layui-tab-content">
+                                    <div class="layui-tab-item layui-show">
+                                        <div class="ibs-approve">
+                                            <h1>
+                                                <span class="font-b">拟签约招商申请单（标准合同）</span>
+                                                <div class="btn-group-right">
+                                                    <span class="font-14 c-gray font-n">ZSSQ-190606-00011</span>
+                                                    <a href="" class="layui-btn layui-btn-sm layui-btn-normal"><i class="iconfont ibs-ico-print"></i></a>
+                                                    <a href="" class="layui-btn layui-btn-primary layui-btn-sm">抄送记录(<span class="c-orange">3</span>)</a>
+                                                </div>
+                                            </h1>
+                                            <div class="ibs-elem-quote-02">
+                                                累积上传51个房源数据，其中[1号楼10个]，[1号楼10个]，[1号楼10个]，[1号楼10个],[1号楼10个]，[1号楼10个]，[1号楼10个]，[1号楼10个]，[1号楼10个]，[1号楼10个]，[1号楼10个]，[1号楼10个]
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-tab-item">内容2</div>
+                                    <div class="layui-tab-item">内容3</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="layui-tab layui-tab-brief">
+                                <ul class="layui-tab-title">
+                                    <li class="layui-this">标签1</li>
+                                    <li>标签2</li>
+                                    <li>标签3</li>
+                                </ul>
+                                <div class="btn-group-right">
+                                    <a href="" class="layui-btn layui-btn-sm">按钮1</a>
+                                </div>
+                                <div class="layui-tab-content">
+                                    <div class="layui-tab-item layui-show">内容1</div>
+                                    <div class="layui-tab-item">内容2</div>
+                                    <div class="layui-tab-item">内容3</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            <span class="font-16">标题栏</span>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="title-01">
+                                <span>一级标题栏</span>
+                                <span class="font-14 font-italic c-gray ml-15"><i class="iconfont ibs-ico-tips c-blue-o mr-5"></i>若需设置权限，请至 <a class="c-link">组织管理</a> 页面</span>
+                                <div class="btn-group-right">
+                                    <a href="" class="layui-btn layui-btn-sm">按钮1</a>
+                                    <a href="" class="layui-btn layui-btn-primary layui-btn-sm">按钮2</a>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="title-02">二级标题栏<a href="" class="ml-20 font-14 font-n c-link">查看详情</a></div>
+                            <div class="clearfix"></div>
+
+                            <fieldset class="layui-elem-field">
+                                <legend>三级标题栏</legend>
+                                <div class="layui-field-box clearfix">
+                                    内容
+                                </div>
+                            </fieldset>
+
+                            <div class="title-special">
+                                <i class="iconfont ibs-ico-set-park"></i>
+                                <div class="infos" style="margin-right: 400px;">
+                                    <div class="txt-1">带图标特殊标题栏</div>
+                                    <div class="txt-2">买家已提交订单，等待服务商接单处理</div>
+                                </div>
+                                <div class="btn-group-right">
+                                    <div class="search-box inline-block">
+                                        <input type="text" name="title" placeholder="搜索园区" autocomplete="off" class="layui-input">
+                                        <a href="javascript:;" class="btn-input"><i class="iconfont ibs-ico-buttonsearch"></i></a>
+                                    </div>
+                                    <a href="" class="layui-btn">按钮1</a>
+                                    <a href="" class="layui-btn layui-btn-primary">按钮2</a>
+                                </div>
+                                <!-- <dl class="layui-row mt-10">
+                                    <dd class="layui-col-xs3">
+                                        <div>
+                                            <h3>意向园区</h3>
+                                            <p>博济·五星智造园</p>
+                                        </div>
+                                    </dd>
+                                    <dd class="layui-col-xs3">
+                                        <div>
+                                            <h3>客户需求</h3>
+                                            <p>800~1000㎡  |  10~15<span class="font-14"> 个工位</span></p>
+                                        </div>
+                                    </dd>
+                                    <dd class="layui-col-xs3">
+                                        <div>
+                                            <h3>意向程度</h3>
+                                            <div id="intention" class="stars"></div>
+                                        </div>
+                                    </dd>
+                                    <dd class="layui-col-xs3">
+                                        <div>
+                                            <h3>招商人员</h3>
+                                            <p>张三 <span class="c-gray-light font-14">2020-01-15 添加客户</span></p>
+                                        </div>
+                                    </dd>
+                                </dl> -->
+                            </div>
+                            <div class="title-special">
+                                <div class="infos ml-15">
+                                    <div class="txt-1">不带图标特殊标题栏</div>
+                                    <div class="txt-2">买家已提交订单，等待服务商接单处理</div>
+                                </div>
+                            </div>
+
+                            <h1 class="font-20 mt-15 mb-10">独立标题</h1>
+                            <h4><span class="c-gray-light">虚拟孵化地址：</span>苏州市姑苏区新庄西路12号</h4>
+                            <h4><span class="c-gray-light">孵化服务费标准：</span><span class="font-16 c-orange">2000 元/年</span><a href="#" class="ml-15 c-link">设置</a></h4>
+                        </div>
+                    </div>
+
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            表单
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="ico-stamp stamp-invoice"></div>
+                            <div class="title-01">
+                                <span>盖章</span>
+                                <span class="layui-badge ml-15">标签</span>
+                            </div>
+                            <form class="layui-form">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>一列信息</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-form-mid">常州恒德软件科技有限公司</div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">两列信息01</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容01</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">两列信息02</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容02</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-col-xs4">
+                                        <label class="layui-form-label">三列信息01</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容01</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <label class="layui-form-label">三列信息02</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容02</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <label class="layui-form-label">三列信息03</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容03</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-col-xs3">
+                                        <label class="layui-form-label">四列信息01</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容01</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs3">
+                                        <label class="layui-form-label">四列信息02</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容02</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs3">
+                                        <label class="layui-form-label">四列信息03</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容03</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs3">
+                                        <label class="layui-form-label">四列信息04</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">信息内容04</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label">标签125px</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-form-mid">常州恒德软件科技有限公司</div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">标签80px</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-form-mid">常州恒德软件科技有限公司</div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">意向程度</label>
+                                        <div class="layui-input-block">
+                                            <div id="intention" class="stars mt-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">开关</label>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                                            <input type="checkbox" checked name="open" lay-skin="switch" lay-text="开|关">
+                                            <span class="inline-block mt-9 ml-10 vm c-gray-light">备注信息</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">单选框</label>
+                                        <div class="layui-input-block">
+                                            <input type="radio" name="sex" value="男" title="男" checked>
+                                            <input type="radio" name="sex" value="女" title="女">
+                                            <input type="radio" name="sex" value="禁" title="禁用" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">复选框</label>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked>
+                                            <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读">
+                                            <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">输入框</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="" class="layui-input" placeholder="请输入" lay-verify="required" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">不可输入状态</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="" class="layui-input disabled" placeholder="请输入" lay-verify="required" autocomplete="off" disabled="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">下拉列表</label>
+                                        <div class="layui-input-block">
+                                            <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                <option value="">请选择</option>
+                                                <option value="1">选项01</option>
+                                                <option value="2">选项02</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">不可选状态</label>
+                                        <div class="layui-input-block">
+                                            <select name="interest-search" lay-filter="interest-search" lay-search disabled="">
+                                                <option value="">请选择</option>
+                                                <option value="1">选项01</option>
+                                                <option value="2">选项02</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label">文本框</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="" placeholder="请填写备注" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label">文本框不可输入</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="" placeholder="请填写备注" class="layui-textarea disabled" disabled=""></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            按钮及徽章
+                        </div>
+                        <div class="layui-card-body">
+                            <form class="layui-form">
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">普通按钮</label>
+                                        <div class="layui-input-block">
+                                            <a href="javascript:;" class="layui-btn">蓝色普通</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary">白色普通</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-disabled">禁用普通</a>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">小号按钮</label>
+                                        <div class="layui-input-block">
+                                            <a href="javascript:;" class="layui-btn layui-btn-sm">蓝色普通</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">白色普通</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-disabled layui-btn-sm">禁用普通</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label">徽章</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-form-mid">
+                                            <span class="layui-badge">赤</span>
+                                            <span class="layui-badge layui-bg-orange">橙</span>
+                                            <span class="layui-badge layui-bg-green">绿</span>
+                                            <span class="layui-badge layui-bg-purple">紫</span>
+                                            <span class="layui-badge layui-bg-blue">蓝</span>
+                                            <span class="layui-badge layui-bg-black">黑</span>
+                                            <span class="layui-badge layui-bg-gray">灰</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            进度条
+                        </div>
+                        <div class="layui-card-body">
+                            <ul class="progress-bar p-bar-7 mt-15">
+                                <li class="verified" title="提交变更申请"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>提交变更申请<div class="triangle"></div></li>
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>领导确认<div class="triangle"></div></li>
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>领导2确认<div class="triangle"></div></li>
+                                <li class="active"><span class="num">4</span>领导3确认<div class="triangle"></div></li>
+                                <li class=""><span class="num">5</span>提交盖章<div class="triangle"></div></li>
+                                <li class=""><span class="num">6</span>印章管理员盖章<div class="triangle"></div></li>
+                                <li class=""><span class="num">7</span>完善变更合同<div class="triangle"></div></li>
+                            </ul>
+                            <ul class="progress-bar p-bar-6 mt-15">
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>提交变更申请<div class="triangle"></div></li>
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>领导确认<div class="triangle"></div></li>
+                                <li class="active"><span class="num">3</span>领导2确认<div class="triangle"></div></li>
+                                <li class=""><span class="num">4</span>提交盖章<div class="triangle"></div></li>
+                                <li class=""><span class="num">5</span>印章管理员盖章<div class="triangle"></div></li>
+                                <li class=""><span class="num">6</span>完善变更合同<div class="triangle"></div></li>
+                            </ul>
+                            <ul class="progress-bar p-bar-5 mt-15">
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>提交变更申请<div class="triangle"></div></li>
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>领导确认<div class="triangle"></div></li>
+                                <li class="active"><span class="num">3</span>提交盖章<div class="triangle"></div></li>
+                                <li class=""><span class="num">4</span>印章管理员盖章<div class="triangle"></div></li>
+                                <li class=""><span class="num">5</span>完善变更合同<div class="triangle"></div></li>
+                            </ul>
+                            <ul class="progress-bar p-bar-4 mt-15">
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>提交变更申请<div class="triangle"></div></li>
+                                <li class="active"><span class="num">2</span>领导确认<div class="triangle"></div></li>
+                                <li class=""><span class="num">3</span>提交盖章<div class="triangle"></div></li>
+                                <li class=""><span class="num">4</span>完善变更合同<div class="triangle"></div></li>
+                            </ul>
+                            <ul class="progress-bar p-bar-3 mt-15">
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>提交变更申请<div class="triangle"></div></li>
+                                <li class="active"><span class="num">2</span>领导确认<div class="triangle"></div></li>
+                                <li class=""><span class="num">3</span>提交盖章<div class="triangle"></div></li>
+                            </ul>
+                            <ul class="progress-bar p-bar-2 mt-15">
+                                <li class="verified"><span class="num"><i class="iconfont ibs-ico-right1"></i></span>提交变更申请<div class="triangle"></div></li>
+                                <li class="active"><span class="num">2</span>领导确认<div class="triangle"></div></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            上传
+                        </div>
+                        <div class="layui-card-body">
+                            <form class="layui-form">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">上传附件</label>
+                                    <div class="layui-input-block">
+                                        <div class="upload-wrapper">
+                                            <div class="upload-box">
+                                                <a href="javascript:;" class="layui-btn upload"><i class="layui-icon"></i>上传</a>
+                                                <div class="describe">可上传客户的其他相关资料，以方便查找。单个文件不超过5M。</div>
+                                            </div>
+                                            <div class="upload-list">
+                                                <div class="upload-file-item">
+                                                    <i class="upload-file-icon"></i><a class="upload-file-name" href="#" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</a>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                                <div class="upload-file-item">
+                                                    <i class="upload-file-icon"></i><a class="upload-file-name" href="#" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</a>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                                <div class="upload-file-item">
+                                                    <i class="upload-file-icon"></i><a class="upload-file-name" href="#" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</a>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                                <div class="upload-file-item">
+                                                    <i class="upload-file-icon"></i><a class="upload-file-name" href="#" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</a>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                            </div>
+                                            <div class="upload-list">
+                                                <div class="upload-file-item">
+                                                    <i class="upload-file-icon"></i><a class="upload-file-name" href="#" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</a>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                                <div class="upload-file-item">
+                                                    <i class="upload-file-icon"></i><a class="upload-file-name" href="#" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</a>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                                <div class="upload-file-item">
+                                                    <i class="upload-file-icon"></i><a class="upload-file-name" href="#" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</a>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                                <div class="upload-file-item">
+                                                    <i class="upload-file-icon"></i><a class="upload-file-name" href="#" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</a>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                            </div>
+                                            <div class="upload-list">
+                                                <div class="upload-file-item br">
+                                                    <i class="file-icon jpg"></i><span class="upload-file-name" target="_blank">CW001.jpg</span>
+                                                    <span class="upload-time">施岳于2019-05-15上传</span>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                                <div class="upload-file-item br">
+                                                    <i class="file-icon pdf"></i><span class="upload-file-name" target="_blank">10dfa9ec8a136327f216788d9d8fa0ec09fac791.jpg</span>
+                                                    <span class="upload-time">施岳于2019-05-15上传</span>
+                                                    <i class="upload-file-remove" data-id=""></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                            </div>
+                                            <div class="upload-list">
+                                                <div class="upload-file-item file-prev">
+                                                    <img src="http://ibs.o.com/assets/css/images/house/demo-plan.jpg" class="file-img" width="78" height="78">
+                                                    <i class="upload-file-remove"></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">上传图片</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-form-mid"><span class="c-gray-light">图片尺寸大小 600 x 400</span></div>
+                                        <div class="clearfix"></div>
+                                        <div class="upload-wrapper">
+                                            <!-- 缩略图 -->
+                                            <div class="upload-list">
+                                                <div class="upload-file-item file-prev">
+                                                    <img src="http://ibs.o.com/assets/css/images/house/demo-plan.jpg" class="file-img" width="78" height="78">
+                                                    <i class="upload-file-remove"></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                                <div class="upload-file-item file-prev">
+                                                    <img src="http://ibs.o.com/assets/css/images/house/demo-plan.jpg" class="file-img" width="78" height="78">
+                                                    <i class="upload-file-remove"></i>
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                            </div>
+                                            <!-- 上传 -->
+                                            <div class="upload-box upload-pic">
+                                                <a href="javascript:;" class="upload"><i class="iconfont ibs-ico-add plus"></i></a>
+                                            </div>
+                                            <!-- 无权上传 -->
+                                            <div class="upload-box upload-pic">
+                                                <a href="javascript:;" class="upload disabled"><i class="iconfont ibs-ico-add plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">单张图片</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-form-mid"><span class="c-gray-light">图片尺寸大小 260 x 180</span></div>
+                                        <div class="clearfix"></div>
+                                        <div class="upload-wrapper upload-02">
+                                            <!-- 缩略图 -->
+                                            <div class="upload-list">
+                                                <div class="upload-file-item file-prev">
+                                                    <img src="http://ibs.o.com/assets/css/images/house/demo-plan.jpg" class="file-img" width="260" height="180">
+                                                    <input type="hidden" name="fileId[]" value="">
+                                                </div>
+                                            </div>
+                                            <!-- 上传 -->
+                                            <div class="upload-box upload-pic">
+                                                <a href="javascript:;" class="upload"><i class="iconfont ibs-ico-add-line plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            表格
+                        </div>
+                        <div class="layui-card-body">
+                            <!-- <div class="layui-row layui-col-space10">
+                                <div class="layui-col-xs12 layui-col-md3">
+                                    <div class="layui-form-mid">关键词</div>
+                                    <div class="layui-input-inline layui-col-xs8">
+                                        <input class="layui-input" name="keyword" placeholder="关键词" autocomplete="off" value="">
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs12 layui-col-md4">
+                                    <div class="layui-form-mid">关键词</div>
+                                    <div class="layui-input-inline layui-col-xs5">
+                                        <input type="text" name="date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid ml-10">-</div>
+                                    <div class="layui-input-inline layui-col-xs5">
+                                        <input type="text" name="date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs12 layui-col-md1">
+                                    <input type="button" class="layui-btn ajaxSearch layui-btn-primary" data-type="reload" value="搜索">
+                                </div>
+                                <div class="layui-col-xs12 layui-col-md4 txt-r">
+                                    <a class="layui-btn" href="javascript:;">按钮01</a>
+                                    <a class="layui-btn" href="javascript:;">按钮02</a>
+                                </div>
+                            </div> -->
+
+                            <div class="mt-5 mb-15 position-rel">
+                                关键词
+                                <div class="layui-inline text-w-200 ml-5 mr-15">
+                                    <input class="layui-input" name="keyword" placeholder="关键词" autocomplete="off" value="">
+                                </div>
+                                关键词
+                                <div class="layui-inline text-w-120 ml-5 mr-5">
+                                    <input type="text" name="date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                </div>
+                                -
+                                <div class="layui-inline text-w-120 ml-5 mr-15">
+                                    <input type="text" name="date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                </div>
+                                <input type="button" class="layui-btn layui-btn-primary" data-type="" value="搜索">
+                                <div class="right-box right-0">
+                                    <a class="layui-btn" href="javascript:;">生成缴费通知单</a>
+                                    <a class="layui-btn" href="javascript:;">录入存量合同</a>
+                                </div>
+                            </div>
+                            <table class="layui-table table-fixed mb-15">
+                                <colgroup>
+                                    <col>
+                                    <col width="">
+                                    <col width="14%">
+                                    <col width="14%">
+                                    <col width="14%">
+                                    <col width="10%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>客户名称</th>
+                                        <th>租赁房源</th>
+                                        <th>租赁面积</th>
+                                        <th>合同到期日</th>
+                                        <th>收款状态</th>
+                                        <th class="txt-c">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="txt-ellipsis hoverTips" data-message="这里是文字超链接"><a href="#" class="c-link">这里是文字超链接</a></td>
+                                        <td>1号楼-1-1-102</td>
+                                        <td><div class="pulse-box">
+                                                <div class="pulse-txt">加载中</div>
+                                                <div class="pulse-container">
+                                                    <div class="pulse-bubble pulse-bubble-1"></div>
+                                                    <div class="pulse-bubble pulse-bubble-2"></div>
+                                                    <div class="pulse-bubble pulse-bubble-3"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>2020-04-20</td>
+                                        <td><span class="c-green">已支付</span></td>
+                                        <td class="txt-c"><a href="#" class="c-link">查看</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>除操作列，大多普通文字左对齐<span class="layui-badge layui-bg-orange ml-5">小标签</span></td>
+                                        <td>1号楼-1-1-102</td>
+                                        <td>100.00 ㎡</td>
+                                        <td>2020-04-20</td>
+                                        <td><span class="c-yellow">支付中</span></td>
+                                        <td class="txt-c"><a href="#" class="c-link">查看</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="txt-ellipsis"><span class="layui-badge layui-bg-orange mr-5">小标签</span>双层标题，不换行（超出单元格宽度时自动省略）<br><span class="c-gray-light">双层副标题，不换行（超出单元格宽度时自动省略）</span></td>
+                                        <td>1号楼-1-1-102，2号楼-1-1-102，3号楼-1-1-102，4号楼-1-1-102</td>
+                                        <td>100.00 ㎡</td>
+                                        <td>2020-04-20</td>
+                                        <td><span class="c-red">未支付</span></td>
+                                        <td class="txt-c"><a href="#" class="c-link">查看</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="txt-ellipsis">普通文字，不换行（超出单元格宽度时自动省略）<br><span class="layui-badge layui-bg-orange">小标签</span></td>
+                                        <td>1号楼-1-1-102</td>
+                                        <td>100.00 ㎡</td>
+                                        <td>2020-04-20</td>
+                                        <td><span class="c-gray">已完成</span></td>
+                                        <td class="txt-c"><a href="#" class="c-link">查看</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="layui-form position-rel">
+                                <div class="layui-form-item">
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">到账日期</label>
+                                        <div class="layui-input-block">
+                                            <div class="date-2">
+                                                <div class="layui-input-inline layui-col-xs6">
+                                                    <input type="text" name="date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                                </div>
+                                                <div class="layui-form-mid">-</div>
+                                                <div class="layui-input-inline layui-col-xs6">
+                                                    <input type="text" name="date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs3">
+                                        <label class="layui-form-label">归属科目</label>
+                                        <div class="layui-input-block">
+                                            <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                <option value="">全部</option>
+                                                <option value="1">选项01</option>
+                                                <option value="2">选项02</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-col-xs6">
+                                        <label class="layui-form-label">关键字</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="id" placeholder="客户名称/园区名称/运营公司/到账金额" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <div class="layui-input-inline" style="margin-left: 40px;">
+                                            <input type="checkbox" name="like1[read]" lay-skin="primary" title="只显示待关联应收账">
+                                        </div>
+                                        <a href="javascript:;" class="layui-btn layui-btn-primary">搜索</a>
+                                    </div>
+                                </div>
+                                <div class="right-box right-0" style="top: auto; bottom: 0;"">
+                                    <a class="layui-btn" href="javascript:;">导出</a>
+                                </div>
+                            </div>
+
+                            <div class="layui-form position-rel">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">到账日期</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-input-inline text-w-120">
+                                                <input type="text" name="date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                            </div>
+                                            <div class="layui-form-mid">-</div>
+                                            <div class="layui-input-inline text-w-120 mr-0">
+                                                <input type="text" name="date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">归属科目</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-input-inline text-w-120 mr-0">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">全部</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">关键字</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-input-inline mr-0" style="width: 265px;">
+                                                <input type="text" name="id" placeholder="客户名称/园区名称/运营公司/到账金额" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <div class="layui-input-inline" style="margin-left: 40px;">
+                                            <input type="checkbox" name="like1[read]" lay-skin="primary" title="只显示待关联应收账">
+                                        </div>
+                                        <a href="javascript:;" class="layui-btn layui-btn-primary">搜索</a>
+                                    </div>
+                                </div>
+                                <div class="right-box right-0" style="top: auto; bottom: 5px;">
+                                    <a class="layui-btn" href="javascript:;">导出</a>
+                                </div>
+                            </div>
+
+                            <table class="layui-table table-fixed mb-15 layui-form">
+                                <colgroup>
+                                    <col width="">
+                                    <col width="30%">
+                                    <col width="20%">
+                                    <col width="20%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>应用名称</th>
+                                        <th>别名</th>
+                                        <th>排序</th>
+                                        <th>开关</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>企业缴费</td>
+                                        <td>企业缴费<a href="#" class="c-link ml-15">编辑</a></td>
+                                        <td><a href="#" class="c-link">下移</a></td>
+                                        <td><a href="#" class="iconfont ibs-ico-kai c-blue font-24 vm"></a><a href="#" class="c-link vm ml-15">设置例外</a>（3）</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="second-type"><i class="ico-dashed"></i>租金</td>
+                                        <td class="second-type"><i class="ico-dashed"></i>租金<a href="#" class="c-link ml-15">编辑</a></td>
+                                        <td class="second-type"><i class="ico-dashed"></i><a href="#" class="c-link">下移</a></td>
+                                        <td><a href="#" class="iconfont ibs-ico-kai c-blue font-24 vm"></a><a href="#" class="c-link vm ml-15">设置例外</a>（0）</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="second-type"><i class="ico-dashed"></i>电费（后付费）</td>
+                                        <td class="second-type"><i class="ico-dashed"></i>电费（后付费）<a href="#" class="c-link ml-15">编辑</a></td>
+                                        <td class="second-type"><i class="ico-dashed"></i><a href="#" class="c-link">上移</a><a href="#" class="c-link">下移</a></td>
+                                        <td><a href="#" class="iconfont ibs-ico-kai c-blue font-24 vm"></a><a href="#" class="c-link vm ml-15">设置例外</a>（0）</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="second-type"><i class="ico-dashed"></i>电费（预付费）</td>
+                                        <td class="second-type"><i class="ico-dashed"></i>电费（预付费）<a href="#" class="c-link ml-15">编辑</a></td>
+                                        <td class="second-type"><i class="ico-dashed"></i><a href="#" class="c-link">上移</a><a href="#" class="c-link">下移</a></td>
+                                        <td><a href="#" class="iconfont ibs-ico-guanbi c-gray-light font-24 vm"></a><a href="#" class="c-link vm ml-15">设置例外</a>（2）</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="second-type"><i class="ico-dashed"></i>其他费用</td>
+                                        <td class="second-type"><i class="ico-dashed"></i>其他费用<a href="#" class="c-link ml-15">编辑</a></td>
+                                        <td class="second-type"><i class="ico-dashed"></i><a href="#" class="c-link">上移</a></td>
+                                        <td><a href="#" class="iconfont ibs-ico-guanbi c-gray-light font-24 vm"></a><a href="#" class="c-link vm ml-15">设置例外</a>（0）</td>
+                                    </tr>
+                                    <tr>
+                                        <td>停车租赁</td>
+                                        <td><span class="c-orange">车位申请</span><a href="#" class="c-link ml-15">编辑</a></td>
+                                        <td><a href="#" class="c-link">上移</a><a href="#" class="c-link">下移</a></td>
+                                        <td><a href="#" class="iconfont ibs-ico-guanbi c-gray-light font-24 vm"></a><a href="#" class="c-link vm ml-15">设置例外</a>（0）</td>
+                                    </tr>
+                                    <tr>
+                                        <td>会议室预定</td>
+                                        <td>会议室预定<a href="#" class="c-link ml-15">编辑</a></td>
+                                        <td><a href="#" class="c-link">上移</a></td>
+                                        <td><a href="#" class="iconfont ibs-ico-kai c-blue font-24 vm"></a><a href="#" class="c-link vm ml-15">设置例外</a>（0）</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="layui-table-box">
+                                <div class="layui-table-header">
+                                    <div class="table-h-left">
+                                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table table-fixed">
+                                            <colgroup>
+                                                <col width="">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>成员</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="table-h-right" id="topTitle" style="overflow-y: scroll;">
+                                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table table-fixed">
+                                            <colgroup>
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="5" class="txt-c">业务权限</th>
+                                                    <th colspan="4" class="txt-c">合同权限</th>
+                                                    <th colspan="5" class="txt-c">财务权限</th>
+                                                    <th colspan="3" class="txt-c">其他</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>房源管理</th>
+                                                    <th>招商</th>
+                                                    <th>运营</th>
+                                                    <th>物业</th>
+                                                    <th>数据查看</th>
+                                                    <th>核对盖章</th>
+                                                    <th>扫描上传</th>
+                                                    <th>合同归档</th>
+                                                    <th>合同查阅</th>
+                                                    <th>收款导入</th>
+                                                    <th>对账复核</th>
+                                                    <th>对账撤销</th>
+                                                    <th>支出管理</th>
+                                                    <th>校核管理</th>
+                                                    <th>管理</th>
+                                                    <th>管理</th>
+                                                    <th>管理</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="layui-table-body layui-table-main">
+                                    <div class="table-c-left" id="leftTitle" style="height: 340px; overflow-x: scroll;">
+                                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                                            <colgroup>
+                                                <col width="">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td>严伟虎</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>施岳</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>禇雅清</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>张三</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>李四</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>王五</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>赵六</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>施岳</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>禇雅清</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="table-c-right" style="height: 340px;" id="content">
+                                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table table-fixed">
+                                            <colgroup>
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                                <col width="90">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                    <td></td>
+                                                    <td><i class="iconfont ibs-ico-right1"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form class="layui-form">
+                                <table class="layui-table table-fixed mb-15">
+                                    <colgroup>
+                                        <col>
+                                        <col width="10%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>两列日期</th>
+                                            <th class="txt-c">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="date-2">
+                                                <div class="layui-input-inline layui-col-xs6">
+                                                    <input type="text" name="date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input error">
+                                                </div>
+                                                <div class="layui-form-mid">-</div>
+                                                <div class="layui-input-inline layui-col-xs6">
+                                                    <input type="text" name="date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </td>
+                                            <td class="txt-c"><a href="#" class="c-link">查看</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="layui-table table-fixed mb-15">
+                                    <colgroup>
+                                        <col>
+                                        <col width="12%">
+                                        <col width="24%">
+                                        <col width="12%">
+                                        <col width="14%">
+                                        <col width="10%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>客户名称</th>
+                                            <th>租赁房源</th>
+                                            <th>两列日期</th>
+                                            <th>单列日期</th>
+                                            <th>应收金额（元）</th>
+                                            <th class="txt-c">操作</th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">输入客户名称</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                                <div class="c-orange font-12 mt-5">江苏国林林产品有限公司 匹配到2份合同，请选择</div>
+                                            </td>
+                                            <td>--</td>
+                                            <td class="date-2">
+                                                <div class="layui-input-inline layui-col-xs6">
+                                                    <input type="text" name="date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                                </div>
+                                                <div class="layui-form-mid">-</div>
+                                                <div class="layui-input-inline layui-col-xs6">
+                                                    <input type="text" name="date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </td>
+                                            <td><input type="text" name="date" id="date3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"></td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="请输入" value="102.5" lay-verify="required" autocomplete="off"></td>
+                                            <td class="txt-c"><a href="#" class="c-link"><i class="iconfont ibs-ico-deletenorml"></i></a><a href="#" class="c-link"><i class="iconfont ibs-ico-charuhang"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="layui-table table-fixed table-border-2 mb-15">
+                                    <colgroup>
+                                        <col width="12%">
+                                        <col width="20%">
+                                        <col width="20%">
+                                        <col width="">
+                                        <col width="12%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="font-b">规格1</th>
+                                            <th><input type="text" name="" class="layui-input" placeholder="填写规格名称" lay-verify="required" autocomplete="off"></th>
+                                            <th>
+                                                <select name="" lay-filter="" lay-search>
+                                                    <option value="">请选择服务商</option>
+                                                    <option value="1">11</option>
+                                                </select>
+                                            </th>
+                                            <th><input type="text" name="" class="layui-input" placeholder="填写此规格的描述说明" lay-verify="required" autocomplete="off"></th>
+                                            <th class="txt-r"><a href="#" class="c-link">删除</a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>产品价格</td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="填写服务单价" lay-verify="required" autocomplete="off"></td>
+                                            <td><select name="" lay-filter="" lay-search>
+                                                    <option value="">请选择单位（可选）</option>
+                                                    <option value="1">11</option>
+                                                </select></td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="请选择地区" lay-verify="required" autocomplete="off"></td>
+                                            <td class="txt-r"><a href="#" class="c-link">增加</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>产品价格</td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="填写服务单价" lay-verify="required" autocomplete="off"></td>
+                                            <td><select name="" lay-filter="" lay-search>
+                                                    <option value="">请选择单位（可选）</option>
+                                                    <option value="1">11</option>
+                                                </select></td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="请选择地区" lay-verify="required" autocomplete="off"></td>
+                                            <td class="txt-r"><a href="#" class="c-link">增加</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            时间线
+                        </div>
+                        <div class="layui-card-body">
+                            <ul class="layui-timeline">
+                                <li class="layui-timeline-item">
+                                    <i class="iconfont ibs-ico-faqi"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <dl class="ibs-timeline">
+                                            <dt class="ico-timeline"></dt>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="c-blue ml-15">发起审批</span></div>
+                                                    <div class="txt">优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育</div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="iconfont ibs-ico-agree"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <dl class="ibs-timeline">
+                                            <dt class="ico-timeline"></dt>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="c-green ml-15">同意</span></div>
+                                                    <div class="txt">优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业</div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="ml-15">建议</span></div>
+                                                    <div class="txt">优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业</div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span></div>
+                                                    <div class="txt c-gray-light">没有任何评论留言</div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="iconfont ibs-ico-warning1"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <dl class="ibs-timeline">
+                                            <dt class="ico-timeline"></dt>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="c-red ml-15">回退</span></div>
+                                                    <div class="txt">优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业</div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="ml-15">建议</span></div>
+                                                    <div class="txt">优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业</div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="iconfont ibs-ico-time1"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <dl class="ibs-timeline">
+                                            <dt class="ico-timeline"></dt>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="c-yellow ml-15">审批中</span></div>
+                                                    <div class="txt">优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业</div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="ml-15">协同审批</span></div>
+                                                    <div class="txt-hide"><i class="ico-locked"></i><span class="vm">审批意见隐藏，此节点审批结束后显示</span></div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="iconfont ibs-ico-stop"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <dl class="ibs-timeline">
+                                            <dt class="ico-timeline"></dt>
+                                            <dt>
+                                                <blockquote class="ibs-elem-quote">
+                                                    <div id="test-util-countdown-ret">当前节点无审批人员，参与者都提交了审批意见</div>
+                                                </blockquote>
+                                            </dt>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="ml-15">建议</span></div>
+                                                    <div class="txt">优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业</div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="iconfont ibs-ico-close"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <dl class="ibs-timeline not-started">
+                                            <dt class="ico-timeline"></dt>
+                                            <dt>
+                                                <blockquote class="ibs-elem-quote">
+                                                    <div id="test-util-countdown-ret">当前节点无审批人员，参与者都提交了审批意见</div>
+                                                </blockquote>
+                                            </dt>
+                                            <dt class="ico-not-started"></dt>
+                                            <dd>
+                                                <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                <div class="infos">
+                                                    <div><span class="font-b c-gray-dark">谢美琴</span><span class="ml-15">建议</span></div>
+                                                    <div class="txt">优质企业，有很多资质证书对企业招商有很多好处，争取找到我们园区培育优质企业</div>
+                                                    <div class="font-12 c-gray">2019-09-12  12:34:43</div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="c-gray-light txt-c pt-10 pb-10">已经到底了</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //JavaScript代码区域
+    layui.use(['form','element'], function(){
+        var $ = layui.jquery;
+        var element = layui.element;
+
+        $(function () {
+            $("#content").scroll(function() {
+                $("#topTitle").scrollLeft($("#content").scrollLeft());
+                $("#leftTitle").scrollTop($("#content").scrollTop());
+            });
+        });
+    });
+</script>
+</body>
+</html>

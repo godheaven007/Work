@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="http://ibs.o.com/assets/html/index.html">主页</a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>系统设置</cite></a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>园区管理</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>查看园区</cite></a>
+            </div>
+            <blockquote class="ibs-elem-quote">
+                <div id="test-util-countdown-ret">已启用企业微信通讯录API，添加成员时将从企业微信通讯录中获取用户。若需关闭，可前往 <a href="" class="c-link">参数配置</a> 页面设置。</div>
+            </blockquote>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header ibs-card-header-h">
+                            <i class="iconfont ibs-ico-set-park ico-header c-gray-light2"></i>
+                            <div class="infos">
+                                <div class="txt-1">博济·江南智造园</div>
+                                <div class="txt-2">苏州博瀚创新创业孵化管理有限公司</div>
+                            </div>
+                            <div class="btn-group-right">
+                                <button class="layui-btn">编辑</button>
+                                <button class="layui-btn layui-btn-primary">冻结</button>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <form class="layui-form" action="" lay-filter="component-form-group">
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">园区类型</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">委托运营</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">所属部门</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">火炬孵化</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">位置</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">江苏省苏州市金阊区新庄西路12号</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">已选坐标</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid"><a href="#" class="c-link">120.572622,31.324895</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend>业务属性</legend>
+                                </fieldset>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">房源业态</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">按面积租赁</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">租金单位</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">元/㎡/天</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">支出费用项</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">房租，物业费，保安保洁费，房租，物业费，保安保洁费</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">收费管理模式</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">系统对房租收费进行管理</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">收入占比</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">100%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend>签约信息</legend>
+                                </fieldset>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">项目名称</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">博济·江南智造园</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">项目规模</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">50000㎡</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">业主</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">林氏弹簧（苏州）有限公司/苏州妙林钢绳有限公司</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">业主交房日期</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">2012-04-30</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">业主联系人</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">张丽梅</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">业主联系电话</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">13951103777</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">签约人</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">严伟虎</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">签约日期</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">2012-03-30</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">合同周期</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">2012-05-01 ~ 2024-04-30</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">合同扫描件</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">
+                                                <a href="#">江南智造园2012.pdf</a><span class="layui-word-aux ml-15">施岳于2012-03-12上传</span><br>
+                                                <a href="#">江南智造园2012.pdf</a><span class="layui-word-aux ml-15">施岳于2012-03-12上传</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend>签约信息<span class="ml-15 font-14"><i class="iconfont ibs-ico-tips c-link mr-5"></i>若需设置权限，请至 <a href="" class="c-blue">组织管理</a> 页面</span></legend>
+                                </fieldset>
+                                <div style="width: 100%; overflow-x: auto;">
+                                <table class="layui-table table-th-c table-td-c" style="min-width: 100%; table-layout: fixed;">
+                                  <colgroup>
+                                    <col width="120">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                                  </colgroup>
+                                  <thead>
+                                    <tr>
+                                      <th></th>
+                                      <th colspan="5">所属部门</th>
+                                      <th colspan="4">合同权限</th>
+                                      <th colspan="4">财务权限</th>
+                                    </tr>
+                                    <tr>
+                                      <th>成员</th>
+                                      <th>房源管理</th>
+                                      <th>招商</th>
+                                      <th>运营</th>
+                                      <th>物业</th>
+                                      <th>数据查看</th>
+                                      <th>核对盖章</th>
+                                      <th>扫描上传</th>
+                                      <th>合同归档</th>
+                                      <th>合同查阅</th>
+                                      <th>收入导入</th>
+                                      <th>收入确认</th>
+                                      <th>收入复核</th>
+                                      <th>回</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>严伟虎</td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                    </tr>
+                                    <tr>
+                                      <td>施岳</td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                    </tr>
+                                    <tr>
+                                      <td>禇雅清</td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td>赵微</td>
+                                      <td></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td><i class="iconfont ibs-ico-right1"></i></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

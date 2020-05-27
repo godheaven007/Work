@@ -1,0 +1,914 @@
+@charset "utf-8";
+
+/* opark园区管理后台 */
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder { 
+    color: #ddd; opacity: 1;
+}
+input:-moz-placeholder,textarea:-moz-placeholder { 
+    color: #ddd; opacity: 1;
+}
+input::-moz-placeholder,textarea::-moz-placeholder { 
+    color: #ddd; opacity: 1;
+}
+input:-ms-input-placeholder,textarea:-ms-input-placeholder { 
+    color: #ddd; opacity: 1;
+}
+/*:-moz-placeholder {
+    color: #ddd; opacity:1; 
+}
+::-moz-placeholder {
+    color: #ddd;opacity:1;
+}
+input:-ms-input-placeholder {
+    color: #ddd;opacity:1;
+}
+input::-webkit-input-placeholder {
+    color: #ddd;opacity:1;
+}*/
+
+input:-internal-autofill-selected {
+    background: none !important;
+    color: #333 !important;
+}
+.login-bg {
+    min-width: 600px;
+    min-height: 800px;
+    width: 100%;
+    height: 100%;
+    background: url(images/login/login-bg.jpg?1569741027) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.logo-opark {
+    width: 345px;
+    height: 38px;
+    background: url(images/login/logo-opark-white.png?1582703937) no-repeat center center;
+    position: absolute;
+    top: 108px;
+    left: 50%;
+    margin-left: -173px;
+}
+/* 未登录 */
+.opark-login {
+    width: 500px;
+    height: 600px;
+    background: #fff;
+    border-radius: 6px;
+    /*box-shadow: 0 2px 10px rgba(0, 0, 0, .12);*/
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    margin-left: -250px;
+}
+.opark-login .login-type-top {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    width: 61px;
+    height: 59px;
+}
+.opark-login .login-type-top >a {
+    display: inline-block;
+    width: 61px;
+    height: 59px;
+}
+.opark-login .login-type-top .ico-code {
+    background: url(images/login/ico-code.png?1570498208) no-repeat;
+}
+.opark-login .login-type-top .ico-pc {
+    background: url(images/login/ico-pc.png?1570498346) no-repeat;
+}
+.opark-login .login-type-top .ico-pc-info {
+    display: inline-block;
+    width: 100px;
+    height: 18px;
+    background: url(images/login/ico-pc-info.png?1570498531) no-repeat;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 60px;
+}
+.opark-login .login-type-top .ico-code.hidden,
+.opark-login .login-type-top .ico-pc.hidden {
+    display: none;
+}
+
+.opark-login .title {
+    margin-top: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 26px;
+    color: #333;
+    text-align: center;
+    font-family: "PingFangSC-Regular";
+}
+.opark-login .log-code .code-bg {
+    margin: 35px auto 0;
+    /*padding: 5px;*/
+    width: 350px;
+    height: 230px;
+    text-align: center;
+    /*overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .2);*/
+}
+.opark-login .log-code .txt-info {
+    margin: 24px auto 0;
+    width: 210px;
+    line-height: 24px;
+    color: #aaa;
+    text-align: center;
+}
+
+.opark-login .log-pc {
+    padding: 0 75px;
+}
+.opark-login .log-pc .title {
+    margin-top: 40px;
+}
+.opark-login .log-pc .form-wrapper {
+    margin-top: 60px;
+}
+.opark-login .log-pc .row {
+    margin-bottom: 30px;
+}
+.opark-login .log-pc .form-wrapper input.text {
+    padding: 14px;
+    width: 320px;
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    font-size: 18px;
+    /*color: #333;*/
+    background: none;
+}
+.opark-login .log-pc .form-wrapper input[type='text']:focus,
+.opark-login .log-pc .form-wrapper input[type='password']:focus {
+    border-color: #1690ff;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/*.opark-login .log-pc .form-wrapper .row .detail i {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: 13px;
+    height: 16px;
+    position: absolute;
+    top: 16px;
+    left: 0;
+}
+.opark-login .log-pc .form-wrapper .row .detail i.user {
+    background: url(images/ico-phone.png) no-repeat;
+}
+.opark-login .log-pc .form-wrapper .row .detail i.pwd {
+    background: url(images/ico-lock.png) no-repeat;
+}*/
+.opark-login .log-pc .msg-error {
+    width: 100%;
+    height: 28px;
+    line-height: 18px;
+    color: #de0000;
+    position: absolute;
+    top: 134px;
+    left: 0;
+    z-index: 20;
+}
+.opark-login .btn-log {
+    width: 350px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 22px;
+    border-radius: 3px;
+}
+.btn-color-blue {
+    background-color: #1690ff;
+}
+.btn-color-blue:hover {
+    background-color: #1a7eda;
+}
+.opark-login .log-pc .forgot-psd {
+    text-align: right;
+}
+.opark-login .log-pc .forgot-psd a {
+    color: #888;
+}
+
+
+/* 登录成功 */
+.opark-login .login-success {
+    text-align: center;
+}
+.login-success .header-img {
+    margin-top: 40px;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ebebeb;
+    overflow: hidden;
+}
+.login-success .header-img img {
+    display: block;
+    width: 80px;
+    height: 80px;
+}
+.login-success .info {
+    padding: 8px 0;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+}
+.login-success .info .btn-exit {
+    margin-left: 16px;
+    font-size: 16px;
+    color: #999;
+    vertical-align: middle;
+}
+.login-success .info .btn-exit:hover {
+    color: #1690ff;
+}
+.login-success h2 {
+    margin: 26px auto 0;
+    width: 100%;
+    background: url(images/login/ico-line.png?1577089448) no-repeat center center;
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+}
+.login-success .no-company {
+    margin-top: 28px;
+    line-height: 30px;
+    text-align: center;
+    color: #aaa;
+    font-size: 16px;
+}
+.login-success .btn-new-company {
+    margin: 58px auto 0;
+    display: inline-block;
+    width: 350px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    background-color: #1690ff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/*.opark-login .btn-exit {
+    margin-top: 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 18px 0 10px;
+    width: 200px;
+    height: 48px;
+    line-height: 48px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 22px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, .08);
+    font-size: 16px;
+    color: #999;
+}
+
+.opark-login .info {
+    float: left;
+    display: inline-block;
+    padding: 8px 0;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    color: #333;
+}
+.opark-login .btn-exit .info img {
+    margin-right: 10px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.opark-login .login-success h2 {
+    margin: 30px auto 0;
+    width: 440px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #aaa;
+    text-align: left;
+}*/
+.opark-login .login-success .join-company {
+    margin-bottom: 25px;
+    width: 100%;
+    height: 245px;
+    overflow-y: auto;
+}
+.opark-login .login-success dl {
+    margin: 0 auto;
+    width: 440px;
+}
+.opark-login .login-success dd {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: left;
+    position: relative;
+}
+.opark-login .login-success dd:last-child {
+    border-bottom: none;
+}
+
+.opark-login .login-success dd .txt {
+    display: inline-block;
+    width: 330px;
+    height: 70px;
+    line-height: 70px;
+    color: #333;
+    vertical-align: middle;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*.opark-login .login-success dd > span {
+    display: inline-block;
+    height: 70px;
+    line-height: 70px;
+    vertical-align: middle;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}.opark-login .login-success dd .name {
+    width: 65px;
+    color: #666;
+}
+.opark-login .login-success dd .txt-01 {
+    width: 80px;
+    color: #aaa;
+}
+.opark-login .login-success dd .txt-02 {
+    width: 180px;
+    font-size: 14px;
+    color: #333;
+}*/
+.opark-login .login-success dd .box-right {
+    color: #aaa;
+    line-height: 70px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.opark-login .btn-normal {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    background-color: #1690ff;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.opark-login .btn-normal.btn-agree {
+    background-color: #fff;
+    color: #1690ff;
+    border: 1px solid #1690ff;
+}
+.opark-login .btn-normal.btn-refuse {
+    background-color: #fff;
+    color: #666;
+    border: 1px solid #dadada;
+}
+.opark-login .btn-normal + .btn-normal {
+    margin-left: 10px;
+}
+
+/* 注册 */
+.opark-login .register {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -175px;
+    width: 350px;
+    height: 70px;
+    line-height: 70px;
+    border-top: 1px solid #eee;
+    font-family: "PingFangSC-Regular";
+    color: #aaa;
+}
+.opark-login .register .c-blue {
+    color: #1690ff;
+}
+.opark-login .register a:hover {
+    text-decoration: underline;
+}
+
+/* footer */
+.opark-footer {
+    position: relative;
+    padding-bottom: 30px;
+    text-align: center;
+    color: #777;
+}
+/*.opark-footer ul {
+    margin: 45px auto 0;
+    display: inline-block;
+    height: 26px;
+}
+.opark-footer li {
+    float: left;
+    line-height: 26px;
+}
+.opark-footer li a {
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    color: #777;
+}*/
+.opark-footer .copyright {
+    margin: 45px auto 0;
+    line-height: 26px;
+}
+
+
+/* 新员工加入 */
+.employee,
+.company {
+    position: relative;
+    padding-bottom: 30px;
+}
+.employee .top-bg,
+.company .top-bg {
+    width: 100%;
+    height: 300px;
+    background: #1690ff;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+}
+
+.employee > .title,
+.company > .title {
+    margin: 0 auto;
+    padding: 90px 0 38px;
+    width: 1160px;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 300;
+    color: #fff;
+    font-family: PingFangSC-Ultralight;
+    position: relative;
+}
+.employee > .title .logo,
+.company > .title .logo {
+    width: 345px;
+    height: 38px;
+    background: url(images/login/logo-opark-white.png?1582703937) no-repeat left center;
+    position: absolute;
+    top: 28px;
+    left: 15px;
+}
+.employee > .title .user,
+.company > .title .user {
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    top: 28px;
+    right: 15px;
+}
+.user a:hover {
+    text-decoration: underline;
+}
+.main {
+    margin: 0 auto;
+    padding-bottom: 60px;
+    width: 1160px;
+    min-height: 620px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 6px;
+}
+.main .steps {
+    width: 1162px;
+    border-right: 1px solid #b8b8b8;
+}
+.main .steps li {
+    float: left;
+    width: 386px;
+    height: 70px;
+    line-height: 70px;
+    background: #c2c7cc;
+    border-left: 1px solid #b8b8b8;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+}
+.main .steps li:first-child {
+    width: 385px;
+}
+.main .quartering li,
+.main .quartering li:first-child {
+    width: 289px;
+}
+.main .steps .completed {
+    border-color: #8ad5ae;
+    background: #20d1ba;
+}
+.main .steps .num {
+    display: inline-block;
+    margin-right: 18px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+}
+.employee .main .infos {
+    margin: 70px 0 45px;
+    /*height: 34px;*/
+    line-height: 34px;
+    font-size: 16px;
+    color: #aaa;
+    text-align: center;
+}
+.employee .main .infos .phone {
+    font-size: 28px;
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+}
+.employee .main .row {
+    margin-bottom: 21px;
+}
+.main .step-01,
+.main .step-02,
+.main .step-03,
+.main .step-04 {
+    margin: 0 auto;
+    width: 440px;
+}
+.main .step-07 {
+    margin: 0 auto;
+    width: 600px;
+    text-align: center;
+}
+.company .main .step-01 {
+    margin: 68px auto 0;
+}
+.main .d-line {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.main .form-wrapper .row .label {
+    display: inline-block;
+    padding: 9px 0;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #666;
+    text-align: left;
+}
+.main input.text {
+    padding: 14px 10px;
+    width: 319px;
+    height: 20px;
+    line-height: 20px;
+    border: none;
+    font-size: 16px;
+    /*color: #333;*/
+    background: none;
+}
+.main input.text-w-219 {
+    width: 219px;
+}
+.main input[type='text']:focus,
+.main input[type='password']:focus {
+    border-color: #1690ff;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.main .d-line .get-code {
+    width: 94px;
+    height: 20px;
+    line-height: 20px;
+    border: none;
+    border-left: 1px solid #e2e7f7;
+    text-align: right;
+    color: #1690ff;
+    text-align: center;
+    background: none;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    bottom: 14px;
+}
+.main .d-line .get-code.disabled {
+    color: #aaa;
+    cursor: auto;
+}
+.main .d-line .pic-code {
+    width: 95px;
+    height: 33px;
+    position: absolute;
+    right: 0;
+    bottom: 9px;
+    cursor: pointer;
+}
+.main .d-line .pic-code img {
+    display: block;
+    width: 95px;
+    height: 33px;
+}
+.main .msg-error {
+    width: 100%;
+    height: 28px;
+    line-height: 18px;
+    color: #de0000;
+    position: absolute;
+    z-index: 20;
+    left: 0;
+}
+.employee .step-01 .msg-error {
+    /*bottom: 124px;*/
+    bottom: 152px;
+}
+.employee .step-02 .msg-error {
+    bottom: 208px;
+}
+.company .step-01 .msg-error {
+    bottom: 132px;
+}
+.company .step-02 .msg-error {
+    bottom: 100px;
+}
+
+.main .btn-next {
+    width: 440px;
+    height: 66px;
+    line-height: 66px;
+    text-align: center;
+    font-size: 22px;
+    border-radius: 6px;
+}
+.main .btn-return {
+    margin-top: 20px;
+    width: 440px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    font-size: 22px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    color: #777;
+}
+.main .btn-return:hover {
+    border-color: #81bdf4;
+    color: #1690ff;
+}
+.main .step-01 .agreement {
+    margin-top: 49px;
+    height: 20px;
+    line-height: 20px;
+    color: #aaa;
+    font-size: 14px;
+}
+.main .step-01 input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+}
+.c-blue, a.c-blue:link, a.c-blue:active {
+    color: #1690ff;
+}
+a.c-blue:hover {
+    text-decoration: underline;
+}
+.main .wechat {
+    padding: 15px 0 0 12px;
+    display: inline-block;
+}
+.employee .step-02 .info,
+.company .step-01 .info {
+    padding: 2px 0 0 18px;
+    display: inline-block;
+    width: 195px;
+    /*height: 95px;*/
+    line-height: 22px;
+    font-size: 14px;
+    color: #aaa;
+}
+.employee .step-02 .btn-next {
+    margin-top: 60px;
+}
+
+.main .ico-complete,
+.main .ico-company,
+.main .ico-binding {
+    margin: 110px auto 18px;
+    width: 100px;
+    height: 100px;
+    background: url(images/login/ico-complete.png?1570600396) no-repeat;
+}
+.main .ico-company {
+    margin: 90px auto 18px;
+    background: url(images/login/ico-company.png?1572232495) no-repeat;
+}
+.main .ico-binding {
+    margin: 170px auto 18px;
+    background: url(images/login/ico-binding.png?1571368786) no-repeat;
+}
+.main .txt-01 {
+    margin-bottom: 90px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 24px;
+    color: #000;
+}
+.main .txt-02 {
+    margin: 4px auto 70px;
+    line-height: 22px;
+    text-align: center;
+    font-size: 16px;
+    color: #aaa;
+}
+.main .txt-top {
+    line-height: 30px;
+    font-size: 18px;
+    color: #aaa;
+    position: absolute;
+    top: 50px;
+    left: -300px;
+}
+.company .step-02 .txt-01 {
+    margin-bottom: 0;
+}
+.company .step-02 .ico-complete {
+    margin: 60px auto 18px;
+}
+.company .step-02 .btn-next {
+    margin-top: 45px;
+}
+.employee .step-07 .txt-01 {
+    margin-bottom: 0;
+}
+.main .invite {
+    margin: 46px auto 0;
+    padding-top: 30px;
+    width: 960px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    border-top: 1px solid #eee;
+}
+
+/* 找回密码 */
+.main .retrieve-psd.step-01 {
+    margin: 96px auto 0;
+}
+.main .retrieve-psd.step-02 {
+    margin: 36px auto 0;
+}
+.main .retrieve-psd.step-03 {
+    margin: 100px auto 0;
+}
+.main .retrieve-psd .btn-next {
+    margin-top: 60px;
+}
+.main .retrieve-psd.step-04 .btn-next {
+    margin-top: 0;
+}
+.main .retrieve-psd .msg-error {
+    bottom: 124px;
+}
+
+/* 协议 */
+.bg-white {
+    background: #fff;
+    overflow: hidden;
+}
+.main-wrapper {
+    padding: 0;
+    height: auto;
+    overflow: hidden;
+}
+.join-us-details {
+    margin: 0 auto;
+    padding-bottom: 50px;
+    width: 1090px;
+    min-height: 780px;
+    overflow: hidden;
+}
+.join-us-details .title {
+    padding: 54px 0 20px;
+    width: 100%;
+    height: 46px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 28px;
+    text-align: center;
+}
+.join-us-details .agreement {
+    margin: 30px auto;
+    line-height: 30px;
+}
+.join-us-details .agreement>h1,
+.join-us-details .agreement>p {
+    padding: 5px 0;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+/* 关联企业 */
+.relevance-company {
+    padding: 12px 30px;
+}
+.relevance-company dt {
+    display: block;
+    padding: 0 12px;
+    height: 80px;
+    line-height: 80px;
+    color: #aaa;
+    font-size: 18px;
+}
+.relevance-company dd {
+    float: left;
+    margin: 12px;
+    padding: 10px 30px 60px;
+    width: 282px;
+    height: 140px;
+    border-radius: 4px;
+    background: #fff url(images/login/bg-company.png?1571380443) no-repeat right bottom;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .1);
+    position: relative;
+}
+.relevance-company dd .title {
+    padding-top: 20px;
+    width: 100%;
+    line-height: 36px;
+    color: #333;
+    font-size: 20px;
+}
+.relevance-company dd .btn-group {
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    height: 40px;
+}
+.btn-blue {
+    display: inline-block;
+    padding: 0 22px;
+    height: 40px;
+    line-height: 40px;
+    background: #1690ff;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    border: 0 none;
+    font-size: 16px;
+    border-radius: 4px;
+}
+.btn-green,
+.btn-gray {
+    display: inline-block;
+    padding: 0 22px;
+    height: 38px;
+    line-height: 38px;
+    background: #fff;
+    color: #36b365;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #88cda2;
+    font-size: 16px;
+    border-radius: 4px;
+}
+.btn-gray {
+    margin-left: 18px;
+    color: #666;
+    border: 1px solid #dadada;
+}

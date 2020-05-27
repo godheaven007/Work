@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>火炬孵化</title>
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/login.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js"></script>
+</head>
+<body>
+    <div class="login-bg">
+        <div class="logo-opark"></div>
+        <div class="opark-login">
+            <!-- 未登录 -->
+            <div class="login-type-top">
+                <a href="javascript:void(0);" class="login-shift ico-pc hidden" title="账号密码登录"><i class="ico-pc-info"></i></a>
+                <a href="javascript:void(0);" class="login-shift ico-code" title="微信扫码登录"></a>
+            </div>
+            <div class="login-box log-code hidden">
+                <div class="title">微信扫码登录</div>
+                <div class="code-bg"><img src="http://assets.spp.com/css/opark/images/demo-code.png" width="200" height="200" style="padding: 15px; border: 1px solid #f4f4f4;"></div>
+                <div class="txt-info">请使用企业微信扫描二维码登录<br>“火炬孵化IBS系统”</div>
+            </div>
+            <div class="login-box log-pc">
+                <div class="title">账号密码登录</div>
+                <form class="form-wrapper">
+                    <div class="msg-error hidden">这里是出错信息</div>
+                    <div class="row">
+                        <div class="detail">
+                            <input type="text" id="username" name="username" class="text" tabindex="1" placeholder="账号" value="" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="detail">
+                            <input type="password" id="password" name="password" class="text" tabindex="2" placeholder="密码" value="" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="detail">
+                            <input type="submit" id="submitLogin" value="登 录" class="btn btn-log btn-color-blue" name="submit">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="forgot-psd">
+                            <a href="retrieve-psd-01.html">忘记密码</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="register">
+                <div class="float-l">
+                    <span class="vm">我是新员工? </span><a href="employee.html" class="c-blue">加入企业</a>
+                </div>
+                <div class="float-r"><a href="company.html" class="c-blue">注册新企业</a></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        seajs.use(['user/login']);
+    </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>O'Park园区管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">审批</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">房源</a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">招商</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">运营</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">物业</a>
+                </li>
+                <li class="layui-nav-item"><a href="">合同</a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">财务</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">数据中心</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a><cite>系统设置</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>小程序设置</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>基础设置</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="layui-tab layui-tab-brief">
+                                <ul class="layui-tab-title">
+                                    <li class="layui-this">基础设置</li>
+                                    <li>业务设置</li>
+                                    <li>支付设置</li>
+                                </ul>
+                                <div class="layui-tab-content">
+                                    <div class="layui-tab-item layui-show">
+                                        <form class="layui-form">
+                                            <h1 class="font-20 mt-15 mb-10">默认小程序</h1>
+                                            <h4 class="c-gray-light">将园企互动小程序向入驻企业推广，企业可在线缴费、预订会议室等。默认小程序可切换公司下所有园区（被设置在分组小程序中的园区除外）。</h4>
+                                            <div class="setting-applet">
+                                                <div class="code">
+                                                    <img src="http://ibs.o.com/assets/css/images/system/ico-applet.jpg" class="mt-5">
+                                                    <a href="#" class="c-link txt">下载小程序码</a>
+                                                </div>
+                                                <div class="info">
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">小程序名称</label>
+                                                        <div class="layui-input-block">
+                                                            <div class="layui-form-mid">园企互动</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">小程序AppID</label>
+                                                        <div class="layui-input-block">
+                                                            <div class="layui-form-mid">wx57ef8d31c6b493d1<a href="#" class="c-link ml-15">复制</a></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">首页标题<i class="iconfont ibs-ico-tips c-blue-o font-14 ml-5"></i></label>
+                                                        <div class="layui-input-block">
+                                                            <div class="layui-form-mid">火炬孵化<a href="#" class="c-link ml-15">复制</a></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">小程序链接<i class="iconfont ibs-ico-tips c-blue-o font-14 ml-5"></i></label>
+                                                        <div class="layui-input-block">
+                                                            <div class="layui-form-mid">
+                                                                pages/home/home?corpUuId=34261819-4dfc-4c2d-a3ee-68e51a683907<a href="#" class="c-link ml-15">复制</a><br>
+                                                                <span class="c-gray-light mt-15 inline-block">想了解如何将小程序链接配置到公众号菜单中？<a href="#" class="c-link ml-15">点我了解</a></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="title-special">
+                                                <div class="infos ml-10">
+                                                    <div class="txt-1">分组小程序</div>
+                                                    <div class="txt-2">有多个园区时可进行分组，每个分组有独立的小程序码和链接。分组小程序只能在对应的园区范围内切换。园区被设置到分组小程序后，自动从默认小程序中去除。</div>
+                                                </div>
+                                                <div class="btn-group-right">
+                                                    <a href="" class="layui-btn">添加分组</a>
+                                                </div>
+                                            </div>
+                                            <div class="ibs-collapse">
+                                                <h2 class="ibs-colla-title">
+                                                    <span class="font-b">博济小程序组</span>
+                                                    <div class="group-right right-15">
+                                                        <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">编辑</a>
+                                                        <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">删除</a>
+                                                    </div>
+                                                </h2>
+                                                <div class="ibs-colla-content block">
+                                                    <div class="setting-applet">
+                                                        <div class="code">
+                                                            <img src="http://ibs.o.com/assets/css/images/system/ico-applet.jpg" class="mt-5">
+                                                            <a href="#" class="c-link txt">下载小程序码</a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <div class="layui-form-item">
+                                                                <label class="layui-form-label">首页标题<i class="iconfont ibs-ico-tips c-blue-o font-14 ml-5"></i></label>
+                                                                <div class="layui-input-block">
+                                                                    <div class="layui-form-mid">火炬孵化<a href="#" class="c-link ml-15">复制</a></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="layui-form-item">
+                                                                <label class="layui-form-label">小程序链接<i class="iconfont ibs-ico-tips c-blue-o font-14 ml-5"></i></label>
+                                                                <div class="layui-input-block">
+                                                                    <div class="layui-form-mid">pages/home/home?corpUuId=34261819-4dfc-4c2d-a3ee-68e51a683907<a href="#" class="c-link ml-15">复制</a></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="layui-form-item">
+                                                                <label class="layui-form-label">园区范围</label>
+                                                                <div class="layui-input-block">
+                                                                    <span class="label-box"><i class="iconfont ibs-ico-set-park mr-5 vm"></i>博济·江南智造园</span>
+                                                                    <span class="label-box"><i class="iconfont ibs-ico-set-folder mr-5 vm"></i>南京区域中心</span>
+                                                                    <span class="label-box"><i class="iconfont ibs-ico-set-folder mr-5 vm"></i>苏州区域</span>
+                                                                    <a href="#" class="c-link ml-15">设置</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ibs-collapse">
+                                                <h2 class="ibs-colla-title">
+                                                    <span class="font-b">博济小程序组</span>
+                                                    <div class="group-right right-15">
+                                                        <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">编辑</a>
+                                                        <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">删除</a>
+                                                    </div>
+                                                </h2>
+                                                <div class="ibs-colla-content block">
+                                                    <div class="setting-applet">
+                                                        <div class="code">
+                                                            <img src="http://ibs.o.com/assets/css/images/system/ico-applet.jpg" class="mt-5">
+                                                            <a href="#" class="c-link txt">下载小程序码</a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <div class="layui-form-item">
+                                                                <label class="layui-form-label">首页标题<i class="iconfont ibs-ico-tips c-blue-o font-14 ml-5"></i></label>
+                                                                <div class="layui-input-block">
+                                                                    <div class="layui-form-mid">火炬孵化<a href="#" class="c-link ml-15">复制</a></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="layui-form-item">
+                                                                <label class="layui-form-label">小程序链接<i class="iconfont ibs-ico-tips c-blue-o font-14 ml-5"></i></label>
+                                                                <div class="layui-input-block">
+                                                                    <div class="layui-form-mid">pages/home/home?corpUuId=34261819-4dfc-4c2d-a3ee-68e51a683907<a href="#" class="c-link ml-15">复制</a></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="layui-form-item">
+                                                                <label class="layui-form-label">园区范围</label>
+                                                                <div class="layui-input-block">
+                                                                    <span class="label-box"><i class="iconfont ibs-ico-set-park mr-5 vm"></i>博济·江南智造园</span>
+                                                                    <span class="label-box"><i class="iconfont ibs-ico-set-folder mr-5 vm"></i>南京区域中心</span>
+                                                                    <span class="label-box"><i class="iconfont ibs-ico-set-folder mr-5 vm"></i>苏州区域</span>
+                                                                    <a href="#" class="c-link ml-15">设置</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="ibs-collapse">
+                                                <div class="applet-no-data">
+                                                    <i class="iconfont ibs-ico-tips font-22 vm mr-10 c-gray-light2"></i>
+                                                    暂无分组小程序！
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="layui-tab-item">内容2</div>
+                                    <div class="layui-tab-item">
+                                        <h3 class="mt-15 mb-10">设置须知：</h3>
+                                        <p class="c-gray-light">
+                                            1）设置支付信息后，企业在园企互动小程序上支付的费用将会直接进入您的微信商户。<br>
+                                            2）如果您还没有微信支付商户，请访问 <a href="#" class="c-link">https://pay.weixin.qq.com</a> 注册。<br>
+                                            3）先将您的微信商户与园企互动小程序关联（<a href="#" class="c-link">如何关联？</a>），然后配置以下支付参数和退款参数即可。
+                                        </p>
+                                        <div class="block-30"></div>
+                                        <form class="layui-form">
+                                            <h3 class="mt-15 mb-10">支付参数</h3>
+                                            <div class="layui-form-item label-l-2">
+                                                <label class="layui-form-label">小程序AppID</label>
+                                                <div class="layui-input-block">
+                                                    <div class="layui-form-mid">wx57ef8d31c6b493d1<a href="#" class="c-link ml-15">复制</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item label-l-2">
+                                                <label class="layui-form-label">微信支付商户号</label>
+                                                <div class="layui-input-block">
+                                                    <a href="" class="layui-btn">设置</a>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="block-30"></div>
+
+                                            <h3 class="mt-15 mb-10">支付参数</h3>
+                                            <div class="layui-form-item label-l-2">
+                                                <label class="layui-form-label">apiclient_cert.p12 证书</label>
+                                                <div class="layui-input-block">
+                                                    <div class="upload-wrapper">
+                                                        <div class="upload-box">
+                                                            <a href="javascript:;" class="layui-btn upload"><i class="layui-icon"></i>上传</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item label-l-2">
+                                                <label class="layui-form-label">apiclient_cert.p12 证书</label>
+                                                <div class="layui-input-block">
+                                                    <div class="upload-wrapper">
+                                                        <div class="upload-box">
+                                                            <div class="layui-form-mid"><i class="iconfont ibs-ico-agree c-green font-18 vm"></i><span class="c-gray-light ml-5">已于 2020-03-12 12:23 上传</span><a href="#" class="c-link ml-15">重新上传</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="block-30"></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

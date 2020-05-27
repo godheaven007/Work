@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>火炬孵化</title>
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/login.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js"></script>
+</head>
+<body>
+    <div class="company">
+        <div class="title">
+            <div class="logo"></div>
+            设置初始密码
+        </div>
+        <div class="main">
+            <form class="form-wrapper step-02">
+                <div class="msg-error hidden">这里是出错信息</div>
+                <div class="row">
+                    <div class="ico-complete"></div>
+                    <div class="txt-01">恭喜，企业创建成功!</div>
+                    <div class="txt-02">为了更好安全的使用系统，请设置你的登录密码</div>
+                </div>
+                <div class="row">
+                    <div class="detail d-line">
+                        <span class="label">设置密码</span>
+                        <input type="password" id="password" name="password" class="text" maxlength="20" tabindex="1" placeholder="字母、数字和符号两种以上的组合，6-20个字符" value="" autocomplete="off">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail d-line">
+                        <span class="label">确认密码</span>
+                        <input type="password" id="password2" name="password2" class="text" maxlength="20" tabindex="2" placeholder="请再次输入登录密码" value="" autocomplete="off">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail">
+                        <input type="submit" id="submit2" value="提交" class="btn btn-next btn-color-blue">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="top-bg"></div>
+        <div class="opark-footer">
+            <ul class="clearfix">
+                <li><a href="#">关于博济</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">新闻中心</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">合作伙伴</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+            <div class="copyright">Copyright © 2007-2019 苏州欧帕克信息技术有限公司 版权所有 苏ICP备15022748</div>
+        </div>
+    </div>
+    <script>
+        seajs.use(['user/regNewCorp']);
+    </script>
+</body>
+</html>

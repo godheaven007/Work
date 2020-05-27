@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>O'Park园区管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="公告">
+                    <i class="iconfont ibs-ico-news"></i>
+                    <script type="text/html" template="" lay-url="">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">5</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">5</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="javascript:;"><cite>系统设置</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>流程设置</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>设置</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <h1 class="font-20 mt-15 mb-10">博济·江南智造园-招商审批单</h1>
+                            <form class="layui-form flow-set">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">流程名称</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-col-xs6 pr-10">
+                                            <input type="text" name="" class="layui-input" placeholder="租金低于底价时审批流程" lay-verify="required" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">触发条件</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-row">
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">同时满足</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs10 pr-10">
+                                                <div class="layui-form-mid">下列条件：</div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-row">
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">申请人</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs10 pr-10">
+                                                <div class="layui-form-mid">
+                                                    为 赵微、贾必翠、苏州区域中心、贾必翠、苏州区域中心...
+                                                    <a href="" class="c-link ml-15">选择</a>
+                                                    <a href="" class="c-link ml-15">删除此条件</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-row">
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">租金单价</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">小于</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">底价</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs6 pr-10">
+                                                <div class="layui-form-mid"><a href="" class="c-link">删除此条件</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-row">
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">物业服务费单价</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">小于</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">底价</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs6 pr-10">
+                                                <div class="layui-form-mid"><a href="" class="c-link">删除此条件</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-row">
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">保证金</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">小于</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs4 pr-10 position-rel">
+                                                <div class="layui-col-xs6 pr-10">
+                                                    <div class="input-units">
+                                                        <input type="text" name="" class="layui-input pr-30" lay-verify="required" autocomplete="off">
+                                                        <div class="unit">天</div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-col-xs6 pl-10">
+                                                    <div class="input-units">
+                                                        <input type="text" name="" class="layui-input pr-30" lay-verify="required" autocomplete="off">
+                                                        <div class="unit">天</div>
+                                                    </div>
+                                                </div>
+                                                <div class="position-dash">~</div>
+                                            </div>
+                                            
+                                            <div class="layui-col-xs4 pr-10">
+                                                <div class="layui-form-mid"><a href="" class="c-link">删除此条件</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-row">
+                                            <div class="layui-col-xs2 pr-10">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                    <option value="">保证金</option>
+                                                    <option value="1">选项01</option>
+                                                    <option value="2">选项02</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-col-xs10 pr-10">
+                                                <div class="layui-form-mid">为</div>
+                                                <div class="float-l">
+                                                    <input type="checkbox" name="zj-01" lay-skin="primary" title="1个月租金">
+                                                    <input type="checkbox" name="zj-02" lay-skin="primary" title="2个月租金">
+                                                    <input type="checkbox" name="zj-03" lay-skin="primary" title="3个月租金">
+                                                    <input type="checkbox" name="zj-04" lay-skin="primary" title="免收保证金">
+                                                </div>
+                                                <div class="layui-form-mid"><a href="" class="c-link ml-15">删除此条件</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-row">
+                                            <div class="layui-form-mid"><a href="" class="c-link">添加条件</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">审批流程</label>
+                                    <div class="layui-input-block">
+                                        <div class="ibs-colla-content pt-0 pl-0">
+                                            <div class="flow-step">
+                                                <div class="t-cell">
+                                                    <span class="txt-01">----</span>
+                                                    <span class="txt-02">[张明]、[王兵]</span>
+                                                </div>
+                                                <div class="more-info">
+                                                    <i class="arrow-top"></i>
+                                                    审批人：----<br>
+                                                    否决人：张明<br>
+                                                    建议者：王兵、王兵、王兵、王兵、王兵、王兵、王兵
+                                                </div>
+                                                <a href="#" class="iconfont ibs-ico-close btn-close"></a>
+                                            </div>
+                                            <i class="iconfont ibs-ico-arrowline"></i>
+                                            <div class="flow-step edit">
+                                                <div class="t-cell">
+                                                    <div class="txt-01">李强</div>
+                                                    <div class="txt-02">[陈飞]、[许正勇]、[<span class="c-orange">张峰(外)</span>]、[陈飞宇]</div>
+                                                </div>
+                                                <div class="btn-edit">
+                                                    <a href="#">插入前置节点</a>
+                                                    <a href="#">编辑节点</a>
+                                                </div>
+                                                <a href="#" class="iconfont ibs-ico-close btn-close"></a>
+                                            </div>
+                                            <i class="iconfont ibs-ico-arrowline"></i>
+                                            <div class="flow-step">
+                                                <div class="t-cell">
+                                                    <span class="txt-01">赵亮</span>
+                                                </div>
+                                                <a href="#" class="iconfont ibs-ico-close btn-close"></a>
+                                            </div>
+                                            <i class="iconfont ibs-ico-arrowline"></i>
+                                            <div class="flow-step">
+                                                <div class="t-cell">
+                                                    <span class="txt-01">郭靖</span>
+                                                </div>
+                                                <a href="#" class="iconfont ibs-ico-close btn-close"></a>
+                                            </div>
+                                            <i class="iconfont ibs-ico-arrowline"></i>
+                                            <div class="flow-step add">
+                                                <div class="t-cell">
+                                                    <i class="iconfont ibs-ico-add"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">自动抄送</label>
+                                    <div class="layui-input-block">
+                                        <div class="ibs-colla-content pt-0 pl-0">
+                                            <div class="flow-step">
+                                                <div class="t-cell">
+                                                    <span class="txt-01">郭靖</span>
+                                                </div>
+                                                <a href="#" class="iconfont ibs-ico-close btn-close"></a>
+                                            </div>
+                                            <i class="iconfont ibs-ico-arrowline"></i>
+                                            <div class="flow-step add">
+                                                <div class="t-cell">
+                                                    <i class="iconfont ibs-ico-add"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <div class="layui-footer">
+                                            <input type="button" class="layui-btn" name="" value="保存">
+                                            <input type="reset" class="layui-btn layui-btn-primary" name="" value="取消">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">审批</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">房源</a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">招商</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">意向客户</a></dd>
+                        <dd><a href="javascript:;">拟签约客户</a></dd>
+                        <dd><a href="javascript:;">成交客户</a></dd>
+                        <dd><a href="javascript:;">跟进记录</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="http://ibs.o.com/assets/html/index.html">主页</a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>拟签约客户</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <form class="layui-form">
+                                <div class="ibs-form-item mt-5 mb-10 position-rel">
+                                    <div class="search-box text-w-350">
+                                        <input type="text" class="layui-input" name="title" placeholder="客户名称/登记人/房间号/项目名称" autocomplete="off">
+                                        <a href="javascript:;" class="btn-input"><i class="iconfont ibs-ico-buttonsearch"></i></a>
+                                    </div>
+                                    <div class="btn-group-right">
+                                        <button class="layui-btn layui-btn-sm">新建客户</button>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">转移客户</button>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">导出Excel</button>
+                                    </div>
+                                </div>
+                                <table class="layui-table table-fixed">
+                                  <colgroup>
+                                    <col width="20%">
+                                    <col>
+                                    <col width="18%">
+                                    <col width="11%">
+                                    <col width="11%">
+                                    <col width="14%">
+                                  </colgroup>
+                                  <thead>
+                                    <tr>
+                                      <th>客户名称</th>
+                                      <th>拟签约房源</th>
+                                      <th>租金单价</th>
+                                      <th>租期</th>
+                                      <th>状态</th>
+                                      <th>操作</th>
+                                    </tr> 
+                                  </thead>
+                                  <tbody>
+                                    <tr class="t-link">
+                                      <td class="txt-ellipsis">苏州讯飞科技有限公司<br><span class="c-gray-light">王译磊  2019-08-06 |  博济·江南智造园</span></td>
+                                      <td class="txt-ellipsis">2号楼-1007C,100,1007C,100,100,1007C,100,100,1007C,100<br><span class="c-gray-light">281㎡</span></td>
+                                      <td>1.77元/㎡/天  |  500元/月<span class="layui-badge layui-bg-orange ml-5">一口价</span></td>
+                                      <td>24个月20天</td>
+                                      <td><span class="c-yellow-o">审批中</span></td>
+                                      <td><a href="#" class="c-link">查看</a><span class="c-gray-light2"></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="txt-ellipsis">苏州讯飞科技有限公司<br><span class="c-gray-light">王译磊  2019-08-06 |  博济·江南智造园</span></td>
+                                      <td class="txt-ellipsis">2号楼-1007C,100,1007C,100,100,1007C,100,100,1007C,100<br><span class="c-gray-light">281㎡</span></td>
+                                      <td>1.77元/㎡/天  |  500元/月</td>
+                                      <td>24个月20天</td>
+                                      <td><span class="c-green-o">审批通过</span></td>
+                                      <td><a href="#" class="c-link">查看</a><span class="c-gray-light2"> | </span><a href="#" class="c-link">登记合同</a></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="txt-ellipsis">苏州讯飞科技有限公司<br><span class="c-gray-light">王译磊  2019-08-06 |  博济·江南智造园</span></td>
+                                      <td class="txt-ellipsis">2号楼-1007C,100,1007C,100,100,1007C,100,100,1007C,100<br><span class="c-gray-light">281㎡</span></td>
+                                      <td>1.77元/㎡/天  |  500元/月</td>
+                                      <td>24个月20天</td>
+                                      <td><span class="c-yellow-o">审批退回</span></td>
+                                      <td><a href="#" class="c-link">查看</a><span class="c-gray-light2"> | </span><a href="#" class="c-link">编辑客户</a></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="txt-ellipsis">苏州讯飞科技有限公司<br><span class="c-gray-light">王译磊  2019-08-06 |  博济·江南智造园</span></td>
+                                      <td class="txt-ellipsis">2号楼-1007C,100,1007C,100,100,1007C,100,100,1007C,100<br><span class="c-gray-light">281㎡</span></td>
+                                      <td>1.77元/㎡/天  |  500元/月</td>
+                                      <td>18个月</td>
+                                      <td><span class="c-red-o">审批不通过</span></td>
+                                      <td><a href="#" class="c-link">查看</a><span class="c-gray-light2"> | </span><a href="#" class="c-link">编辑客户</a></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="txt-ellipsis">苏州讯飞科技有限公司<br><span class="c-gray-light">王译磊  2019-08-06 |  博济·江南智造园</span></td>
+                                      <td class="txt-ellipsis">2号楼-1007C,100,1007C,100,100,1007C,100,100,1007C,100<br><span class="c-gray-light">281㎡</span></td>
+                                      <td>1.77元/㎡/天  |  500元/月</td>
+                                      <td>26个月20天</td>
+                                      <td><span class="c-gray-light">已撤回</span></td>
+                                      <td><a href="#" class="c-link">查看</a><span class="c-gray-light2"> | </span><a href="#" class="c-link">编辑客户</a></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="txt-ellipsis">苏州讯飞科技有限公司<br><span class="c-gray-light">王译磊  2019-08-06 |  博济·江南智造园</span></td>
+                                      <td class="txt-ellipsis">2号楼-1007C,100,1007C,100,100,1007C,100,100,1007C,100<br><span class="c-gray-light">281㎡</span></td>
+                                      <td>1.77元/㎡/天  |  500元/月</td>
+                                      <td>24个月</td>
+                                      <td><span class="c-yellow-o">待盖章</span></td>
+                                      <td><a href="#" class="c-link">查看</a><span class="c-gray-light2"></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="txt-ellipsis">苏州讯飞科技有限公司<br><span class="c-gray-light">王译磊  2019-08-06 |  博济·江南智造园</span></td>
+                                      <td class="txt-ellipsis">2号楼-1007C,100,1007C,100,100,1007C,100,100,1007C,100<br><span class="c-gray-light">281㎡</span></td>
+                                      <td>1.77元/㎡/天  |  500元/月</td>
+                                      <td>15个月</td>
+                                      <td><span class="c-red-o">盖章退回</span></td>
+                                      <td><a href="#" class="c-link">查看</a><span class="c-gray-light2"> | </span><a href="#" class="c-link">编辑客户</a></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+
+                                <!-- 分頁 -->
+                                <div class="txt-l">
+                                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-17">
+                                        <a class="layui-laypage-prev layui-disabled" data-page="0" href="javascript:;">
+                                            <i class="layui-icon"></i>
+                                        </a>
+                                        <span class="layui-laypage-curr">
+                                            <em class="layui-laypage-em"></em>
+                                            <em>1</em>
+                                        </span>
+                                        <a data-page="2" href="javascript:;">2</a>
+                                        <a data-page="3" href="javascript:;">3</a>
+                                        <span class="layui-laypage-spr">…</span>
+                                        <a class="layui-laypage-last" data-page="100" href="javascript:;" title="尾页">100</a>
+                                        <a class="layui-laypage-next" data-page="2" href="javascript:;">
+                                            <i class="layui-icon"></i>
+                                        </a>
+                                        <span class="layui-laypage-skip">
+                                            到第
+                                            <input class="layui-input" min="1" type="text" value="1">
+                                                页
+                                                <button class="layui-laypage-btn" type="button">确定</button>
+                                            </input>
+                                        </span>
+                                        <span class="layui-laypage-count">共 1000 条</span>
+                                        <span class="layui-laypage-limits">
+                                            <select lay-ignore="">
+                                                <option selected="" value="10">10 条/页</option>
+                                                <option value="20">20 条/页</option>
+                                                <option value="30">30 条/页</option>
+                                                <option value="40">40 条/页</option>
+                                                <option value="50">50 条/页</option>
+                                                <option value="60">60 条/页</option>
+                                                <option value="70">70 条/页</option>
+                                                <option value="80">80 条/页</option>
+                                                <option value="90">90 条/页</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
