@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs height-self">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="http://ibs.o.com/assets/html/index.html">主页</a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>系统设置</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>组织管理</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="ibs-tree-box">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            部门
+                            <div class="btn-group-right xs">
+                                <button class="layui-btn layui-btn-xs"><i class="iconfont ibs-ico-add"></i>添加</button>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="ibs-tree">
+                                <div class="ibs-tree-set ibs-tree-spread">
+                                    <div class="ibs-tree-entry">
+                                        <div class="ibs-tree-main">
+                                            <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow"></i></div>
+                                            <div class="ibs-tree-txt"><i class="iconfont ibs-ico-folders mr-5"></i>上海欧帕克网络技术有限公司</div>
+                                        </div>
+                                    </div>
+                                    <div class="ibs-tree-pack" style="display: block;">
+                                        <div class="ibs-tree-set">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>张权张权张权张权张权张权张权张权张权</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibs-tree-set">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>张知之</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibs-tree-set">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>黄黎仙</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibs-tree-set">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>许新欣</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibs-tree-set ibs-tree-spread">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-folders mr-5"></i>博济事业部</div>
+                                                </div>
+                                                <div class="ibs-tree-more">
+                                                    <i class="iconfont ibs-ico-more"></i>
+                                                    <ul class="ibs-tree-more-pack">
+                                                        <li><a href="#">添加子部门</a></li>
+                                                        <li><a href="#">修改</a></li>
+                                                        <li><a href="#">删除</a></li>
+                                                        <li class="move-up"><a href="#">上移</a></li>
+                                                        <li class="move-down"><a href="#">下移</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="ibs-tree-pack" style="display: block;">
+                                                <div class="ibs-tree-set">
+                                                    <div class="ibs-tree-entry">
+                                                        <div class="ibs-tree-main">
+                                                            <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                            <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>张三</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ibs-tree-set">
+                                                    <div class="ibs-tree-entry">
+                                                        <div class="ibs-tree-main">
+                                                            <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                            <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>李四</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibs-tree-set">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-folders mr-5"></i>创客邦事业部创客邦事业部创客邦事业部</div>
+                                                </div>
+                                                <div class="ibs-tree-more">
+                                                    <i class="iconfont ibs-ico-more"></i>
+                                                    <ul class="ibs-tree-more-pack">
+                                                        <li><a href="#">添加子部门</a></li>
+                                                        <li><a href="#">修改</a></li>
+                                                        <li><a href="#">删除</a></li>
+                                                        <li class="move-up"><a href="#">上移</a></li>
+                                                        <li class="move-down"><a href="#">下移</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="ibs-tree-pack">
+                                                <div class="ibs-tree-set">
+                                                    <div class="ibs-tree-entry">
+                                                        <div class="ibs-tree-main">
+                                                            <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                            <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>张三</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ibs-tree-set">
+                                                    <div class="ibs-tree-entry">
+                                                        <div class="ibs-tree-main">
+                                                            <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                            <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>李四</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibs-tree-set">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-folders mr-5"></i>创客邦事业部</div>
+                                                </div>
+                                                <div class="ibs-tree-more">
+                                                    <i class="iconfont ibs-ico-more"></i>
+                                                    <ul class="ibs-tree-more-pack">
+                                                        <li><a href="#">添加子部门</a></li>
+                                                        <li><a href="#">修改</a></li>
+                                                        <li><a href="#">删除</a></li>
+                                                        <li class="move-up"><a href="#">上移</a></li>
+                                                        <li class="move-down"><a href="#">下移</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="ibs-tree-pack">
+                                                <div class="ibs-tree-set">
+                                                    <div class="ibs-tree-entry">
+                                                        <div class="ibs-tree-main">
+                                                            <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                            <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>张三</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ibs-tree-set">
+                                                    <div class="ibs-tree-entry">
+                                                        <div class="ibs-tree-main">
+                                                            <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-hide"></i></div>
+                                                            <div class="ibs-tree-txt"><i class="iconfont ibs-ico-adminchoice mr-5"></i>李四</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibs-tree-set">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-no-child"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-folders mr-5"></i>创客邦事业部</div>
+                                                </div>
+                                                <div class="ibs-tree-more">
+                                                    <i class="iconfont ibs-ico-more"></i>
+                                                    <ul class="ibs-tree-more-pack">
+                                                        <li><a href="#">添加子部门</a></li>
+                                                        <li><a href="#">修改</a></li>
+                                                        <li><a href="#">删除</a></li>
+                                                        <li class="move-up"><a href="#">上移</a></li>
+                                                        <li class="move-down"><a href="#">下移</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibs-tree-set">
+                                            <div class="ibs-tree-entry">
+                                                <div class="ibs-tree-main">
+                                                    <div class="ibs-tree-iconClick"><i class="ibs-tree-iconArrow ibs-no-child"></i></div>
+                                                    <div class="ibs-tree-txt"><i class="iconfont ibs-ico-folders mr-5"></i>创客邦事业部2</div>
+                                                </div>
+                                                <div class="ibs-tree-more">
+                                                    <i class="iconfont ibs-ico-more"></i>
+                                                    <ul class="ibs-tree-more-pack">
+                                                        <li><a href="#">添加子部门</a></li>
+                                                        <li><a href="#">修改</a></li>
+                                                        <li><a href="#">删除</a></li>
+                                                        <li class="move-up"><a href="#">上移</a></li>
+                                                        <li class="move-down"><a href="#">下移</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibs-tree-box-right">
+                    <div class="layui-card">
+                        <!-- <div class="layui-card-header">
+                            权限列表
+                            <div class="btn-group-right">
+                                <button class="layui-btn layui-btn-sm">添加成员</button>
+                                <button class="layui-btn layui-btn-primary layui-btn-sm">更改部门</button>
+                                <button class="layui-btn layui-btn-primary layui-btn-sm">冻结</button>
+                                <button class="layui-btn layui-btn-primary layui-btn-sm">删除</button>
+                            </div>
+                        </div> -->
+                        <div class="layui-card-body">
+                            <div class="btn-group-right">
+                                <a href="#" class="layui-btn">添加成员</a>
+                                <a href="#" class="layui-btn">更改部门</a>
+                                <a href="#" class="layui-btn">冻结</a>
+                                <a href="#" class="layui-btn">删除</a>
+                            </div>
+                            <form class="layui-form">
+                                <!-- <div class="ibs-form-item mb-10">
+                                    <div class="layui-inline text-w-350">
+                                        <input class="layui-input" name="id" placeholder="姓名/手机号" autocomplete="off">
+                                    </div>
+                                    <button class="layui-btn" data-type="reload"><i class="iconfont ibs-ico-buttonsearch"></i></button>
+                                </div> -->
+                                <div class="search-box mb-10 text-w-350">
+                                    <input type="text" class="layui-input" name="title" placeholder="姓名/手机号" autocomplete="off">
+                                    <a href="javascript:;" class="btn-input"><i class="iconfont ibs-ico-buttonsearch"></i></a>
+                                </div>
+                                <table class="layui-table table-fixed table-btn-hide">
+                                  <colgroup>
+                                    <col width="145">
+                                    <col width="130">
+                                    <col>
+                                    <col>
+                                    <col width="60">
+                                  </colgroup>
+                                  <thead>
+                                    <tr>
+                                      <th>姓名</th>
+                                      <th>手机号</th>
+                                      <th>部门</th>
+                                      <th>权限</th>
+                                      <th>操作</th>
+                                    </tr> 
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>施岳</td>
+                                      <td>13600002135</td>
+                                      <td class="txt-ellipsis">总裁办</td>
+                                      <td class="txt-ellipsis">房源管理、数据查看</td>
+                                      <td class="txt-c">
+                                        <div class="ibs-btn-more">
+                                            <i class="iconfont ibs-ico-fileset c-blue font-16"></i>
+                                            <ul class="ibs-btn-more-pack">
+                                                <li><a href="#">编辑</a></li>
+                                                <li><a href="#">删除</a></li>
+                                                <li><a href="#">冻结</a></li>
+                                                <li><a href="#">上移</a></li>
+                                                <li><a href="#">下移</a></li>
+                                            </ul>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>严谨明<span class="layui-badge ml-5">未激活</span></td>
+                                      <td>13600002135</td>
+                                      <td class="txt-ellipsis">总裁办；管理中心；研发中心</td>
+                                      <td class="txt-ellipsis">房源管理、招商、运营、物业、数据查看、合同盖章、合同管理</td>
+                                      <td class="txt-c">
+                                        <div class="ibs-btn-more">
+                                            <i class="iconfont ibs-ico-fileset c-blue font-16"></i>
+                                            <ul class="ibs-btn-more-pack">
+                                                <li><a href="#">编辑</a></li>
+                                                <li><a href="#">删除</a></li>
+                                                <li><a href="#">冻结</a></li>
+                                                <li><a href="#">上移</a></li>
+                                                <li><a href="#">下移</a></li>
+                                            </ul>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>欧阳正华<span class="layui-badge ml-5">未激活</span></td>
+                                      <td>13600002135</td>
+                                      <td class="txt-ellipsis">管理中心</td>
+                                      <td class="txt-ellipsis">房源管理、招商、运营、物业、数据查看</td>
+                                      <td class="txt-c">
+                                        <div class="ibs-btn-more">
+                                            <i class="iconfont ibs-ico-fileset c-blue font-16"></i>
+                                            <ul class="ibs-btn-more-pack">
+                                                <li><a href="#">编辑</a></li>
+                                                <li><a href="#">删除</a></li>
+                                                <li><a href="#">冻结</a></li>
+                                                <li><a href="#">上移</a></li>
+                                                <li><a href="#">下移</a></li>
+                                            </ul>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr class="c-gray">
+                                      <td>袁涵江<span class="layui-badge layui-bg-gray ml-5">冻结</span></td>
+                                      <td>13600002135</td>
+                                      <td class="txt-ellipsis">管理中心</td>
+                                      <td class="txt-ellipsis">合同查询</td>
+                                      <td class="txt-c">
+                                        <div class="ibs-btn-more">
+                                            <i class="iconfont ibs-ico-fileset c-blue font-16"></i>
+                                            <ul class="ibs-btn-more-pack">
+                                                <li><a href="#">编辑</a></li>
+                                                <li><a href="#">删除</a></li>
+                                                <li><a href="#">冻结</a></li>
+                                                <li><a href="#">上移</a></li>
+                                                <li><a href="#">下移</a></li>
+                                            </ul>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+
+                                <div class="txt-l">
+                                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-10">
+                                        <span class="layui-laypage-count">共 100 条</span><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em"></em><em>1</em></span><a href="javascript:;" data-page="2">2</a><a href="javascript:;" data-page="3">3</a><a href="javascript:;" data-page="4">4</a><a href="javascript:;" data-page="5">5</a><span class="layui-laypage-spr">…</span><a href="javascript:;" class="layui-laypage-last" title="尾页" data-page="10">10</a><a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a><span class="layui-laypage-limits"><select lay-ignore=""><option value="10" selected="">10 条/页</option><option value="20">20 条/页</option><option value="30">30 条/页</option><option value="40">40 条/页</option><option value="50">50 条/页</option></select></span><span class="layui-laypage-skip">到第<input type="text" min="1" value="1" class="layui-input">页<button type="button" class="layui-laypage-btn">确定</button></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

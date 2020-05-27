@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="#"><cite>报表中心</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body pt-0 pl-0 pr-0">
+                            <div class="admin-set">
+                                <div class="details">
+                                    <fieldset class="layui-elem-field layui-field-title">
+                                        <legend>招商类</legend>
+                                    </fieldset>
+                                    <ul class="clearfix">
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>拟签约客户清单</div>
+                                                <div class="txt">当前处于拟签约状态的客户清单（从登记拟签约客户开始，到盖章完成之前，都属于拟签约客户）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>招商成交客户清单</div>
+                                                <div class="txt">盖章完成（完成扫描件上传）之后，定义为招商成交客户</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>盖章退回记录</div>
+                                                <div class="txt">每次盖章退回均产生一条记录（含新招商盖章、续租盖章、变更盖章、虚拟孵化新签盖章、虚拟孵化续租盖章）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <fieldset class="layui-elem-field layui-field-title">
+                                        <legend>运营类</legend>
+                                    </fieldset>
+                                    <ul class="clearfix">
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>在租客户清单</div>
+                                                <div class="txt">包括在租中的和退租中的客户（不含已退租客户）。若一个客户签了多份合同，则在清单中显示多行记录</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>退租客户清单</div>
+                                                <div class="txt">已完成退租的客户清单（若一个客户签了多份合同，只退了其中一份合同，也显示在清单里）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>续租记录</div>
+                                                <div class="txt">每发起一次续租形成一条记录（包含正在续租的、已完成续租的和取消续租的）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>变更记录</div>
+                                                <div class="txt">每次变更形成一条记录（包含正在变更的、已完成变更的）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>虚拟孵化客户清单</div>
+                                                <div class="txt">所有登记过的虚拟孵化客户清单，包含审批中的、审批不通过的、已迁出的等各个状态</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <fieldset class="layui-elem-field layui-field-title">
+                                        <legend>费用类</legend>
+                                    </fieldset>
+                                    <ul class="clearfix">
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>客户应收账清单</div>
+                                                <div class="txt">客户应收账款清单（含未到账、部分到账、已完全到账的所有费用清单）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>园区回款清单</div>
+                                                <div class="txt">对完账且已复核通过的园区各类回款清单（不包括非园区层面的其他部门回款）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <fieldset class="layui-elem-field layui-field-title">
+                                        <legend>园企互动类</legend>
+                                    </fieldset>
+                                    <ul class="clearfix">
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>停车租赁费清单</div>
+                                                <div class="txt">客户通过小程序支付的所有停车租赁费清单（包含待确认的和已确认的）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>会议室预订记录</div>
+                                                <div class="txt">客户通过小程序提交的会议室预订记录（包含预订成功、申请退款、退款成功、不予退款、已完成）</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <fieldset class="layui-elem-field layui-field-title">
+                                        <legend>房源类</legend>
+                                    </fieldset>
+                                    <ul class="clearfix">
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>房源明细清单</div>
+                                                <div class="txt">各园区房源明细清单，每个房间或工位占一行记录</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="limits-card">
+                                                <div class="title"><i class="iconfont ibs-ico-set-list2"></i>园区出租率清单</div>
+                                                <div class="txt">系统自动对各园区每月（月末）的出租率进行快照记录，形成每月出租率清单</div>
+                                                <a href="#" class="c-link link-setting">导出</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

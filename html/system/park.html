@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">审批</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">房源</a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">招商</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">意向客户</a></dd>
+                        <dd><a href="javascript:;">拟签约客户</a></dd>
+                        <dd><a href="javascript:;">成交客户</a></dd>
+                        <dd><a href="javascript:;">跟进记录</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">运营</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">园区建设</a></dd>
+                        <dd><a href="javascript:;">园企互动</a></dd>
+                        <dd><a href="javascript:;">客户</a></dd>
+                        <dd><a href="javascript:;">合同</a></dd>
+                        <dd><a href="javascript:;">电表</a></dd>
+                        <dd><a href="javascript:;">收费</a></dd>
+                        <dd><a href="javascript:;">付费</a></dd>
+                        <dd><a href="javascript:;">孵化成果</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">物业</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">设备设施</a></dd>
+                        <dd><a href="javascript:;">巡检管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">合同</a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">财务</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">收款</a></dd>
+                        <dd><a href="javascript:;">支出</a></dd>
+                        <dd><a href="javascript:;">校核</a></dd>
+                        <dd><a href="javascript:;">退租</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">数据中心</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业库</a></dd>
+                        <dd><a href="javascript:;">预警分析</a></dd>
+                        <dd><a href="javascript:;">收入分析</a></dd>
+                        <dd><a href="javascript:;">招商分析</a></dd>
+                        <dd><a href="javascript:;">退租分析</a></dd>
+                        <dd><a href="javascript:;">租赁分析</a></dd>
+                        <dd><a href="javascript:;">报表导出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="http://ibs.o.com/assets/html/index.html">主页</a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>系统设置</cite></a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>园区管理</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <!-- <div class="layui-card-header">
+                            园区管理
+                        </div> -->
+                        <div class="layui-card-body">
+                            <form class="layui-form">
+                                <div class="mt-5 mb-15 position-rel">
+                                    园区名称
+                                    <div class="layui-inline text-w-11p mr-5">
+                                        <input class="layui-input" name=" " placeholder="请输入" autocomplete="off">
+                                    </div>
+                                    所属部门
+                                    <div class="layui-inline text-w-11p mr-5">
+                                        <input class="layui-input" name=" " placeholder="请输入" autocomplete="off">
+                                    </div>
+                                    园区类型
+                                    <div class="layui-inline text-w-11p mr-5">
+                                        <select name="quiz3">
+                                            <option value="">全部</option>
+                                            <option value="园区类型1">园区类型1</option>
+                                            <option value="园区类型2">园区类型2</option>
+                                            <option value="园区类型3">园区类型3</option>
+                                        </select>
+                                        <div class="layui-unselect layui-form-select">
+                                            <div class="layui-select-title">
+                                                <input type="text" placeholder="全部" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i>
+                                            </div>
+                                            <dl class="layui-anim layui-anim-upbit" style="">
+                                                <dd lay-value="" class="layui-select-tips layui-this">全部</dd>
+                                                <dd lay-value="园区类型1" class="">园区类型1</dd>
+                                                <dd lay-value="园区类型2" class="">园区类型2</dd>
+                                                <dd lay-value="园区类型3" class="">园区类型3</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    房源业态
+                                    <div class="layui-inline text-w-11p">
+                                        <select name="quiz3">
+                                            <option value="">全部</option>
+                                            <option value="房源业态1">房源业态1</option>
+                                            <option value="房源业态2">房源业态2</option>
+                                        </select>
+                                        <div class="layui-unselect layui-form-select">
+                                            <div class="layui-select-title">
+                                                <input type="text" placeholder="全部" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i>
+                                            </div>
+                                            <dl class="layui-anim layui-anim-upbit" style="">
+                                                <dd lay-value="" class="layui-select-tips layui-this">全部</dd>
+                                                <dd lay-value="房源业态1" class="">房源业态1</dd>
+                                                <dd lay-value="房源业态2" class="">房源业态2</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <!-- <input type="button" name="" class="layui-btn layui-btn-primary" value="搜索"> -->
+                                    <a href="#" class="layui-btn layui-btn-primary ml-5">搜索</a>
+
+                                    <div class="right-box right-0">
+                                        <a href="#" class="layui-btn">添加园区</a><a href="#" class="layui-btn">导出</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- <div class="layui-btn-container">
+                                <button class="layui-btn layui-btn-sm">添加园区</button>
+                                <button class="layui-btn layui-btn-primary layui-btn-sm">导出</button>
+                            </div> -->
+
+                            <table class="layui-table">
+                              <colgroup>
+                                <col>
+                                <col width="16%">
+                                <col width="12%">
+                                <col width="14%">
+                                <col width="14%">
+                                <col width="15%">
+                                <col width="8%">
+                              </colgroup>
+                              <thead>
+                                <tr>
+                                  <th>园区名称</th>
+                                  <th>所属部门</th>
+                                  <th>园区类型</th>
+                                  <th>合同起始日</th>
+                                  <th>合同到期日</th>
+                                  <th>房源业态</th>
+                                  <th>操作</th>
+                                </tr> 
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州区域中心</td>
+                                  <td>包租经营</td>
+                                  <td>2015-01-01</td>
+                                  <td>2025-12-31</td>
+                                  <td>按面积租赁</td>
+                                  <td><a href="#" class="c-link">查看</a></td>
+                                </tr>
+                                <tr>
+                                  <td>博济·吴中创新园</td>
+                                  <td>苏州区域中心</td>
+                                  <td>自有产权</td>
+                                  <td>-</td>
+                                  <td>-</td>
+                                  <td>按工位租赁</td>
+                                  <td><a href="#" class="c-link">查看</a></td>
+                                </tr>
+                                <tr>
+                                  <td>博济·盐城大学科技园</td>
+                                  <td>苏州区域中心</td>
+                                  <td>委托运营</td>
+                                  <td>2015-01-01</td>
+                                  <td>2025-12-31</td>
+                                  <td>混合模式</td>
+                                  <td><a href="#" class="c-link">查看</a></td>
+                                </tr>
+                                <tr>
+                                  <td>博济·星火科技园</td>
+                                  <td>苏州区域中心</td>
+                                  <td>包租经营</td>
+                                  <td>2015-01-01</td>
+                                  <td>2025-12-31</td>
+                                  <td>按面积租赁</td>
+                                  <td><a href="#" class="c-link">查看</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <table class="layui-table">
+                              <colgroup>
+                                <col>
+                                <col width="16%">
+                                <col width="12%">
+                                <col width="14%">
+                                <col width="14%">
+                                <col width="15%">
+                                <col width="8%">
+                              </colgroup>
+                              <thead>
+                                <tr>
+                                  <th>园区名称</th>
+                                  <th>所属部门</th>
+                                  <th>园区类型</th>
+                                  <th>合同起始日</th>
+                                  <th>合同到期日</th>
+                                  <th>房源业态</th>
+                                  <th>操作</th>
+                                </tr> 
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td colspan="7" class="txt-c">
+                                    <div class="no-data-box">
+                                        <div class="no-data"><i></i>暂无数据</div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!-- 分頁 -->
+                            <div class="txt-l">
+                                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-17">
+                                    <a class="layui-laypage-prev layui-disabled" data-page="0" href="javascript:;">
+                                        <i class="layui-icon"></i>
+                                    </a>
+                                    <span class="layui-laypage-curr">
+                                        <em class="layui-laypage-em"></em>
+                                        <em>1</em>
+                                    </span>
+                                    <a data-page="2" href="javascript:;">2</a>
+                                    <a data-page="3" href="javascript:;">3</a>
+                                    <span class="layui-laypage-spr">…</span>
+                                    <a class="layui-laypage-last" data-page="100" href="javascript:;" title="尾页">100</a>
+                                    <a class="layui-laypage-next" data-page="2" href="javascript:;">
+                                        <i class="layui-icon"></i>
+                                    </a>
+                                    <span class="layui-laypage-skip">
+                                        到第
+                                        <input class="layui-input" min="1" type="text" value="1">
+                                            页
+                                            <button class="layui-laypage-btn" type="button">确定</button>
+                                        </input>
+                                    </span>
+                                    <span class="layui-laypage-count">共 1000 条</span>
+                                    <span class="layui-laypage-limits">
+                                        <select lay-ignore="">
+                                            <option selected="" value="10">10 条/页</option>
+                                            <option value="20">20 条/页</option>
+                                            <option value="30">30 条/页</option>
+                                            <option value="40">40 条/页</option>
+                                            <option value="50">50 条/页</option>
+                                            <option value="60">60 条/页</option>
+                                            <option value="70">70 条/页</option>
+                                            <option value="80">80 条/页</option>
+                                            <option value="90">90 条/页</option>
+                                        </select>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

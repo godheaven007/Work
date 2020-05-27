@@ -1,0 +1,252 @@
+.s-tree-mask{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    color: #000;
+    z-index: 999;
+}
+
+.s-tree-wrap,
+.s-tree-wrap div,
+.s-tree-wrap li{box-sizing: border-box;}
+
+.s-tree-wrap {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 601px;
+    height: 500px;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    font-size: 14px;
+    color: #666;
+    background-color: #fff;
+}
+.s-tree-wrap .s-tree-struct-item {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 12px 0 22px;
+}
+
+.s-tree-wrap .s-tree-head {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+.s-tree-wrap .s-tree-head .s-tree-close {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: url(images/ico_tree_close.png?1576565986) no-repeat center center;
+    cursor: pointer;
+}
+
+.s-tree-wrap .s-tree-middle {
+    overflow: hidden;
+    height: 400px;
+    padding: 15px 0;
+}
+.s-tree-struct,
+.s-treeViewWrap {
+    height: 320px;
+    overflow-y: scroll;
+}
+.s-tree-wrap .s-tree-struct-wrap,
+.s-tree-wrap .s-tree-view-wrap {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+.s-tree-wrap .s-tree-struct-wrap {
+    padding-left: 20px;
+    border-right: 1px solid #ddd;
+}
+/* 搜索 */
+.s-tree-wrap .s-tree-search {
+    position: relative;
+    width: 240px;
+    height: 50px;
+}
+.s-tree-wrap .s-tree-search input {
+    width: 220px;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 12px;
+    padding-right: 20px;
+    border: 1px solid #ddd;
+    color: #666;
+    outline: none;
+    border-radius: 2px;
+}
+.s-tree-wrap .s-tree-search .s-tree-search-icon{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: url(images/icons_oper.png?1576565986) no-repeat center center;
+    background-position: -20px -22px;
+    cursor: pointer;
+}
+.s-treeResultWrap {
+    /*width: 252px;*/
+    /*max-height: 180px;*/
+    /*background: #fff;*/
+    /*border: 1px solid #ddd;*/
+    /*border-top: none;*/
+
+    display: none;
+    position: relative;
+    width: 299px;
+    height: 450px;
+    background: #fff;
+    padding-left: 20px;
+    margin-top: 16px;
+    margin-left: -20px;
+    z-index: 20;
+}
+.s-tree-search-result {
+
+}
+.s-tree-search-result > li {
+    height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+}
+.s-tree-search-result > li:hover {
+    background-color: rgba(221,221,221,.1);
+
+}
+.s-tree-search-result .s-tree-search-item {
+    position: relative;
+}
+.s-tree-search-result .s-tree-search-item span {
+    position: absolute;
+    left: 4px;
+    top: 7px;
+    width: 12px;
+    height: 12px;
+}
+/* 树形结构 */
+.s-tree-wrap .s-tree-struct li{
+    position: relative;
+    padding-left: 20px;
+    line-height: 28px;
+}
+.s-tree-wrap .s-tree-struct li > div {
+    overflow: hidden;
+}
+
+.s-tree-wrap .s-tree-struct-item .s-tree-icon-select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 7px;
+    background: url(images/ico-tree-checkbox.png?1576565986) no-repeat center center;
+    background-size: contain;
+}
+.s-tree-wrap .s-tree-struct-item.active .s-tree-icon-select{
+    background: url(images/ico-tree-checkboxActive.png?1576565986) no-repeat center center;
+    background-size: contain;
+}
+.s-tree-wrap .s-tree-struct li.hasChildren,
+.s-tree-wrap .s-tree-search-result li.hasChildren{
+    cursor: pointer;
+}
+.s-tree-wrap .s-tree-struct li.expandable,
+.s-tree-wrap .s-tree-search-result li.expandable{
+    background: url(images/ico_tree_expand.png?1576565986) no-repeat 4px 9px;
+}
+.s-tree-wrap .s-tree-struct li.collapsable,
+.s-tree-wrap .s-tree-search-result li.collapsable{
+    background: url(images/ico_tree_collaps.png?1576565986) no-repeat 4px 9px;
+}
+
+/* 部门成员显示 */
+.s-tree-wrap .s-tree-view-wrap {
+    padding: 0 20px;
+}
+.s-tree-wrap .s-tree-view-wrap .s-tree-view-title {
+    position: relative;
+    height: 50px;
+    line-height: 32px;
+}
+
+.s-tree-wrap .s-tree-view-wrap .s-tree-view-title .s-tree-view-clear {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*color: #6bc30d;*/
+    color: #1E9FFF;
+    cursor: pointer;
+}
+.s-tree-wrap .s-tree-view-item {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 28px;
+    line-height: 28px;
+    padding-right: 24px;
+}
+.s-tree-wrap .s-tree-view-item .s-tree-view-item-close {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: url(images/ico-tree-close2.png?1576565986) no-repeat center center;
+    cursor: pointer;
+}
+
+/* 底部按钮 */
+.s-tree-wrap .s-tree-bottom {
+    height: 50px;
+    padding: 9px 0;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 6px 6px;
+}
+.s-tree-wrap .s-tree-btn{
+    float: right;
+    width: 72px;
+    height: 32px;
+    line-height: 32px;
+    margin-right: 25px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+}
+.s-tree-wrap .s-tree-btn.s-tree-btn-confirm {
+    /*background-color: #6bc30d;*/
+    background-color: #1E9FFF;
+    color: #fff;
+    border: 1px solid transparent;
+}
+.s-tree-wrap .s-tree-btn.s-tree-btn-confirm:hover{
+    opacity: .8;
+}
+.s-tree-wrap .s-tree-btn.s-tree-btn-confirm.disabled {
+    background-color: #aeb1ac;
+    cursor: not-allowed;
+}

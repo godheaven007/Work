@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>火炬孵化</title>
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/login.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js"></script>
+</head>
+<body>
+    <div class="company">
+        <div class="title">
+            <div class="logo"></div>
+            创建新企业
+        </div>
+        <div class="main">
+            <form class="form-wrapper step-01">
+                <div class="msg-error hidden">这里是出错信息</div>
+                <div class="row">
+                    <div class="detail d-line">
+                        <span class="label">企业名称</span>
+                        <input type="text" id="corpName" name="corpName" class="text" tabindex="1" placeholder="填写企业、政府或组织名" value="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail d-line">
+                        <span class="label">项目名称</span>
+                        <input type="text" id="projectName" name="projectName" class="text" tabindex="1" placeholder="称请填写园区（写字楼）名字" value="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail d-line">
+                        <span class="label">管理员姓名</span>
+                        <input type="text" id="adminName" name="adminName" class="text" tabindex="1" placeholder="请填写企业管理员的姓名" value="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail d-line">
+                        <span class="label">管理员手机号</span>
+                        <input type="text" id="username" name="username" class="text" tabindex="1" placeholder="请填写手机号码" value="" autocomplete="off">
+                    </div>
+                </div>
+                <div class="row hidden tryCodeRow">
+                    <div class="detail d-line">
+                        <span class="label">图片验证码</span>
+                        <input type="text" id="tryCode" name="tryCode" class="text text-w-219" tabindex="2" placeholder="请输入图片验证码" value="" autocomplete="off">
+                        <div class="pic-code getTryCode"><img src="http://ibs.o.com/assets/css/images/pic-code.png"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail d-line">
+                        <span class="label">短信验证码</span>
+                        <input type="text" id="mobileCode" name="mobileCode" class="text text-w-219" tabindex="2" placeholder="请输入验证码" value="" autocomplete="off">
+                        <a href="javascript:void(0)" class="get-code getMobileCode">获取验证码</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail">
+                        <span class="label">绑定微信</span>
+                        <span class="wechat vm">
+                            <img src="http://assets.spp.com/css/opark/images/demo-code-s.png" width="97" height="97">
+                        </span>
+                        <input type="hidden" id="wechatCode" name="wechatCode">
+                        <span class="info vm">扫码绑定微信，创建完成后可以直接使用此微信登录管理后台</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="agreement txt-c">
+                        点击提交，即表示你同意<a href="agreement.html" target="_blank" class="c-blue">《OPark用户协议》</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail">
+                        <input type="submit" id="submit" value="提交" class="btn btn-next btn-color-blue">
+                    </div>
+                </div>
+            </form>
+            <div class="invite"><span class="vm">如果您的企业已开通IBS系统，请联系企业管理员邀请您加入即可</span><a href="#" class="c-blue ml-10">如何加入？</a></div>
+        </div>
+        <div class="top-bg"></div>
+        <div class="opark-footer">
+            <ul class="clearfix">
+                <li><a href="#">关于博济</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">新闻中心</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">合作伙伴</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+            <div class="copyright">Copyright © 2007-2019 苏州欧帕克信息技术有限公司 版权所有 苏ICP备15022748</div>
+        </div>
+    </div>
+    <script>
+        seajs.use(['user/regNewCorp']);
+    </script>
+</body>
+</html>

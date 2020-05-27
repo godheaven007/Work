@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS-首页</title>
+</head>
+<body>
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">网站设置</li>
+        <li>用户管理</li>
+        <li>权限分配</li>
+        <li>商品管理</li>
+        <li>订单管理</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">内容1</div>
+        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">内容3</div>
+        <div class="layui-tab-item">内容4</div>
+        <div class="layui-tab-item">内容5</div>
+    </div>
+</div>
+
+<!--<div class="layui-carousel" id="test1">-->
+    <!--<div carousel-item>-->
+        <!--<div>条目1</div>-->
+        <!--<div>条目2</div>-->
+        <!--<div>条目3</div>-->
+        <!--<div>条目4</div>-->
+        <!--<div>条目5</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="layui-upload" style="position: relative; width: 160px; height: 160px;">
+    <button type="button" id="test1" style="position: absolute; z-index: 100; width: 160px; height: 160px; border: 1px solid #ccc; outline: 0; background-color:#fff;opacity: 0.05;"></button>
+    <div class="layui-upload-list" style="position: absolute; z-index: 10; width: 160px; height: 160px; ">
+
+    </div>
+</div>
+
+<button id="btn">测试</button>
+
+<script>
+    seajs.use(['home/home']);
+</script>
+</body>
+</html>

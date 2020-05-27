@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/oms/oms.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>OMS</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-oms">
+        <a class="logo" href="" title="OMS"></a>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-home"></i><span class="vm">首页</span></a></li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-customer"></i><span class="vm">客户管理</span></a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-business"></i><span class="vm">服务管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">订单管理</a></dd>
+                        <dd><a href="javascript:;">产品管理</a></dd>
+                        <dd><a href="javascript:;">服务商管理</a></dd>
+                        <dd><a href="javascript:;">服务分类</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-news"></i><span class="vm">活动管理</span></a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-business"></i><span class="vm">运维管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">系统公告</a></dd>
+                        <dd><a href="javascript:;">系统停服</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">系统设置</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">用户管理</a></dd>
+                        <dd><a href="javascript:;">角色管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-oms">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="#"><cite>服务订单</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>订单详细</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="service-list stamp-waiting-order">
+                                <i class="iconfont ibs-ico-set-copy"></i>
+                                <div class="infos">
+                                    <div class="txt-1">订单编号：B190828222222001</div>
+                                    <div class="txt-2">买家已提交订单，等待服务商接单处理</div>
+                                </div>
+                            </div>
+                            <div class="service-list">
+                                <i class="iconfont ibs-ico-dianpu"></i>
+                                <div class="infos">
+                                    <div class="txt-1">苏州中合会计师事务所</div>
+                                    <div class="txt-2">
+                                        接单量<span class="font-18 c-gray-dark ml-5">1000</span>
+                                        <span class="ml-20">接单量</span><span class="font-18 c-gray-dark ml-5">￥ 10000.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <form class="layui-form">
+                                <div class="title-01">
+                                    <span>基础信息</span>
+                                    <div class="btn-group-right">
+                                        <a href="" class="layui-btn layui-btn-sm">复制小程序链接</a>
+                                        <a href="" class="layui-btn layui-btn-primary layui-btn-sm">复制</a>
+                                        <a href="" class="layui-btn layui-btn-primary layui-btn-sm">删除</a>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>服务类型</label>
+                                    <div class="layui-input-block pl-10">
+                                        <input type="radio" name="service" value="标准服务" title="标准服务" checked>
+                                        <input type="radio" name="service" value="议价类服务" title="议价类服务">
+                                        <input type="radio" name="service" value="需求类服务" title="需求类服务">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>服务分类</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline layui-col-xs3">
+                                            <select name="" lay-filter="" lay-search>
+                                                <option value="">请选择</option>
+                                                <option value="1">11</option>
+                                            </select>
+                                        </div>
+                                        <div class="layui-input-inline layui-col-xs3">
+                                            <select name="" lay-filter="" lay-search>
+                                                <option value="">请选择</option>
+                                                <option value="1">22</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>服务名称</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline layui-col-xs6">
+                                            <input type="text" name="" class="layui-input" placeholder="输入服务产品名称" lay-verify="required" autocomplete="off">
+                                        </div>
+                                        <div class="layui-input-inline layui-col-xs3 pl-10">
+                                            <input type="checkbox" name="like1[write]" lay-skin="primary" title="自营服务产品">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>服务简介</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline layui-col-xs6">
+                                            <input type="text" name="" class="layui-input" placeholder="简单描述下该服务，30个字以内" lay-verify="required" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">产品排序</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline layui-col-xs6">
+                                            <input type="text" name="" class="layui-input" placeholder="填写数字越大产品越排前面" lay-verify="required" autocomplete="off">
+                                        </div>
+                                        <div class="layui-input-inline layui-col-xs3">
+                                            <div class="layui-form-mid"><i class="iconfont ibs-ico-helpnormal ml-5 c-gray-light" title="影响产品在前台的展示顺序，数字越大排序越在前面，如101>100"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <div class="title-01">
+                                    <span>规格及价格</span>
+                                    <i class="iconfont ibs-ico-tips c-orange vm mr-5 ml-15  "></i><span class="font-12 font-italic padding-0">不同的规格价格，可以指定不同的服务商</span>
+                                </div>
+                                <table class="layui-table table-fixed table-border-2 mb-15">
+                                    <colgroup>
+                                        <col width="12%">
+                                        <col width="20%">
+                                        <col width="20%">
+                                        <col width="">
+                                        <col width="12%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="font-b">规格1</th>
+                                            <th><input type="text" name="" class="layui-input" placeholder="填写规格名称" lay-verify="required" autocomplete="off"></th>
+                                            <th>
+                                                <select name="" lay-filter="" lay-search>
+                                                    <option value="">请选择服务商</option>
+                                                    <option value="1">11</option>
+                                                </select>
+                                            </th>
+                                            <th><input type="text" name="" class="layui-input" placeholder="填写此规格的描述说明" lay-verify="required" autocomplete="off"></th>
+                                            <th class="txt-r"><a href="#" class="c-link">删除</a></th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>产品价格</td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="填写服务单价" lay-verify="required" autocomplete="off"></td>
+                                            <td><select name="" lay-filter="" lay-search>
+                                                    <option value="">请选择单位（可选）</option>
+                                                    <option value="1">11</option>
+                                                </select></td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="请选择地区" lay-verify="required" autocomplete="off"></td>
+                                            <td class="txt-r"><a href="#" class="c-link">增加</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>产品价格</td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="填写服务单价" lay-verify="required" autocomplete="off"></td>
+                                            <td><select name="" lay-filter="" lay-search>
+                                                    <option value="">请选择单位（可选）</option>
+                                                    <option value="1">11</option>
+                                                </select></td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="请选择地区" lay-verify="required" autocomplete="off"></td>
+                                            <td class="txt-r"><a href="#" class="c-link">增加</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="layui-table table-fixed table-border-2 mb-15">
+                                    <colgroup>
+                                        <col width="12%">
+                                        <col width="20%">
+                                        <col width="20%">
+                                        <col width="">
+                                        <col width="12%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="font-b">规格2</th>
+                                            <th><input type="text" name="" class="layui-input" placeholder="填写规格名称" lay-verify="required" autocomplete="off"></th>
+                                            <th>
+                                                <select name="" lay-filter="" lay-search>
+                                                    <option value="">请选择服务商</option>
+                                                    <option value="1">11</option>
+                                                </select>
+                                            </th>
+                                            <th><input type="text" name="" class="layui-input" placeholder="填写此规格的描述说明" lay-verify="required" autocomplete="off"></th>
+                                            <th class="txt-r"><a href="#" class="c-link">删除</a></th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>产品价格</td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="填写服务单价" lay-verify="required" autocomplete="off"></td>
+                                            <td><select name="" lay-filter="" lay-search>
+                                                    <option value="">请选择单位（可选）</option>
+                                                    <option value="1">11</option>
+                                                </select></td>
+                                            <td><input type="text" name="" class="layui-input" placeholder="请选择地区" lay-verify="required" autocomplete="off"></td>
+                                            <td class="txt-r"><a href="#" class="c-link">增加</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a href="#" class="layui-btn layui-btn-normal">添加新的产品规格</a>
+                                <div class="clearfix"></div>
+
+                                <div class="title-01">
+                                    <span>订单信息</span>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label">战略合作伙伴：</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" checked name="open" lay-skin="switch" lay-filter="switchTest" lay-text="开启|关闭">
+                                    </div>
+                                </div>
+                                <div class="mb-5"><i class="iconfont ibs-ico-dianpu c-blue vm mr-5"></i>中国电信苏州分公司</div>
+                                <table class="layui-table table-fixed table-border-2 mb-15">
+                                    <colgroup>
+                                        <col width="">
+                                        <col width="20%">
+                                        <col width="20%">
+                                        <col width="20%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <td class="txt-c">服务产品</td>
+                                            <td class="txt-c">单价（元）</td>
+                                            <td class="txt-c">数量</td>
+                                            <td class="txt-c">订单金额</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="txt-l">
+                                                <a href="#" class="float-l mr-10"><img src="http://assets.spp.com/css/service/images/ico-service.png" width="40" height="40"></a>
+                                                <div style="margin-left: 50px">
+                                                    <div class="txt-ellipsis">电信宽带<br>
+                                                    <div class="c-gray-light txt-ellipsis">电信800包月套餐</div>
+                                                </div>
+                                            </div></td>
+                                            <td class="txt-c">800.00</td>
+                                            <td class="txt-c">1</td>
+                                            <td class="txt-c"><span class="c-orange">800.00</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="layui-table table-fixed table-border-2 mb-15">
+                                    <colgroup>
+                                        <col width="35%">
+                                        <col width="">
+                                        <col width="12%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <td class="txt-c">分类名称</td>
+                                            <td class="txt-c">描述说明</td>
+                                            <td class="txt-c">操作</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>融资申报</td>
+                                            <td>为企业提供专业的投融资和项目申报服务</td>
+                                            <td class="txt-c"><a href="#" class="c-link">修改</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="second-type"><i class="ico-dashed"></i>项目申报</td>
+                                            <td>为企业提供项目申报服务</td>
+                                            <td class="txt-c"><a href="#" class="c-link">修改</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="second-type"><i class="ico-dashed"></i>投融资</td>
+                                            <td>满足用户不同领域资金需求</td>
+                                            <td class="txt-c"><a href="#" class="c-link">修改</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>品牌传播</td>
+                                            <td>企业不需要招聘专职的文案人员。</td>
+                                            <td class="txt-c"><a href="#" class="c-link">修改</a><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="title-01">
+                                    <span>新增专题</span>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>专题商品：</label>
+                                    <div class="layui-input-block">
+                                        <table class="layui-table table-fixed mb-15">
+                                            <colgroup>
+                                                <col width="">
+                                                <col width="30%">
+                                                <col width="16%">
+                                                <col width="14%">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <td class="txt-c">服务产品</td>
+                                                    <td class="txt-c">服务分类</td>
+                                                    <td class="txt-c">排序</td>
+                                                    <td class="txt-c">操作</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="layui-col-xs9 txt-ellipsis">
+                                                            有限责任公司注册<br>
+                                                            <span class="c-gray-light">线上申报，快速注册</span>
+                                                        </div>
+                                                        <div class="layui-col-xs3 mt-10 txt-r">
+                                                            <span class="c-red">¥800599.00</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="txt-c">工商注册/公司注册</td>
+                                                    <td><input type="text" name="" class="layui-input" placeholder="" value="225" lay-verify="required" autocomplete="off"></td>
+                                                    <td class="txt-c"><a href="#" class="c-link">删除</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="layui-col-xs9 txt-ellipsis">
+                                                            有限责任公司注册<br>
+                                                            <span class="c-gray-light">线上申报，快速注册</span>
+                                                        </div>
+                                                        <div class="layui-col-xs3 mt-10 txt-r">
+                                                            <span class="c-red">¥800599.00</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="txt-c">工商注册/公司注册</td>
+                                                    <td><input type="text" name="" class="layui-input" placeholder="" value="225" lay-verify="required" autocomplete="off"></td>
+                                                    <td class="txt-c"><a href="#" class="c-link">删除</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="layui-col-xs9 txt-ellipsis">
+                                                            有限责任公司注册<br>
+                                                            <span class="c-gray-light">线上申报，快速注册</span>
+                                                        </div>
+                                                        <div class="layui-col-xs3 mt-10 txt-r">
+                                                            <span class="c-red">未定</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="txt-c">工商注册</td>
+                                                    <td><input type="text" name="" class="layui-input" placeholder="" value="225" lay-verify="required" autocomplete="off"></td>
+                                                    <td class="txt-c"><a href="#" class="c-link">删除</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

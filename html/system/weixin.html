@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>O'Park园区管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">审批</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">房源</a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">招商</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">运营</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">物业</a>
+                </li>
+                <li class="layui-nav-item"><a href="">合同</a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">财务</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">数据中心</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a><cite>参数设置</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>基础设置</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>企业微信应用安装</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="parameter">
+                                <div class="title">如果您的企业正在使用企业微信，按以下指引完成配置即可在企业微信中安装“园区管理”小程序<a href="#" class="c-link font-14 font-normal ml-10">查看安装后示意图</a></div>
+                                <h3 class="mt-15">第1步：添加OPark技术客服QQ</h3>
+                                <p>添加客服QQ：1989968151。</p>
+                                <h3 class="mt-15">第2步：企业微信关联应用</h3>
+                                <p>管理员登录企业微信后台（https://work.weixin.qq.com）,进入 <span class="font-b font-16">应用管理/小程序</span>，点击<span class="font-b font-16">【关联小程序】</span>。<br>
+                                <a href="#" class="c-link">查看安装后示意图</a></p>
+                                <h3 class="mt-15">第3步：填写配置信息</h3>
+                                <p>在企业微信中将上述已关联的应用复制并粘贴到下面，完成配置。<br>
+                                <a href="#" class="c-link">查看安装后示意图</a></p>
+
+                                <form class="layui-form mt-15">
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline inline-02">
+                                            <label class="layui-form-label"><span class="c-orange">* </span>AgentId</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="AgentId" placeholder="" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline inline-02">
+                                            <label class="layui-form-label"><span class="c-orange">* </span>Secret</label>
+                                            <div class="layui-input-block">
+                                                <input type="password" name="AgentId" placeholder="" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <div class="layui-footer">
+                                            <input type="button" class="layui-btn" name="" value="保存">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

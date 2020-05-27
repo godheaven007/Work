@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <!-- <link rel="stylesheet" type="text/css" href="http://style.spp.com/css/admin.css"> -->
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/header-default.png" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-meter2"></i><span class="vm">工作台</span></a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont ibs-ico-approval"></i><span class="vm">审批</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-park"></i><span class="vm">房源</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-business"></i><span class="vm">招商</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">意向客户</a></dd>
+                        <dd><a href="javascript:;">拟签约客户</a></dd>
+                        <dd><a href="javascript:;">成交客户</a></dd>
+                        <dd><a href="javascript:;">跟进记录</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-center"></i><span class="vm">运营</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">园区建设</a></dd>
+                        <dd><a href="javascript:;">园企互动</a></dd>
+                        <dd><a href="javascript:;">客户</a></dd>
+                        <dd><a href="javascript:;">合同</a></dd>
+                        <dd><a href="javascript:;">电表</a></dd>
+                        <dd><a href="javascript:;">收费</a></dd>
+                        <dd><a href="javascript:;">付费</a></dd>
+                        <dd><a href="javascript:;">孵化成果</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-business"></i><span class="vm">物业</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">设备设施</a></dd>
+                        <dd><a href="javascript:;">巡检管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href=""><i class="iconfont ibs-ico-set-approve"></i><span class="vm">合同</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-money"></i><span class="vm">财务</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">收款</a></dd>
+                        <dd><a href="javascript:;">支出</a></dd>
+                        <dd><a href="javascript:;">校核</a></dd>
+                        <dd><a href="javascript:;">退租</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-statistics2"></i><span class="vm">数据中心</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业库</a></dd>
+                        <dd><a href="javascript:;">预警分析</a></dd>
+                        <dd><a href="javascript:;">收入分析</a></dd>
+                        <dd><a href="javascript:;">招商分析</a></dd>
+                        <dd><a href="javascript:;">退租分析</a></dd>
+                        <dd><a href="javascript:;">租赁分析</a></dd>
+                        <dd><a href="javascript:;">报表导出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">系统设置</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">用户中心</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">个人资料</a></dd>
+                        <dd><a href="javascript:;">修改密码</a></dd>
+                        <dd><a href="javascript:;">更换手机号</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body workbench">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="/">主页</a><span lay-separator="">/</span>
+                <a><cite>工作台</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md8">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            收入看板<i class="iconfont ibs-ico-helpnormal font-12 ml-5 c-blue" title="根据权限范围（仅园区层面，不含运营公司和其他部门）显示对应的合计统计数据"></i>
+                            <div class="city txt-ellipsis" title="统计范围：全公司所有园区">统计范围：全公司所有园区统计范围：全公司所有园区统计范围：全公司所有园区</div>
+                            <div class="layui-btn-group">
+                                <span class="font-12 vm c-gray-light mr-20">今日回款 <span class="c-orange">12</span> 万，本年回款 <span class="c-orange">1365</span> 万</span>
+                                <a href="workbench-01.html" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="loading" style="height: 146px;"><img src="http://ibs.o.com/assets/css/images/ico-loading.gif" class="ico-loading"></div>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            招商看板<i class="iconfont ibs-ico-helpnormal font-12 ml-5 c-blue" title="根据权限范围（仅园区层面，不含运营公司和其他部门）显示对应的合计统计数据"></i>
+                            <div class="city">统计范围：全公司所有园区</div>
+                            <div class="layui-btn-group">
+                                <a href="workbench-02.html" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="loading" style="height: 78px;"><img src="http://ibs.o.com/assets/css/images/ico-loading.gif" class="ico-loading"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            我的审批
+                            <span class="layui-badge ml-5">8</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="loading" style="height: 302px;"><img src="http://ibs.o.com/assets/css/images/ico-loading.gif" class="ico-loading"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            我的审批
+                            <span class="layui-badge ml-5">8</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="loading" style="height: 120px;"><img src="http://ibs.o.com/assets/css/images/ico-loading.gif" class="ico-loading"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            本月待收费用
+                            <span class="layui-badge ml-5">18</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <table class="layui-table table-fixed">
+                              <colgroup>
+                                <col width="15%">
+                                <col>
+                                <col width="12%">
+                                <col width="18%">
+                                <col width="12%">
+                                <col width="8%">
+                                <col width="12%">
+                              </colgroup>
+                              <thead>
+                                <tr>
+                                  <th>园区</th>
+                                  <th>客户名称</th>
+                                  <th>费用科目</th>
+                                  <th>计费周期</th>
+                                  <th>应收日期</th>
+                                  <th>逾期天数</th>
+                                  <th>待收金额（元）</th>
+                                </tr> 
+                              </thead>
+                              <tbody>
+                                <tr class="no-bg">
+                                  <td colspan="7"><div class="loading" style="height: 90px;"><img src="http://ibs.o.com/assets/css/images/ico-loading.gif" class="ico-loading"></div></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            待确认电费
+                            <span class="layui-badge ml-5">6</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="loading" style="height: 120px;"><img src="http://ibs.o.com/assets/css/images/ico-loading.gif" class="ico-loading"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

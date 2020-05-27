@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body>
+<div style="width: 675px; height: 550px; background-color: #fff;">
+    <div class="layui-card-body padding-0 popup-03">
+        <form class="layui-form">
+            <blockquote class="layui-elem-quote layui-quote-nm ml-10 mr-10">说明：如果房间内有电表则不能设置为不参与抄电表，请先进入电表管理中将房间的电表停用。</blockquote>
+            <div class="layui-form-item mb-5">
+                <!-- <label class="layui-form-label">所在项目：</label> -->
+                <div class="layui-input-inline ml-10">
+                    <select name="interest-search" lay-filter="interest-search" lay-search="">
+                        <option value="">请选择</option>
+                        <option value="1">网络平台</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <div class="search-box">
+                        <input type="text" name="title" placeholder="搜索园区" autocomplete="off" class="layui-input">
+                        <a href="javascript:;" class="btn-input"><i class="iconfont ibs-ico-buttonsearch"></i></a>
+                        <div class="drop-down-list">
+                            <a href="#">博济·江南智造园</a>
+                            <a href="#">博济·吴中创新园</a>
+                            <a href="#">博济·汽车后市场文创园</a>
+                            <a href="#">博济·江南智造园</a>
+                            <a href="#">博济·吴中创新园</a>
+                            <a href="#">博济·汽车后市场文创园</a>
+                            <a href="#">博济·江南智造园</a>
+                            <a href="#">博济·吴中创新园</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-input-inline ml-5">
+                    <input type="checkbox" name="like1[write]" lay-skin="primary" title="只显示可招商房源">
+                </div>
+            </div>
+            <div class="layui-form-item mb-5">
+                <!-- <label class="layui-form-label">已选择：</label> -->
+                <div class="layui-input-inline ml-10">
+                    <div class="layui-form-mid txt-ellipsis"><span>已选房源：</span><span class="c-blue">白羊座-101室，102室，103室，白羊座-101室，102室，103室，白羊座-101室，102室，103室</span></div>
+                </div>
+            </div>
+
+            <div class="house-list">
+                <div class="ibs-collapse ml-10 mr-10">
+                    <div class="no-data">
+                        <i class="iconfont ibs-ico-tips font-22 vm mr-10 c-gray-light2"></i>
+                        暂无房源可选择
+                    </div>
+                </div>
+            </div>
+            
+            <div class="house-list">
+                <h2 class="ibs-colla-title">
+                    <span class="font-b"><input type="checkbox" name="" title="测试001" lay-skin="primary"></span>
+                </h2>
+                <div class="ibs-colla-content block">
+                    <dl class="floor">
+                        <!-- <dt class="title">
+                            <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i><span class="vm">1层</span>
+                        </dt> -->
+                        <dd class="content">
+                            <fieldset class="layui-elem-field">
+                                <legend>1层</legend>
+                                <ul class="layui-field-box clearfix">
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            101
+                                            <i class="ico-return active"></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room for-rent">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            102
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room no-price">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            103
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            104
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            105
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            106
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            107
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset class="layui-elem-field">
+                                <legend>2层</legend>
+                                <ul class="layui-field-box clearfix">
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="radio" name="" title="" lay-skin="primary">
+                                            LA01
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room for-rent">
+                                            <input type="radio" name="" title="" lay-skin="primary">
+                                            LA02
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room no-price">
+                                            <input type="radio" name="" title="" lay-skin="primary">
+                                            LA03
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset class="layui-elem-field">
+                                <legend>3层</legend>
+                                <ul class="layui-field-box clearfix">
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            201
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            202
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset class="layui-elem-field">
+                                <legend>4层</legend>
+                                <ul class="layui-field-box clearfix">
+                                    <li>
+                                        <div class="room no-price">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            LA31
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room no-price">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            LA32
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room no-price">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            LA33
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </dd>
+                    </dl>
+                    <!-- <dl class="floor">
+                        <dt class="title">
+                            <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i><span class="vm">2层</span>
+                        </dt>
+                        <dd class="content">
+                            <fieldset class="layui-elem-field">
+                                <legend>房间</legend>
+                                <ul class="layui-field-box clearfix">
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            201
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room rented">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            202
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </dd>
+                    </dl>
+                    <dl class="floor">
+                        <dt class="title">
+                            <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i><span class="vm">3层</span>
+                        </dt>
+                        <dd class="content">
+                            <fieldset class="layui-elem-field">
+                                <legend>联合办公A区</legend>
+                                <ul class="layui-field-box clearfix">
+                                    <li>
+                                        <div class="room no-price">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            LA31
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room no-price">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            LA32
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="room no-price">
+                                            <input type="checkbox" name="" title="" lay-skin="primary">
+                                            LA33
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </dd>
+                    </dl> -->
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

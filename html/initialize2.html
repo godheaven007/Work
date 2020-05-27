@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <!-- <link rel="stylesheet" type="text/css" href="http://style.spp.com/css/admin.css"> -->
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/header-default.png" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-meter2"></i><span class="vm">工作台</span></a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont ibs-ico-approval"></i><span class="vm">审批</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-park"></i><span class="vm">房源</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-business"></i><span class="vm">招商</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">意向客户</a></dd>
+                        <dd><a href="javascript:;">拟签约客户</a></dd>
+                        <dd><a href="javascript:;">成交客户</a></dd>
+                        <dd><a href="javascript:;">跟进记录</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-center"></i><span class="vm">运营</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">园区建设</a></dd>
+                        <dd><a href="javascript:;">园企互动</a></dd>
+                        <dd><a href="javascript:;">客户</a></dd>
+                        <dd><a href="javascript:;">合同</a></dd>
+                        <dd><a href="javascript:;">电表</a></dd>
+                        <dd><a href="javascript:;">收费</a></dd>
+                        <dd><a href="javascript:;">付费</a></dd>
+                        <dd><a href="javascript:;">孵化成果</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-business"></i><span class="vm">物业</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">设备设施</a></dd>
+                        <dd><a href="javascript:;">巡检管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href=""><i class="iconfont ibs-ico-set-approve"></i><span class="vm">合同</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-money"></i><span class="vm">财务</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">收款</a></dd>
+                        <dd><a href="javascript:;">支出</a></dd>
+                        <dd><a href="javascript:;">校核</a></dd>
+                        <dd><a href="javascript:;">退租</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-statistics2"></i><span class="vm">数据中心</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业库</a></dd>
+                        <dd><a href="javascript:;">预警分析</a></dd>
+                        <dd><a href="javascript:;">收入分析</a></dd>
+                        <dd><a href="javascript:;">招商分析</a></dd>
+                        <dd><a href="javascript:;">退租分析</a></dd>
+                        <dd><a href="javascript:;">租赁分析</a></dd>
+                        <dd><a href="javascript:;">报表导出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">系统设置</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs" style="width: 1040px;">
+            <div class="layui-card initialize">
+                <div class="layui-card-body">
+                    <div class="title">
+                        <div class="line"></div>
+                        <div class="txt">欢迎使用IBS系统</div>
+                    </div>
+                    <p class="font-italic">本系统是一套功能完整的业务管理系统，在正式使用之前，您需要先完成一些基础设置。</p>
+                    <h3><span class="font-b">1、初始化园区</span><a href="#" class="c-link ml-20">系统设置 / 园区管理</a></h3>
+                    <p>对园区信息进行初始化之后，才可以创建房源信息，这是一切业务功能正常使用的前提。此外，本系统支持多园区管理，若您的企业运营有多个园区，您也可以在园区初始化完成之后再添加新的园区。</p>
+                    <h3><span class="font-b">2、设置成员及权限</span><a href="#" class="c-link ml-20">系统设置 / 组织管理</a></h3>
+                    <p>邀请员工加入系统并为其分配对应的权限，以便同事之间协作办公。您还可以设置管理员来辅助进行初始化园区、设置成员及其他设置操作。</p>
+                    <h3><span class="font-b">3、设置流程</span><a href="#" class="c-link ml-20">系统设置 / 流程设置</a></h3>
+                    <p>招商、续租、退租等多个业务环节均需要用到审批，因此，需要提前设置好各类审批流程。</p>
+                    <div class="btn-group">
+                        <a href="#" class="layui-btn layui-btn-lg layui-btn-normal">初始化园区</a>
+                        <a href="#" class="layui-btn layui-btn-lg layui-btn-primary">阅读使用手册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body>
+<div class="workbench-box">
+    <div class="layui-ibs">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        明细
+                        <div class="layui-btn-group">
+                            <a href="javascript:;" class="layui-btn layui-btn-primary">日</a>
+                            <a href="javascript:;" class="layui-btn layui-btn-primary active">月</a>
+                            <a href="javascript:;" class="layui-btn layui-btn-primary">年</a>
+                        </div>
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="date">
+                            <a href="javascript:;" class="iconfont ibs-ico-left vm mr-10"></a>
+                            <span class="vm">2019年11月</span>
+                            <a href="javascript:;" class="iconfont ibs-ico-right vm ml-10 disabled"></a>
+                        </div>
+                        <div class="date">
+                            <span class="vm">2019年12月13日</span>
+                            <a href="javascript:;" class="iconfont ibs-ico-menu-date vm ml-5 c-blue"></a>
+                        </div>
+                        <table class="layui-table table-fixed t-no-border">
+                            <colgroup>
+                                <col width="55">
+                                <col width="11%">
+                                <col width="11%">
+                                <col width="11%">
+                                <col width="11%">
+                                <col width="11%">
+                                <col width="11%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="txt-ellipsis" title="应收房租回款">应收房租回款</th>
+                                    <th class="txt-ellipsis" title="新增房租回款">新增房租回款</th>
+                                    <th class="txt-ellipsis" title="水电回款">水电回款</th>
+                                    <th class="txt-ellipsis" title="基础服务回款">基础服务回款</th>
+                                    <th class="txt-ellipsis" title="外接申报回款">外接申报回款</th>
+                                    <th class="txt-ellipsis" title="运营采购回款">运营采购回款</th>
+                                    <th class="txt-ellipsis" title="停车费">停车费</th>
+                                    <th class="txt-ellipsis">其他</th>
+                                    <th class="txt-ellipsis">合计</th>
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="txt-l">应收</td>
+                                    <td><span class="font-b font-16">92</span> 万</td>
+                                    <td><span class="font-b font-16">16</span> 万</td>
+                                    <td><span class="font-b font-16">9</span> 万</td>
+                                    <td><span class="font-b font-16">3</span> 万</td>
+                                    <td><span class="font-b font-16">2</span> 万</td>
+                                    <td>- 万</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><span class="font-b font-16 c-gray-dark">125</span> 万</td>
+                                </tr>
+                                <tr>
+                                    <td class="txt-l">待收</td>
+                                    <td><span class="font-b font-16">3</span> 万</td>
+                                    <td><span class="font-b font-16">1</span> 万</td>
+                                    <td><span class="font-b font-16">2</span> 万</td>
+                                    <td><span class="font-b font-16">2</span> 万</td>
+                                    <td><span class="font-b font-16">0</span> 元</td>
+                                    <td><span class="font-b font-16">0</span> 元</td>
+                                    <td><span class="font-b font-16">0</span> 元</td>
+                                    <td><span class="font-b font-16">0</span> 万</td>
+                                    <td><span class="font-b font-16 c-gray-dark">8</span> 万</td>
+                                </tr>
+                                <tr>
+                                    <td class="txt-l">回款</td>
+                                    <td><span class="font-b font-16">89</span> 万</td>
+                                    <td><span class="font-b font-16">14</span> 万</td>
+                                    <td><span class="font-b font-16">7</span> 万</td>
+                                    <td><span class="font-b font-16">5</span> 万</td>
+                                    <td><span class="font-b font-16">9820</span> 元</td>
+                                    <td><span class="font-b font-16">8965</span> 元</td>
+                                    <td><span class="font-b font-16">1869</span> 元</td>
+                                    <td><span class="font-b font-16">8990</span> 万</td>
+                                    <td><span class="font-b font-16 c-gray-dark">100</span> 万</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        2019年11月数据分解
+                    </div>
+                    <div class="layui-card-body">
+                        <dl class="ranking">
+                            <dd>
+                                <a href="#" class="clearfix">
+                                    <div class="title clearfix">
+                                        <div class="number num-1"></div>
+                                        <div class="txt">博济事业部</div>
+                                    </div>
+                                    <div class="data">
+                                        <table class="layui-table table-fixed t-no-border">
+                                            <colgroup>
+                                                <col width="55">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="10%">
+                                                <col width="10%">
+                                                <col width="">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="txt-ellipsis" title="应收房租回款">应收房租回款</th>
+                                                    <th class="txt-ellipsis" title="新增房租回款">新增房租回款</th>
+                                                    <th class="txt-ellipsis" title="水电回款">水电回款</th>
+                                                    <th class="txt-ellipsis" title="基础服务回款">基础服务回款</th>
+                                                    <th class="txt-ellipsis" title="外接申报回款">外接申报回款</th>
+                                                    <th class="txt-ellipsis" title="运营采购回款">运营采购回款</th>
+                                                    <th class="txt-ellipsis" title="停车费">停车费</th>
+                                                    <th class="txt-ellipsis">其他</th>
+                                                    <th class="txt-ellipsis">合计</th>
+                                                </tr> 
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="txt-l">应收</td>
+                                                    <td><span class="font-b font-16">92</span> 万</td>
+                                                    <td><span class="font-b font-16">16</span> 万</td>
+                                                    <td><span class="font-b font-16">9</span> 万</td>
+                                                    <td><span class="font-b font-16">3</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td>- 万</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">125</span> 万</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-l">待收</td>
+                                                    <td><span class="font-b font-16">3</span> 万</td>
+                                                    <td><span class="font-b font-16">1</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 万</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">8</span> 万</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-l">回款</td>
+                                                    <td><span class="font-b font-16">89</span> 万</td>
+                                                    <td><span class="font-b font-16">14</span> 万</td>
+                                                    <td><span class="font-b font-16">7</span> 万</td>
+                                                    <td><span class="font-b font-16">5</span> 万</td>
+                                                    <td><span class="font-b font-16">9820</span> 元</td>
+                                                    <td><span class="font-b font-16">8965</span> 元</td>
+                                                    <td><span class="font-b font-16">1869</span> 元</td>
+                                                    <td><span class="font-b font-16">8990</span> 万</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">100</span> 万</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="#" class="clearfix">
+                                    <div class="title clearfix">
+                                        <div class="number num-2"></div>
+                                        <div class="txt">创客邦事业部/苏州区域中心</div>
+                                    </div>
+                                    <div class="data">
+                                        <table class="layui-table table-fixed t-no-border">
+                                            <colgroup>
+                                                <col width="55">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="10%">
+                                                <col width="10%">
+                                                <col width="">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="txt-ellipsis" title="应收房租回款">应收房租回款</th>
+                                                    <th class="txt-ellipsis" title="新增房租回款">新增房租回款</th>
+                                                    <th class="txt-ellipsis" title="水电回款">水电回款</th>
+                                                    <th class="txt-ellipsis" title="基础服务回款">基础服务回款</th>
+                                                    <th class="txt-ellipsis" title="外接申报回款">外接申报回款</th>
+                                                    <th class="txt-ellipsis" title="运营采购回款">运营采购回款</th>
+                                                    <th class="txt-ellipsis" title="停车费">停车费</th>
+                                                    <th class="txt-ellipsis">其他</th>
+                                                    <th class="txt-ellipsis">合计</th>
+                                                </tr> 
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="txt-l">应收</td>
+                                                    <td><span class="font-b font-16">92</span> 万</td>
+                                                    <td><span class="font-b font-16">16</span> 万</td>
+                                                    <td><span class="font-b font-16">9</span> 万</td>
+                                                    <td><span class="font-b font-16">3</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td>- 万</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">125</span> 万</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-l">待收</td>
+                                                    <td><span class="font-b font-16">3</span> 万</td>
+                                                    <td><span class="font-b font-16">1</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 万</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">8</span> 万</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-l">回款</td>
+                                                    <td><span class="font-b font-16">89</span> 万</td>
+                                                    <td><span class="font-b font-16">14</span> 万</td>
+                                                    <td><span class="font-b font-16">7</span> 万</td>
+                                                    <td><span class="font-b font-16">5</span> 万</td>
+                                                    <td><span class="font-b font-16">9820</span> 元</td>
+                                                    <td><span class="font-b font-16">8965</span> 元</td>
+                                                    <td><span class="font-b font-16">1869</span> 元</td>
+                                                    <td><span class="font-b font-16">8990</span> 万</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">100</span> 万</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="#">
+                                    <div class="title clearfix">
+                                        <div class="number num-3"></div>
+                                        <div class="txt">联合孵化事业部/北京区域中心/[华夏]北京丰台·创客邦</div>
+                                    </div>
+                                    <div class="data">
+                                        <table class="layui-table table-fixed t-no-border">
+                                            <colgroup>
+                                                <col width="55">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="10%">
+                                                <col width="10%">
+                                                <col width="">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="txt-ellipsis" title="应收房租回款">应收房租回款</th>
+                                                    <th class="txt-ellipsis" title="新增房租回款">新增房租回款</th>
+                                                    <th class="txt-ellipsis" title="水电回款">水电回款</th>
+                                                    <th class="txt-ellipsis" title="基础服务回款">基础服务回款</th>
+                                                    <th class="txt-ellipsis" title="外接申报回款">外接申报回款</th>
+                                                    <th class="txt-ellipsis" title="运营采购回款">运营采购回款</th>
+                                                    <th class="txt-ellipsis" title="停车费">停车费</th>
+                                                    <th class="txt-ellipsis">其他</th>
+                                                    <th class="txt-ellipsis">合计</th>
+                                                </tr> 
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="txt-l">应收</td>
+                                                    <td><span class="font-b font-16">92</span> 万</td>
+                                                    <td><span class="font-b font-16">16</span> 万</td>
+                                                    <td><span class="font-b font-16">9</span> 万</td>
+                                                    <td><span class="font-b font-16">3</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td>- 万</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">125</span> 万</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-l">待收</td>
+                                                    <td><span class="font-b font-16">3</span> 万</td>
+                                                    <td><span class="font-b font-16">1</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 万</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">8</span> 万</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-l">回款</td>
+                                                    <td><span class="font-b font-16">89</span> 万</td>
+                                                    <td><span class="font-b font-16">14</span> 万</td>
+                                                    <td><span class="font-b font-16">7</span> 万</td>
+                                                    <td><span class="font-b font-16">5</span> 万</td>
+                                                    <td><span class="font-b font-16">9820</span> 元</td>
+                                                    <td><span class="font-b font-16">8965</span> 元</td>
+                                                    <td><span class="font-b font-16">1869</span> 元</td>
+                                                    <td><span class="font-b font-16">8990</span> 万</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">100</span> 万</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="#">
+                                    <div class="title clearfix">
+                                        <div class="number">4</div>
+                                        <div class="txt">博济事业部</div>
+                                    </div>
+                                    <div class="data">
+                                        <table class="layui-table table-fixed t-no-border">
+                                            <colgroup>
+                                                <col width="55">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="11%">
+                                                <col width="10%">
+                                                <col width="10%">
+                                                <col width="">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="txt-ellipsis" title="应收房租回款">应收房租回款</th>
+                                                    <th class="txt-ellipsis" title="新增房租回款">新增房租回款</th>
+                                                    <th class="txt-ellipsis" title="水电回款">水电回款</th>
+                                                    <th class="txt-ellipsis" title="基础服务回款">基础服务回款</th>
+                                                    <th class="txt-ellipsis" title="外接申报回款">外接申报回款</th>
+                                                    <th class="txt-ellipsis" title="运营采购回款">运营采购回款</th>
+                                                    <th class="txt-ellipsis" title="停车费">停车费</th>
+                                                    <th class="txt-ellipsis">其他</th>
+                                                    <th class="txt-ellipsis">合计</th>
+                                                </tr> 
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="txt-l">应收</td>
+                                                    <td><span class="font-b font-16">92</span> 万</td>
+                                                    <td><span class="font-b font-16">16</span> 万</td>
+                                                    <td><span class="font-b font-16">9</span> 万</td>
+                                                    <td><span class="font-b font-16">3</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td>- 万</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">125</span> 万</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-l">待收</td>
+                                                    <td><span class="font-b font-16">3</span> 万</td>
+                                                    <td><span class="font-b font-16">1</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td><span class="font-b font-16">2</span> 万</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 元</td>
+                                                    <td><span class="font-b font-16">0</span> 万</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">8</span> 万</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-l">回款</td>
+                                                    <td><span class="font-b font-16">89</span> 万</td>
+                                                    <td><span class="font-b font-16">14</span> 万</td>
+                                                    <td><span class="font-b font-16">7</span> 万</td>
+                                                    <td><span class="font-b font-16">5</span> 万</td>
+                                                    <td><span class="font-b font-16">9820</span> 元</td>
+                                                    <td><span class="font-b font-16">8965</span> 元</td>
+                                                    <td><span class="font-b font-16">1869</span> 元</td>
+                                                    <td><span class="font-b font-16">8990</span> 万</td>
+                                                    <td><span class="font-b font-16 c-gray-dark">100</span> 万</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>O'Park园区管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="notice">
+        <i class="iconfont ibs-ico-notice3 vm mr-5"></i>
+        <a href="#">新版本上线！请戳这里查看更新内容</a>
+        <a href="#" class="iconfont ibs-ico-close2"></a>
+    </div>
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/header-default.png" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-meter2"></i><span class="vm">工作台</span></a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont ibs-ico-approval"></i><span class="vm">审批</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-park"></i><span class="vm">房源</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-business"></i><span class="vm">招商</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">意向客户</a></dd>
+                        <dd><a href="javascript:;">拟签约客户</a></dd>
+                        <dd><a href="javascript:;">成交客户</a></dd>
+                        <dd><a href="javascript:;">跟进记录</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-center"></i><span class="vm">运营</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">园区建设</a></dd>
+                        <dd><a href="javascript:;">园企互动</a></dd>
+                        <dd><a href="javascript:;">客户</a></dd>
+                        <dd><a href="javascript:;">合同</a></dd>
+                        <dd><a href="javascript:;">电表</a></dd>
+                        <dd><a href="javascript:;">收费</a></dd>
+                        <dd><a href="javascript:;">付费</a></dd>
+                        <dd><a href="javascript:;">孵化成果</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-business"></i><span class="vm">物业</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">设备设施</a></dd>
+                        <dd><a href="javascript:;">巡检管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href=""><i class="iconfont ibs-ico-set-approve"></i><span class="vm">合同</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-money"></i><span class="vm">财务</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">收款</a></dd>
+                        <dd><a href="javascript:;">支出</a></dd>
+                        <dd><a href="javascript:;">校核</a></dd>
+                        <dd><a href="javascript:;">退租</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-statistics2"></i><span class="vm">数据中心</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业库</a></dd>
+                        <dd><a href="javascript:;">预警分析</a></dd>
+                        <dd><a href="javascript:;">收入分析</a></dd>
+                        <dd><a href="javascript:;">招商分析</a></dd>
+                        <dd><a href="javascript:;">退租分析</a></dd>
+                        <dd><a href="javascript:;">租赁分析</a></dd>
+                        <dd><a href="javascript:;">报表导出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">系统设置</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <div class="layui-card guide">
+                <div class="layui-card-body">
+                    <div class="title">
+                        <div class="line"></div>
+                        <div class="txt">欢迎使用OPark园区管理系统</div>
+                    </div>
+                    <p class="font-italic">本系统是一套功能完整的业务管理系统，在正式使用之前，您需要先完成以下3项任务：</p>
+                    <dl class="stamp-finished">
+                        <dt class="num-01"></dt>
+                        <dd>
+                            <h3>创建园区</h3>
+                            <span>任务描述：首先需要在系统中完善你的园区信息，园区创建完成之后就可以去管理房源和邀请成员协同办公</span>
+                        </dd>
+                    </dl>
+                    <dl class="">
+                        <dt class="num-02"></dt>
+                        <dd>
+                            <h3>房源管理</h3>
+                            <span>任务描述：成功添加一个房源，通过添加楼宇、楼层、房间的过程，熟练掌握房源数字化管理</span>
+                        </dd>
+                        <a href="#" class="layui-btn layui-btn-lg">添加房源</a>
+                    </dl>
+                    <dl class="">
+                        <dt class="num-03"></dt>
+                        <dd>
+                            <h3>邀请新成员</h3>
+                            <span>任务描述：完成一次通过组织管理邀请新成员的任务，并为新成员分配相应的操作权限，协同办公才能事半功倍</span>
+                        </dd>
+                        <a href="#" class="layui-btn layui-btn-lg">邀请新成员</a>
+                    </dl>
+                    <div class="manual">
+                        您可以先阅读使用手册了解系统功能<a href="#" class="c-link ml-10">阅读使用手册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

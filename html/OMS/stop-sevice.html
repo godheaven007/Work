@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/oms/oms.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>OMS</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-oms">
+        <a class="logo" href="" title="OMS"></a>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-home"></i><span class="vm">首页</span></a></li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-customer"></i><span class="vm">客户管理</span></a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-business"></i><span class="vm">服务管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">订单管理</a></dd>
+                        <dd><a href="javascript:;">产品管理</a></dd>
+                        <dd><a href="javascript:;">服务商管理</a></dd>
+                        <dd><a href="javascript:;">服务分类</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-news"></i><span class="vm">活动管理</span></a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-business"></i><span class="vm">运维管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">系统公告</a></dd>
+                        <dd><a href="javascript:;">系统停服</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">系统设置</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">用户管理</a></dd>
+                        <dd><a href="javascript:;">角色管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-oms">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="#"><cite>系统停服</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="font-24 mt-15 mb-15">暂停服务设置</div>
+                            <div class="stop-sevice mb-20">
+                                <dl>
+                                    <dt>OPark园区管理系统<span class="layui-badge layui-bg-gray ml-10">未暂停服务</span></dt>
+                                    <dd>暂停服务后，用户将不可以正常访问线上PC版园区管理系统</dd>
+                                    <dd class="txt-2"><a href="#" class="c-link">暂停服务</a></dd>
+                                </dl>
+                                <dl>
+                                    <dt>园区管理小程序<span class="layui-badge layui-bg-gray ml-10">未暂停服务</span></dt>
+                                    <dd>暂停服务后，用户将不可以正常访问线上园区管理小程序</dd>
+                                    <dd class="txt-2"><a href="#" class="c-link">暂停服务</a></dd>
+                                </dl>
+                                <dl>
+                                    <dt>园企互动小程序<span class="layui-badge ml-10">已暂停服务</span></dt>
+                                    <dd>暂停服务后，用户将不可以正常访问线上园企互动版本小程序</dd>
+                                    <dd class="txt-2"><a href="#" class="c-link">恢复服务</a></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

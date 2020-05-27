@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>O'Park园区管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+        layui.use(['rate'], function(){
+          var rate = layui.rate;
+          rate.render({
+            elem: '#intention'
+            ,value: 3
+            ,text: true
+            ,setText: function(value){ //自定义文本的回调
+              var arrs = {
+                '1': '较弱'
+                ,'2': '较弱'
+                ,'3': '一般'
+                ,'4': '强烈'
+                ,'5': '准客户'
+              };
+              this.span.text(arrs[value] || ( value + "星"));
+            }
+          })
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">招商</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">意向客户</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a><cite>意向客户</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>客户详情</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <form class="layui-form client-details">
+                                <div class="hd">
+                                    <i class="iconfont ibs-ico-set-park ico-header c-gray-light2"></i>
+                                    <div class="infos">
+                                        <div class="txt-1">北京北大科技园建设开发有限公司</div>
+                                        <div class="txt-2">萧然 13512345678</div>
+                                    </div>
+                                    <dl class="layui-row mt-10">
+                                        <dd class="layui-col-xs3">
+                                            <div>
+                                                <h3>意向园区</h3>
+                                                <p>博济·五星智造园</p>
+                                            </div>
+                                        </dd>
+                                        <dd class="layui-col-xs3">
+                                            <div>
+                                                <h3>客户需求</h3>
+                                                <p>800~1000㎡  |  10~15<span class="font-14"> 个工位</span></p>
+                                            </div>
+                                        </dd>
+                                        <dd class="layui-col-xs3">
+                                            <div>
+                                                <h3>意向程度</h3>
+                                                <div id="intention" class="stars"></div>
+                                            </div>
+                                        </dd>
+                                        <dd class="layui-col-xs3">
+                                            <div>
+                                                <h3>招商人员</h3>
+                                                <p>张三<span class="c-gray-light font-12 ml-10">2020-01-15 添加客户</span></p>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <div class="btn-group-right">
+                                        <a href="javascript:;" class="layui-btn">添加跟进记录</a>
+                                        <a href="javascript:;" class="layui-btn layui-btn-primary">转为拟签约</a>
+                                        <a href="javascript:;" class="layui-btn layui-btn-primary">编辑</a>
+                                        <a href="javascript:;" class="layui-btn layui-btn-primary">搁置</a>
+                                    </div>
+                                </div>
+                                <div class="title-01">
+                                    <span>客户信息</span>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">客户来源</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">渠道</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">渠道经纪人</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">张三 13512345678 杭州融园房地产营销策划公司</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">所属行业</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">新材料技术</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">经营业务</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">电影、电视剧的制作、拍摄、销售、设计制作电视、报纸、期刊、路牌广告、代理自制广告的发布、音像器材的销售；影视文化的信息咨询</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <div class="title-01">
+                                    <span>租赁意向</span>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label"><span class="c-orange">* </span>报名时间</label>
+                                        <div class="layui-input-inline inline-4p">
+                                            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline inline-4p">
+                                            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-mid">至</div>
+                                        <div class="layui-input-inline inline-4p">
+                                            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline inline-4p">
+                                            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label"><span class="c-orange">* </span>报名截止</label>
+                                        <div class="layui-input-inline inline-4p">
+                                            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline inline-4p">
+                                            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>封面图</label>
+                                    <div class="layui-input-block inline-01">
+                                        <div class="upload-wrapper">
+                                            <div class="upload-box">
+                                                <a href="javascript:;" class="layui-btn upload"><i class="layui-icon"></i>上传</a>
+                                                <a href="javascript:;" class="layui-btn layui-btn-primary"">更换图片</a>
+                                                <a href="javascript:;" class="layui-btn layui-btn-primary"">使用默认图</a>
+                                                <div class="describe ml-10">图片尺寸：750px * 320px</div>
+                                            </div>
+                                            <div class="upload-list mt-10">
+                                                <div class="upload-file-item">
+                                                    <img class="pic" src="http://assets.spp.com/css/oa/cms/images/u1077.png" width="375">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">客户备注</label>
+                                    <div class="layui-input-block inline-01">
+                                        <div class="layui-form-mid">客户是一家新材料公司，有行业领先的专利技术，后期可以提供更多的申报服务和企业服务</div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <div class="title-01">
+                                    <span>客户跟进</span>
+                                </div>
+                                <ul class="layui-timeline">
+                                    <li class="layui-timeline-item">
+                                        <i class="num">2</i>
+                                        <div class="layui-timeline-content layui-text">
+                                            <dl class="ibs-timeline">
+                                                <dt class="ico-timeline"></dt>
+                                                <dd>
+                                                    <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                    <div class="infos">
+                                                        <div><span class="font-b c-gray-dark">谢美琴</span><span class="ml-15">添加跟进记录</span><span class="ml-10 c-gray-light">2019-08-13 15:43</span></div>
+                                                        <div class="record">
+                                                            <div><span class="label">沟通方式：</span><span class="details">带看</span></div>
+                                                            <div><span class="label">意向程度：</span><span class="details">
+                                                                <div id="intention-02" class="stars layui-inline"><ul class="layui-rate"><li class="layui-inline"><i class="layui-icon layui-icon-rate-solid"></i></li><li class="layui-inline"><i class="layui-icon layui-icon-rate-solid"></i></li><li class="layui-inline"><i class="layui-icon layui-icon-rate-solid"></i></li><li class="layui-inline"><i class="layui-icon layui-icon-rate"></i></li><li class="layui-inline"><i class="layui-icon layui-icon-rate"></i></li></ul><span class="layui-inline">一般</span></div>
+                                                            </span></div>
+                                                            <div><span class="label">带看房源：</span><span class="details">[博济·江南智造园] 1号楼-101室,102室；2号楼-103室</span></div>
+                                                            <div><span class="label">跟进时间：</span><span class="details">2019-08-05 10:00</span></div>
+                                                            <div><span class="label">跟进内容：</span><span class="details">客户来访，谈了租房需求和大概的预算情况，目前还没有合适的空置房源。后续跟进洽谈</span></div>
+                                                            <div><span class="label">下次跟进时间：</span><span class="details">2019-08-13 10:00</span></div>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                    <li class="layui-timeline-item">
+                                        <i class="num">1</i>
+                                        <div class="layui-timeline-content layui-text">
+                                            <dl class="ibs-timeline">
+                                                <dt class="ico-timeline"></dt>
+                                                <dd>
+                                                    <div class="header-pic"><img src="http://ibs.o.com/assets/css/images/photo-demo.jpg"></div>
+                                                    <div class="infos">
+                                                        <div><span class="font-b c-gray-dark">张三</span><span class="ml-15">添加跟进记录</span><span class="ml-10 c-gray-light">2019-08-13 15:43</span></div>
+                                                        <div class="record">
+                                                            <div><span class="label">沟通方式：</span><span class="details">电话</span></div>
+                                                            <div><span class="label">意向程度：</span><span class="details">
+                                                                <div id="intention-02" class="stars layui-inline"><ul class="layui-rate"><li class="layui-inline"><i class="layui-icon layui-icon-rate-solid"></i></li><li class="layui-inline"><i class="layui-icon layui-icon-rate-solid"></i></li><li class="layui-inline"><i class="layui-icon layui-icon-rate-solid"></i></li><li class="layui-inline"><i class="layui-icon layui-icon-rate"></i></li><li class="layui-inline"><i class="layui-icon layui-icon-rate"></i></li></ul><span class="layui-inline">一般</span></div>
+                                                            </span></div>
+                                                            <div><span class="label">带看房源：</span><span class="details">[博济·江南智造园] 1号楼-101室,102室；2号楼-103室</span></div>
+                                                            <div><span class="label">跟进时间：</span><span class="details">2019-08-05 10:00</span></div>
+                                                            <div><span class="label">跟进内容：</span><span class="details">客户来访，谈了租房需求和大概的预算情况，目前还没有合适的空置房源。后续跟进洽谈</span></div>
+                                                            <div><span class="label">下次跟进时间：</span><span class="details">2019-08-13 10:00</span></div>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <div class="layui-footer">
+                                            <input type="button" class="layui-btn" name="" value="提交">
+                                            <input type="reset" class="layui-btn layui-btn-primary" name="" value="取消">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

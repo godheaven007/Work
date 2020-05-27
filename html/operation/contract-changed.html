@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">运营</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">园区建设</a></dd>
+                        <dd><a href="javascript:;">园企互动</a></dd>
+                        <dd><a href="javascript:;">合同</a></dd>
+                        <dd><a href="javascript:;">电表</a></dd>
+                        <dd><a href="javascript:;">收费</a></dd>
+                        <dd><a href="javascript:;">入驻记录</a></dd>
+                        <dd><a href="javascript:;">退租验收</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a><cite>合同</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>在租</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>详情</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>申请变更</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="progress-bar">
+                                <div class="step complete">
+                                    <i class="num">1</i><span class="vm">提交变更申请</span>
+                                    <i class="iconfont ibs-ico-right1"></i>
+                                </div>
+                                <div class="step active">
+                                    <i class="num">2</i><span class="vm">领导审批</span>
+                                    <i class="iconfont ibs-ico-right1"></i>
+                                </div>
+                                <div class="step">
+                                    <i class="num">3</i><span class="vm">提交盖章</span>
+                                    <i class="iconfont ibs-ico-right1"></i>
+                                </div>
+                                <div class="step">
+                                    <i class="num">4</i><span class="vm">印章管理员盖章</span>
+                                    <i class="iconfont ibs-ico-right1"></i>
+                                </div>
+                                <div class="step">
+                                    <i class="num">5</i><span class="vm">登记收费计划</span>
+                                    <i class="iconfont ibs-ico-right1"></i>
+                                </div>
+                                <div class="step">
+                                    <i class="num">6</i><span class="vm">校核收费计划</span>
+                                    <i class="iconfont ibs-ico-right1"></i>
+                                </div>
+                            </div>
+                            <form class="layui-form" action="" lay-filter="component-form-group">
+                                
+                                <fieldset class="layui-elem-field layui-field-title mt-15">
+                                    <legend>变更信息</legend>
+                                </fieldset>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label"><span class="c-orange">* </span>企业名称</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-input-inline inline-03">
+                                                <input type="text" name="" class="layui-input" placeholder="" lay-verify="required" autocomplete="off">
+                                            </div>
+                                            <div class="layui-form-mid"><span class="layui-badge">变更</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>房源</label>
+                                    <div class="layui-input-block inline-01">
+                                        <div class="layui-form-mid">白羊座-101室，102室 ，103室，LA01，LA02</div>
+                                        <input type="button" class="layui-btn layui-btn-primary layui-btn-sm mt-5" name="" value="+选择房源">
+                                    </div>
+                                </div>
+                                <!-- <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"></label>
+                                    <div class="layui-input-block inline-01">
+                                        <table class="layui-table table-fixed">
+                                            <colgroup>
+                                                <col>
+                                                <col width="38%">
+                                                <col width="25%">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>房源</th>
+                                                    <th><span class="c-orange">* </span>租金</th>
+                                                    <th><span class="c-orange">* </span>物业服务费</th>
+                                                </tr> 
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="txt-ellipsis">
+                                                        <span class="layui-badge mr-5">变更</span>2号楼-1007C，100，1007C，100，1007C，102室，103室，LA01，LA02<br>
+                                                        <span class="c-gray-light">89.00㎡</span></td>
+                                                    <td>
+                                                        <div class="layui-input-inline float-l text-w-100 mr-5">
+                                                            <input type="text" class="layui-input test-laydate-item" placeholder="" value="1.2">
+                                                        </div>
+                                                        <div class="layui-form-mid">元/㎡/天<span class="c-gray-light">（即：</span>36.5 <span class="c-gray-light">元/㎡/月）</span><span class="layui-badge ml-5">变更</span></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="layui-input-inline float-l text-w-100 mr-5">
+                                                            <input type="text" class="layui-input test-laydate-item" placeholder="" value="0.9">
+                                                        </div>
+                                                        <div class="layui-form-mid">元/㎡/月<span class="layui-badge ml-5">变更</span></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt-ellipsis">
+                                                        <span class="layui-badge mr-5">变更</span>白羊座-103室，LA01，LA02<br>
+                                                        <span class="c-gray-light">45.00㎡</span></td>
+                                                    <td>
+                                                        <div class="layui-input-inline float-l text-w-100 mr-5">
+                                                            <input type="text" class="layui-input test-laydate-item" placeholder="" value="1500">
+                                                        </div>
+                                                        <div class="layui-form-mid">元/月<span class="layui-badge ml-5">变更</span></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="layui-input-inline float-l text-w-100 mr-5">
+                                                            <input type="text" class="layui-input test-laydate-item" placeholder="" value="500">
+                                                        </div>
+                                                        <div class="layui-form-mid">元/月<span class="layui-badge ml-5">变更</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> -->
+
+                                <div class="sign-details">
+                                    <div class="layui-form-item label-l mb-10">
+                                        <label class="layui-form-label">房源</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">白羊座-101室，102室 （共计 80.00 ㎡）<span class="layui-badge ml-5">变更</span><span class="layui-badge ml-5">一口价</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item label-l mb-10">
+                                        <div class="layui-inline inline-02">
+                                            <label class="layui-form-label"><span class="c-orange">* </span>租金单价</label>
+                                            <div class="layui-input-block">
+                                                <div class="layui-input-inline text-w-150"><input type="text" name="" class="layui-input" value="1.2" lay-verify="required" autocomplete="off"></div>
+                                                <div class="layui-form-mid">元/㎡/天（即36.5元/㎡/月）<span class="layui-badge ml-5">变更</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline inline-02">
+                                            <label class="layui-form-label"><span class="c-orange">* </span>物业服务费单价</label>
+                                            <div class="layui-input-block">
+                                                <div class="layui-input-inline text-w-150"><input type="text" name="" class="layui-input" value="0.9" lay-verify="required" autocomplete="off"></div>
+                                                <div class="layui-form-mid">元/㎡/月<span class="layui-badge ml-5">变更</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item label-l mb-10">
+                                        <label class="layui-form-label">房源</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid">白羊座-103室，LA01，LA02 （共计 45.00 ㎡）<span class="layui-badge ml-5">变更</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item label-l mb-10">
+                                        <div class="layui-inline inline-02">
+                                            <label class="layui-form-label"><span class="c-orange">* </span>租金</label>
+                                            <div class="layui-input-block">
+                                                <div class="layui-input-inline text-w-150"><input type="text" name="" class="layui-input" value="1500" lay-verify="required" autocomplete="off"></div>
+                                                <div class="layui-form-mid">元/月<span class="layui-badge ml-5">变更</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline inline-02">
+                                            <label class="layui-form-label"><span class="c-orange">* </span>物业服务费</label>
+                                            <div class="layui-input-block">
+                                                <div class="layui-input-inline text-w-150"><input type="text" name="" class="layui-input" value="500" lay-verify="required" autocomplete="off"></div>
+                                                <div class="layui-form-mid">元/㎡/月<span class="layui-badge ml-5">变更</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>租期</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input test-laydate-item" placeholder="yyyy-MM-dd" value="2019-08-01" lay-key="21">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input test-laydate-item" placeholder="yyyy-MM-dd" value="2020-08-01" lay-key="20">
+                                        </div>
+                                        <div class="layui-form-mid"><span class="layui-badge">变更</span></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label">免租期</label>
+                                    <div class="layui-input-block clearfix mb-10">
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input test-laydate-item" placeholder="yyyy-MM-dd" value="2019-08-01" lay-key="21">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input test-laydate-item" placeholder="yyyy-MM-dd" value="2019-09-01" lay-key="20">
+                                        </div>
+                                        <div class="layui-input-inline" style="width: auto;">
+                                            <a href="#" class="layui-btn layui-btn-primary layui-btn-sm mt-5">+ 添加免租期</a>
+                                        </div>
+                                        <div class="layui-form-mid"><span class="layui-badge">变更</span></div>
+                                    </div>
+                                    <div class="layui-input-block clearfix">
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input test-laydate-item" placeholder="yyyy-MM-dd" value="2019-09-01" lay-key="21">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input test-laydate-item" placeholder="yyyy-MM-dd" value="2019-10-01" lay-key="20">
+                                        </div>
+                                        <div class="layui-form-mid">
+                                            <a href="#" class="c-orange" title="删除"><i class="iconfont ibs-ico-deletenorml"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>变更后保证金</label>
+                                    <div class="layui-input-block clearfix mb-10">
+                                        <div class="layui-input-inline" style="width: auto; margin-right: 0;">
+                                            <input type="radio" name="role" value="" title="维持不变" checked="">
+                                        </div>
+                                        <div class="layui-form-mid">，即变更后保证金仍是 <span class="c-orange">35,000.00 元</span></div>
+                                    </div>
+                                    <div class="layui-input-block clearfix mb-10">
+                                        <div class="layui-input-inline" style="width: auto; margin-right: 0;">
+                                            <input type="radio" name="role" value="" title="增加">
+                                        </div>
+                                        <div class="float-l hidden">
+                                            <div class="layui-input-inline text-w-80">
+                                                <input type="text" class="layui-input test-laydate-item" placeholder="" value="500">
+                                            </div>
+                                            <div class="layui-form-mid">元，即变更后保证金变为 <span class="c-orange"> 元</span><span class="layui-badge ml-10">变更</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-input-block clearfix">
+                                        <div class="layui-input-inline" style="width: auto; margin-right: 0;">
+                                            <input type="radio" name="role" value="" title="减少">
+                                        </div>
+                                        <div class="float-l block">
+                                            <div class="layui-input-inline text-w-80">
+                                                <input type="text" class="layui-input test-laydate-item" placeholder="" value="500">
+                                            </div>
+                                            <div class="layui-form-mid">元，即变更后保证金变为 <span class="c-orange"> 元</span><span class="layui-badge ml-10">变更</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label"><span class="c-orange">* </span>电费单价</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-input-inline" style="width: calc(100% - 98px);">
+                                                <input type="text" name="" class="layui-input" placeholder="若不收电费请填写0" lay-verify="required" autocomplete="off">
+                                            </div>
+                                            <div class="layui-form-mid">元/度<span class="layui-badge ml-10">变更</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label"><span class="c-orange">* </span>支付方式</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-input-inline inline-03">
+                                                <select name="interest-search" lay-filter="interest-search" lay-search="">
+                                                    <option value="1">三月一付</option>
+                                                    <option value="2">半年一付</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-form-mid"><span class="layui-badge">变更</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label">租金递增</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline" style="width: calc(96% - 47px);">
+                                            <textarea name="" placeholder="若有租金递增条款，请填写" class="layui-textarea"></textarea>
+                                        </div>
+                                        <div class="layui-form-mid"><span class="layui-badge">变更</span></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>变更说明</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline" style="width: calc(96% - 47px);">
+                                            <textarea name="" placeholder="若有租金递增条款，请填写" class="layui-textarea"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>变更生效日期</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input test-laydate-item" placeholder="yyyy-MM-dd" value="2019-08-01" lay-key="21">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <div class="layui-footer">
+                                            <input type="button" class="layui-btn" name="" value="提交审核">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="http://ibs.o.com/assets/html/index.html">主页</a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>系统设置</cite></a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>园区管理</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>添加园区</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend>基础信息</legend>
+                            </fieldset>
+                            <form class="layui-form" action="" lay-filter="component-form-group">
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>园区类型</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="park-type" value="包租经营" title="包租经营" checked="">
+                                        <div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>包租经营</div></div>
+                                        <input type="radio" name="park-type" value="委托运营" title="委托运营">
+                                        <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>委托运营</div></div>
+                                        <input type="radio" name="park-type" value="采购服务" title="采购服务">
+                                        <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>采购服务</div></div>
+                                        <input type="radio" name="park-type" value="自有产权" title="自有产权">
+                                        <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>自有产权</div></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>园区名称</label>
+                                    <div class="layui-input-block text-w-350">
+                                        <input type="text" name="" placeholder="输入园区名称" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>运营公司</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline text-w-350">
+                                            <select name="interest-search" lay-filter="interest-search" lay-search>
+                                                <option value="">请搜索</option>
+                                                <option value="写作">写作</option>
+                                                <option value="阅读" disabled>阅读</option>
+                                                <option value="游戏" disabled>游戏</option>
+                                                <option value="音乐">音乐</option>
+                                                <option value="旅行">旅行</option>
+                                                <option value="读书">读书</option>
+                                                <option value="1">layer</option>
+                                                <option value="2" disabled>laydate</option>
+                                                <option value="3">3</option>
+                                                <option value="4">layim</option>
+                                                <option value="5">laypage</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-form-mid layui-word-aux">运营公司在 <a href="#" class="c-link">参数设置</a> 中管理</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>所属部门</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-form-mid">火炬孵化 <a href="#" class="c-link ml-15">设置</a></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>位置</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline text-w-100">
+                                            <select name="city" lay-verify="">
+                                                <option value="">选择省</option>
+                                                <option value="01">江苏</option>
+                                            </select>
+                                        </div>
+                                        <div class="layui-input-inline text-w-100">
+                                            <select name="city" lay-verify="">
+                                                <option value="">选择市</option>
+                                                <option value="01">苏州</option>
+                                            </select>
+                                        </div>
+                                        <div class="layui-input-inline text-w-100">
+                                            <select name="city" lay-verify="">
+                                                <option value="">选择区</option>
+                                                <option value="01">园区</option>
+                                            </select>
+                                        </div>
+                                        <div class="layui-input-inline text-w-350">
+                                            <input type="text" name="" placeholder="具体位置（如xx路xx号）" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>坐标设置</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-inline text-w-200">
+                                            <input type="text" name="" placeholder="请输入关键字搜索地址" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-inline">
+                                            <button type="button" class="layui-btn"><span class="iconfont ibs-ico-searchnormal"></span></button>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">已选坐标</label>
+                                            <div class="layui-input-inline text-w-250">
+                                                <input type="text" name="" placeholder="选中地址后自动获取经纬度" lay-verify="required" autocomplete="off" disabled="" class="layui-input disabled">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <div class="mapWrap">
+                                                <div class="map" id="settingMap"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend>业务属性</legend>
+                                </fieldset>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>房源业态</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="a01" value="按面积租赁" title="按面积租赁" checked="">
+                                        <div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>按面积租赁</div></div>
+                                        <input type="radio" name="a01" value="按工位租赁" title="按工位租赁">
+                                        <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>按工位租赁</div></div>
+                                        <input type="radio" name="a01" value="混合模式（既有按面积租赁，也有按工位租赁）" title="混合模式（既有按面积租赁，也有按工位租赁）">
+                                        <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>混合模式（既有按面积租赁，也有按工位租赁）</div></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>租金单位</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="b01" value="元/㎡/天" title="元/㎡/天" checked="">
+                                        <div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>元/㎡/天</div></div>
+                                        <input type="radio" name="b01" value="元/㎡/月" title="元/㎡/月">
+                                        <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>元/㎡/月</div></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>收费管理模式</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-inline text-w-200" style="margin-right: 37px;">
+                                            <select name="city" lay-verify="">
+                                                <option value="010">系统对房租收费进行管理</option>
+                                                <option value="021">系统不管理房租收费</option>
+                                            </select>
+                                            <div class="layui-unselect layui-form-select">
+                                                <div class="layui-select-title">
+                                                    <input type="text" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i>
+                                                </div>
+                                                <dl class="layui-anim layui-anim-upbit" style="">
+                                                    <dd lay-value="010" class="layui-select-tips layui-this">系统对房租收费进行管理</dd>
+                                                    <dd lay-value="021" class="">系统不管理房租收费</dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <div class="layui-form-mid layui-word-aux">若选择了“系统不管理房租收费”，该园区录入合同时将无需填写收费计划，且不需财务校核。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <label class="layui-form-label"><span class="c-orange">* </span>收入占比</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-inline text-w-200 mr-0">
+                                            <input type="text" name="" value="100" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-inline">
+                                            <div class="layui-form-mid">%</div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <div class="layui-form-mid layui-word-aux">若该项目房租和物业费收入全归我司所有，请填写100%，系统将按照此比例统计收入。</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend>签约信息</legend>
+                                </fieldset>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label"><span class="c-orange">* </span>项目名称</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="" class="layui-input" placeholder="输入签约时的项目名称" lay-verify="required" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label"><span class="c-orange">* </span>项目规模</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="" class="layui-input" placeholder="输入合同上的项目面积" lay-verify="required" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">业主</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="" class="layui-input" placeholder="输入业主单位名称" lay-verify="required" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label">业主交房日期</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="date" id="date" lay-verify="date" placeholder="输入业主交房日期" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item label-l">
+                                    <div class="layui-inline inline-02">
+                                        <label class="layui-form-label"><span class="c-orange">* </span>合同周期</label>
+                                        <div class="layui-input-block text-w-350">
+                                            <div class="layui-input-inline text-w-150">
+                                                <input type="text" name="" id="" class="layui-input" lay-verify="date" placeholder="开始日期" autocomplete="off">
+                                            </div>
+                                            <div class="layui-form-mid">-</div>
+                                            <div class="layui-input-inline text-w-150">
+                                                <input type="text" name="" id="" class="layui-input" lay-verify="date" placeholder="结束日期" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <div class="layui-footer">
+                                            <input type="button" class="layui-btn" name="" value="保存并继续添加">
+                                            <input type="reset" class="layui-btn layui-btn-primary" name="" value="保存">
+                                            <!-- <button class="layui-btn" lay-submit="" lay-filter="component-form-demo1">保存并继续添加</button>
+                                            <button type="reset" class="layui-btn layui-btn-primary">保存</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

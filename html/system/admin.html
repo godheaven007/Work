@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="index.html">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs height-self">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="http://ibs.o.com/assets/html/index.html">主页</a>
+                <span lay-separator="">/</span>
+                <a href="#"><cite>系统设置</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>管理员设置</cite></a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            管理员设置
+                        </div>
+                        <div class="layui-card-body pt-0 pl-0 pr-0">
+                            <div class="left-260">
+                                <div class="left-header">
+                                    管理员
+                                    <div class="group-right xs">
+                                        <button class="layui-btn layui-btn-xs"><i class="iconfont ibs-ico-add"></i>添加</button>
+                                    </div>
+                                </div>
+                                <div class="admin-list">
+                                    <ul>
+                                        <li><a href="#" class="active">严伟虎</a></li>
+                                        <li><a href="#">张兰兰</a></li>
+                                        <li><a href="#">施岳</a></li>
+                                        <li><a href="#">张知知</a></li>
+                                        <li><a href="#">西门吹雪</a></li>
+                                        <li><a href="#">张兰兰</a></li>
+                                        <li><a href="#">施岳</a></li>
+                                        <li><a href="#">张知知</a></li>
+                                        <li><a href="#">西门吹雪</a></li>
+                                        <li><a href="#">张兰兰</a></li>
+                                        <li><a href="#">施岳</a></li>
+                                        <li><a href="#">张知知</a></li>
+                                        <li><a href="#">西门吹雪</a></li>
+                                        <li><a href="#">张兰兰</a></li>
+                                        <li><a href="#">施岳</a></li>
+                                        <li><a href="#">张知知</a></li>
+                                        <li><a href="#">西门吹雪</a></li>
+                                        <li><a href="#">张兰兰</a></li>
+                                        <li><a href="#">施岳</a></li>
+                                        <li><a href="#">张知知</a></li>
+                                        <li><a href="#">西门吹雪</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="right-260">
+                                <div class="admin-set">
+                                    <div class="top-info">
+                                        <div class="header-img"><img src="http://ibs.o.com/assets/css/images/header-default.png"></div>
+                                        <div class="infos">
+                                            <dl>
+                                                <dt>严伟虎</dt>
+                                                <dd>创建人</dd>
+                                            </dl>
+                                        </div>
+                                        <div class="group-right">
+                                            <button class="layui-btn layui-btn-sm">转让创建人</button>
+                                        </div>
+                                    </div>
+                                    <fieldset class="layui-elem-field layui-field-title">
+                                        <legend>拥有的权限</legend>
+                                    </fieldset>
+                                    <div class="details">
+                                        <ul>
+                                            <li>
+                                                <div class="limits-card">
+                                                    <div class="title"><i class="iconfont ibs-ico-set-business"></i>企业设置</div>
+                                                    <div class="txt">设置固化的审批流程，用户在提交时不会再出现不知该提交给谁的问题了</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="limits-card">
+                                                    <div class="title"><i class="iconfont ibs-ico-set-park"></i>园区管理</div>
+                                                    <div class="txt">转让创建人之后，仍拥有这些设置权限，但可修改权限</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="limits-card">
+                                                    <div class="title"><i class="iconfont ibs-ico-set-system"></i>组织管理</div>
+                                                    <div class="txt">切换园区后，右侧流程区域随之刷新（各园区下都是相同的流程）</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="limits-card">
+                                                    <div class="title"><i class="iconfont ibs-ico-set-admin"></i>管理员设置</div>
+                                                    <div class="txt">设置固化的审批流程，用户在提交时不会再出现不知该提交给谁的问题了允许同一人出现在流程的多个节点上</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="limits-card">
+                                                    <div class="title"><i class="iconfont ibs-ico-set-level"></i>流程设置</div>
+                                                    <div class="txt">设置固化的审批流程，用户在提交时不会再出现不知该提交给谁的问题了</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="limits-card">
+                                                    <div class="title"><i class="iconfont ibs-ico-set-code"></i>参数设置</div>
+                                                    <div class="txt">设置固化的审批流程，用户在提交时不会再出现不知该提交给谁的问题了</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="limits-card">
+                                                    <div class="title"><i class="iconfont ibs-ico-set-copy"></i>操作日志</div>
+                                                    <div class="txt">设置固化的审批流程，用户在提交时不会再出现不知该提交给谁的问题了</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="limits-card">
+                                                    <div class="title"><i class="iconfont ibs-ico-set-list2"></i>开票权限设置</div>
+                                                    <div class="txt">设置固化的审批流程，用户在提交时不会再出现不知该提交给谁的问题了</div>
+                                                    <a href="#" class="c-link link-setting">设置</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

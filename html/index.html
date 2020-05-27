@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <!-- <link rel="stylesheet" type="text/css" href="http://style.spp.com/css/admin.css"> -->
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/header-default.png" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-meter2"></i><span class="vm">工作台</span></a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont ibs-ico-approval"></i><span class="vm">审批</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">我的申请</a></dd>
+                        <dd><a href="javascript:;">我的审批</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-set-park"></i><span class="vm">房源</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-business"></i><span class="vm">招商</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">意向客户</a></dd>
+                        <dd><a href="javascript:;">拟签约客户</a></dd>
+                        <dd><a href="javascript:;">成交客户</a></dd>
+                        <dd><a href="javascript:;">跟进记录</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-center"></i><span class="vm">运营</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">园区建设</a></dd>
+                        <dd><a href="javascript:;">园企互动</a></dd>
+                        <dd><a href="javascript:;">客户</a></dd>
+                        <dd><a href="javascript:;">合同</a></dd>
+                        <dd><a href="javascript:;">电表</a></dd>
+                        <dd><a href="javascript:;">收费</a></dd>
+                        <dd><a href="javascript:;">付费</a></dd>
+                        <dd><a href="javascript:;">孵化成果</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href=""><i class="iconfont ibs-ico-xietong"></i><span class="vm">园企互动</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-business"></i><span class="vm">物业</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">设备设施</a></dd>
+                        <dd><a href="javascript:;">巡检管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href=""><i class="iconfont ibs-ico-set-approve"></i><span class="vm">合同</span></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-money"></i><span class="vm">财务</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">收款</a></dd>
+                        <dd><a href="javascript:;">支出</a></dd>
+                        <dd><a href="javascript:;">校核</a></dd>
+                        <dd><a href="javascript:;">退租</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-statistics2"></i><span class="vm">数据中心</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业库</a></dd>
+                        <dd><a href="javascript:;">预警分析</a></dd>
+                        <dd><a href="javascript:;">收入分析</a></dd>
+                        <dd><a href="javascript:;">招商分析</a></dd>
+                        <dd><a href="javascript:;">退租分析</a></dd>
+                        <dd><a href="javascript:;">租赁分析</a></dd>
+                        <dd><a href="javascript:;">报表导出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">系统设置</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">企业设置</a></dd>
+                        <dd><a href="javascript:;">园区管理</a></dd>
+                        <dd><a href="javascript:;">组织管理</a></dd>
+                        <dd><a href="javascript:;">管理员设置</a></dd>
+                        <dd><a href="javascript:;">流程设置</a></dd>
+                        <dd><a href="javascript:;">参数设置</a></dd>
+                        <dd><a href="javascript:;">操作日志</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">用户中心</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">个人资料</a></dd>
+                        <dd><a href="javascript:;">修改密码</a></dd>
+                        <dd><a href="javascript:;">更换手机号</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body workbench">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="/">主页</a><span lay-separator="">/</span>
+                <a><cite>工作台</cite></a>
+                <a href="#" class="return"><i class="iconfont ibs-ico-return mr-5"></i>返回</a>
+            </div>
+
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md8">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            收入看板<i class="iconfont ibs-ico-helpnormal ml-5 c-blue" title="根据权限范围（仅园区层面，不含运营公司和其他部门）显示对应的合计统计数据"></i>
+                            <div class="city txt-ellipsis" title="统计范围：全公司所有园区">统计范围：全公司所有园区统计范围：全公司所有园区统计范围：全公司所有园区</div>
+                            <div class="layui-btn-group">
+                                <span class="font-12 vm c-gray-light mr-20">今日回款 <span class="c-orange">12</span> 万，本年回款 <span class="c-orange">1365</span> 万</span>
+                                <a href="workbench-01.html" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <table class="layui-table table-fixed t-no-border">
+                                <colgroup>
+                                    <col width="80">
+                                    <col width="">
+                                    <col width="">
+                                    <col width="">
+                                    <col width="">
+                                    <col width="">
+                                    <col width="">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="txt-ellipsis txt-l"><span class="font-b font-16">本月</span></th>
+                                        <th class="txt-ellipsis" title="应收房租回款">应收房租回款</th>
+                                        <th class="txt-ellipsis">保证金</th>
+                                        <th class="txt-ellipsis" title="水电回款">水电回款</th>
+                                        <th class="txt-ellipsis" title="基础服务回款">基础服务回款</th>
+                                        <th class="txt-ellipsis">其他</th>
+                                        <th class="txt-ellipsis">合计</th>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="txt-l">应收</td>
+                                        <td><span class="font-b font-16">680</span> 万</td>
+                                        <td><span class="font-b font-16">120</span> 万</td>
+                                        <td><span class="font-b font-16">23</span> 万</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><span class="font-b font-16 c-gray-dark">823</span> 万</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="txt-l">待收</td>
+                                        <td><span class="font-b font-16">25</span> 万</td>
+                                        <td><span class="font-b font-16">15</span> 万</td>
+                                        <td><span class="font-b font-16">300</span> 元</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><span class="font-b font-16 c-gray-dark">40</span> 万</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="txt-l">回款</td>
+                                        <td><span class="font-b font-16">685</span> 万</td>
+                                        <td><span class="font-b font-16">100</span> 万</td>
+                                        <td><span class="font-b font-16">5</span> 万</td>
+                                        <td><span class="font-b font-16">6</span> 万</td>
+                                        <td><span class="font-b font-16">9820</span> 元</td>
+                                        <td><span class="font-b font-16 c-gray-dark">790</span> 万</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            招商看板<i class="iconfont ibs-ico-helpnormal ml-5 c-blue" title="根据权限范围（仅园区层面，不含运营公司和其他部门）显示对应的合计统计数据"></i>
+                            <div class="city">统计范围：全公司所有园区</div>
+                            <div class="layui-btn-group">
+                                <a href="workbench-02.html" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <ul class="layui-row statistics">
+                                <li class="layui-col-xs4">
+                                    <div>
+                                        <p class="txt-ellipsis" title="850万㎡">850 <span class="c-gray-light font-14">万㎡</span></p>
+                                        <h3>本月招商</h3>
+                                    </div>
+                                    <div>
+                                        <p class="txt-ellipsis" title="13850万㎡">13850 <span class="c-gray-light font-14">万㎡</span></p>
+                                        <h3>本年招商</h3>
+                                    </div>
+                                </li>
+                                <li class="layui-col-xs4">
+                                    <div>
+                                        <p class="txt-ellipsis" title="850万㎡">540 <span class="c-gray-light font-14">㎡</span></p>
+                                        <h3>本月退租</h3>
+                                    </div>
+                                    <div>
+                                        <p class="txt-ellipsis" title="13850万㎡">8150 <span class="c-gray-light font-14">㎡</span></p>
+                                        <h3>本年退租</h3>
+                                    </div>
+                                </li>
+                                <li class="layui-col-xs4">
+                                    <div class="txt-c" style="width:42%">
+                                        <p class="c-blue"><span class="font-38">78</span> <span class="font-20">%</span></p>
+                                        <h3 class="c-gray-dark">出租率</h3>
+                                    </div>
+                                    <div style="width:56%">
+                                        <div class="txt-01"><span class="vm">总面积：</span><span class="txt-02 txt-ellipsis">1296万㎡</span></div>
+                                        <div class="txt-01"><span class="vm">已&emsp;租：</span><span class="txt-02 txt-ellipsis">896万㎡</span></div>
+                                        <div class="txt-01"><span class="vm">待&emsp;租：</span><span class="txt-02 txt-ellipsis">290万㎡</span></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            我的审批
+                            <span class="layui-badge ml-5">8</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <ul class="approve">
+                                <li>
+                                    <a href="#">
+                                        <span class="txt-ellipsis">苏州吉蚕丝绸有限公司</span>
+                                        <span class="date">今日</span>
+                                    </a>                                  
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="txt-ellipsis">苏州吉蚕丝绸有限责任公司苏州吉蚕丝绸有限责任公司苏州吉蚕丝绸有限责任公司</span>
+                                        <span class="date">昨天</span>
+                                    </a>                                  
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="txt-ellipsis">苏州吉蚕丝绸有限责任公司</span>
+                                        <span class="date">9月7日</span>
+                                    </a>                                  
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="txt-ellipsis">永乐汇项目2020年度运营方案</span>
+                                        <span class="date">8月30日</span>
+                                    </a>                                  
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="txt-ellipsis">支付J6园甲方房租128988元</span>
+                                        <span class="date">8月6日</span>
+                                    </a>                                  
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="txt-ellipsis">苏州吉蚕丝绸有限责任公司苏州吉蚕丝绸有限责任公司苏州吉蚕丝绸有限责任公司</span>
+                                        <span class="date">昨天</span>
+                                    </a>                                  
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            我的审批
+                            <span class="layui-badge ml-5">8</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <ul class="approve">
+                                <li>
+                                    <a href="#">
+                                        <span class="txt-ellipsis">苏州吉蚕丝绸有限公司</span>
+                                        <span class="date">今日</span>
+                                    </a>                                  
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            本月待收费用
+                            <span class="layui-badge ml-5">18</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <table class="layui-table table-fixed">
+                              <colgroup>
+                                <col width="15%">
+                                <col>
+                                <col width="12%">
+                                <col width="18%">
+                                <col width="12%">
+                                <col width="8%">
+                                <col width="12%">
+                              </colgroup>
+                              <thead>
+                                <tr>
+                                  <th>园区</th>
+                                  <th>客户名称</th>
+                                  <th>费用科目</th>
+                                  <th>计费周期</th>
+                                  <th>应收日期</th>
+                                  <th>逾期天数</th>
+                                  <th>待收金额（元）</th>
+                                </tr> 
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州衣品堂网络科技有限公司<i class="iconfont ibs-ico-menu-vip c-yellow ml-5"></i></td>
+                                  <td>租金</td>
+                                  <td>2018-12-01 ~ 2019-05-31</td>
+                                  <td>2018-12-01</td>
+                                  <td><span class="c-red">62</span></td>
+                                  <td>84,240.30</td>
+                                </tr>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州衣品堂网络科技有限公司</td>
+                                  <td>物业服务费</td>
+                                  <td>2018-12-01 ~ 2019-05-31</td>
+                                  <td>2018-12-01</td>
+                                  <td><span class="c-red">28</span></td>
+                                  <td>84,240.30</td>
+                                </tr>
+                                <tr>
+                                  <td rowspan="2">博济·江南智造园</td>
+                                  <td>苏州衣品堂网络科技有限公司</td>
+                                  <td>租金</td>
+                                  <td>2018-12-01 ~ 2019-05-31</td>
+                                  <td>2018-12-01</td>
+                                  <td>0</td>
+                                  <td>84,240.30</td>
+                                </tr>
+                                <tr>
+                                  <td>苏州衣品堂网络科技有限公司</td>
+                                  <td>物业服务费</td>
+                                  <td>2018-12-01 ~ 2019-05-31</td>
+                                  <td>2018-12-01</td>
+                                  <td><span class="c-red">7</span></td>
+                                  <td>84,240.30</td>
+                                </tr>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州衣品堂网络科技有限公司</td>
+                                  <td>租金</td>
+                                  <td>2018-12-01 ~ 2019-05-31</td>
+                                  <td>2018-12-01</td>
+                                  <td><span class="c-red">3</span></td>
+                                  <td>84,240.30</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            待确认电费
+                            <span class="layui-badge ml-5">6</span>
+                            <div class="layui-btn-group">
+                                <a href="javascript:;" class="more" title="更多"><span class="font-12 vm">更多</span><i class="iconfont ibs-ico-right font-20 vm"></i></a>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <table class="layui-table table-fixed">
+                              <colgroup>
+                                <col width="15%">
+                                <col>
+                                <col width="12%">
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="8%">
+                                <col width="12%">
+                              </colgroup>
+                              <thead>
+                                <tr>
+                                  <th>园区</th>
+                                  <th>客户名称</th>
+                                  <th>电表编号</th>
+                                  <th class="txt-ellipsis">上次抄表读数/日期</th>
+                                  <th class="txt-ellipsis">本次抄表读数/日期</th>
+                                  <th>用电量</th>
+                                  <th class="txt-c">操作</th>
+                                </tr> 
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州衣品堂网络科技有限公司</td>
+                                  <td>021565413</td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-10-25</span></td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-11-27</span></td>
+                                  <td>100</td>
+                                  <td class="txt-c"><a href="#" class="c-link">已校核</a><a href="#" class="c-link ml-15">扫描上传</a></td>
+                                </tr>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州衣 class="txt-c"品堂网络科技有限公司</td>
+                                  <td>021565413</td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-10-25</span></td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-11-27</span></td>
+                                  <td>100</td>
+                                  <td class="txt-c"><a href="#" class="c-link">核对盖章</a><a href="#" class="disabled ml-15">扫描上传</a></td>
+                                </tr>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州衣品堂网络科技有限公司</td>
+                                  <td>021565413</td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-10-25</span></td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-11-27</span></td>
+                                  <td>100</td>
+                                  <td class="txt-c"><a href="#" class="c-link">核对盖章</a><a href="#" class="disabled ml-15">扫描上传</a></td>
+                                </tr>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州衣品堂网络科技有限公司</td>
+                                  <td>021565413</td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-10-25</span></td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-11-27</span></td>
+                                  <td>100</td>
+                                  <td class="txt-c"><a href="#" class="c-link">核对盖章</ class="c-blue"a><a href="#" class="disabled ml-15">扫描上传</a></td>
+                                </tr>
+                                <tr>
+                                  <td>博济·江南智造园</td>
+                                  <td>苏州衣品堂网络科技有限公司</td>
+                                  <td>021565413</td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-10-25</span></td>
+                                  <td>2560<br><span class="font-12 c-gray-light">2019-11-27</span></td>
+                                  <td>100</td>
+                                  <td class="txt-c"><a href="#" class="c-link">核对盖章</a><a href="#" class="disabled ml-15">扫描上传</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/oms/oms.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>OMS</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-oms">
+        <a class="logo" href="" title="OMS"></a>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-home"></i><span class="vm">首页</span></a></li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-customer"></i><span class="vm">客户管理</span></a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-business"></i><span class="vm">服务管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">订单管理</a></dd>
+                        <dd><a href="javascript:;">产品管理</a></dd>
+                        <dd><a href="javascript:;">服务商管理</a></dd>
+                        <dd><a href="javascript:;">服务分类</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="iconfont ibs-ico-menu-news"></i><span class="vm">活动管理</span></a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-set-business"></i><span class="vm">运维管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">系统公告</a></dd>
+                        <dd><a href="javascript:;">系统停服</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="iconfont ibs-ico-menu-set"></i><span class="vm">系统设置</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">用户管理</a></dd>
+                        <dd><a href="javascript:;">角色管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-oms">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="#"><cite>客户管理</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>详细</cite></a>
+            </div>
+            <blockquote class="oms-elem-quote">
+                <div id="test-util-countdown-ret">已启用企业微信通讯录API，添加成员时将从企业微信通讯录中获取用户。若需关闭，可前往 <a href="" class="c-link">参数配置</a> 页面设置。</div>
+            </blockquote>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="font-24 mt-15 mb-15">北京北大科技园建设开发有限公司</div>
+                            <form class="layui-form">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline inline-3p mb-0">
+                                        <label class="layui-form-label">注册人</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid pl-10">包红梅</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-3p mb-0">
+                                        <label class="layui-form-label">手机</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid pl-10">13022331234</div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline inline-3p mb-0">
+                                        <label class="layui-form-label">注册时间</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid pl-10">2020-02-15 13:23</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">联系人</label>
+                                    <div class="layui-input-block">
+                                        <dl class="contacts">
+                                            <dd>
+                                                <i class="iconfont ibs-ico-adminchoice vm"></i>包红梅（13022331234）
+                                                <a href="" class="iconfont ibs-ico-closebig" title="删除"></a>
+                                                <a href="" class="iconfont ibs-ico-edit2" title="编辑"></a>
+                                            </dd>
+                                            <dd>
+                                                <i class="iconfont ibs-ico-adminchoice vm"></i>包红梅（13022331234）
+                                                <a href="" class="iconfont ibs-ico-closebig" title="删除"></a>
+                                                <a href="" class="iconfont ibs-ico-edit2" title="编辑"></a>
+                                            </dd>
+                                            <dd>
+                                                <i class="iconfont ibs-ico-adminchoice vm"></i>包红梅（13022331234）
+                                                <a href="" class="iconfont ibs-ico-closebig" title="删除"></a>
+                                                <a href="" class="iconfont ibs-ico-edit2" title="编辑"></a>
+                                            </dd>
+                                            <dd>
+                                                <i class="iconfont ibs-ico-adminchoice vm"></i>包红梅（13022331234）
+                                                <a href="" class="iconfont ibs-ico-closebig" title="删除"></a>
+                                                <a href="" class="iconfont ibs-ico-edit2" title="编辑"></a>
+                                            </dd>
+                                            <dd>
+                                                <i class="iconfont ibs-ico-adminchoice vm"></i>包红梅（13022331234）
+                                                <a href="" class="iconfont ibs-ico-closebig" title="删除"></a>
+                                                <a href="" class="iconfont ibs-ico-edit2" title="编辑"></a>
+                                            </dd>
+                                            <a href="#" class="layui-btn layui-btn-sm ml-10">添加联系人</a>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">小程序版本</label>
+                                    <div class="layui-input-block pl-10">
+                                        <input type="radio" name="versions" value="公共版" title="公共版" checked>
+                                        <input type="radio" name="versions" value="私有版" title="私有版">
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <div class="title-02">
+                                    <span>园区（5）</span>
+                                    <div class="btn-group-right"><a href="" class="layui-btn layui-btn-sm">添加</a></div>
+                                </div>
+                                
+                                <table class="layui-table table-fixed">
+                                    <colgroup>
+                                        <col width="">
+                                        <col width="">
+                                        <col width="15%">
+                                        <col width="12%">
+                                        <col width="12%">
+                                        <col width="12%">
+                                        <col width="9%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="txt-c">园区名称</th>
+                                            <th class="txt-c">地区</th>
+                                            <th class="txt-c">园区规模</th>
+                                            <th class="txt-c">创建时间</th>
+                                            <th class="txt-c">创建方式</th>
+                                            <th class="txt-c">到期时间</th>
+                                            <th class="txt-c">操作</th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="txt-l"><span class="c-gray-light">（待初始化）</span></td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td class="txt-c">-</td>
+                                            <td class="txt-c">后台添加</td>
+                                            <td class="txt-c">2021-12-31</td>
+                                            <td class="txt-c"><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="txt-l">盐城北大科技园<span class="layui-badge layui-bg-orange ml-5">即将到期</span></td>
+                                            <td>北京市海淀区</td>
+                                            <td>56933㎡</td>
+                                            <td class="txt-c">2021-02-13</td>
+                                            <td class="txt-c">客户创建</td>
+                                            <td class="txt-c">2021-02-13</td>
+                                            <td class="txt-c"><a href="#" class="c-link">删除</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="txt-l">北大科技园本部<span class="layui-badge ml-5">已过期</span></td>
+                                            <td>北京市海淀区</td>
+                                            <td>56933㎡</td>
+                                            <td class="txt-c">2021-02-13</td>
+                                            <td class="txt-c">客户创建</td>
+                                            <td class="txt-c">2021-02-13</td>
+                                            <td class="txt-c"><a href="#" class="c-link">续期</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="txt-l">扬州北大创业园<span class="layui-badge layui-bg-gray ml-5">已冻结</span></td>
+                                            <td>江苏省扬州市西湖区</td>
+                                            <td>56933㎡</td>
+                                            <td class="txt-c">2021-02-13</td>
+                                            <td class="txt-c">客户创建</td>
+                                            <td class="txt-c">2021-02-13</td>
+                                            <td class="txt-c"><a href="#" class="c-link disabled">续期</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="txt-l">金华北大科技园</td>
+                                            <td>浙江省金华市滨湖区</td>
+                                            <td>56933㎡</td>
+                                            <td class="txt-c">2021-02-13</td>
+                                            <td class="txt-c">客户创建</td>
+                                            <td class="txt-c">2021-02-13</td>
+                                            <td class="txt-c"><a href="#" class="c-link">续期</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

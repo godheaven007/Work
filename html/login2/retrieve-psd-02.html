@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>火炬孵化</title>
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/login.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js"></script>
+</head>
+<body>
+    <div class="employee">
+        <div class="title">
+            <div class="logo"></div>
+            找回密码
+        </div>
+        <div class="main">
+            <ul class="steps quartering clearfix">
+                <li class="completed"><span class="num">1</span>输入手机号</li>
+                <li class="completed"><span class="num">2</span>验证身份</li>
+                <li><span class="num">3</span>设置新密码</li>
+                <li><span class="num">4</span>完成</li>
+            </ul>
+            <div class="infos">
+                验证码已发送手机号：<span class="phone">134 **** 5678</span><br>
+                点击下一步重设密码。
+            </div>
+            <form class="form-wrapper retrieve-psd step-02">
+                <div class="msg-error hidden">这里是出错信息</div>
+                <div class="row">
+                    <div class="detail d-line">
+                        <span class="label">短信验证码</span>
+                        <input type="text" id="mobileCode" name="mobileCode" class="text text-w-219" tabindex="1" placeholder="请输入验证码" value="" autocomplete="off">
+                        <a href="javascript:void(0)" class="get-code getMobileCode">获取验证码</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="detail">
+                        <input type="submit" class="btn btn-next btn-color-blue" value="下一步">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="top-bg"></div>
+        <div class="opark-footer">
+            <ul class="clearfix">
+                <li><a href="#">关于博济</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">新闻中心</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">合作伙伴</a></li>
+                <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+            <div class="copyright">Copyright © 2007-2019 苏州欧帕克信息技术有限公司 版权所有 苏ICP备15022748</div>
+        </div>
+    </div>
+    <script>
+        seajs.use(['user/forget']);
+    </script>
+</body>
+</html>

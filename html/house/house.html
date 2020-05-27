@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/lib/layui-v2.5.5/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://ibs.o.com/assets/css/global.css">
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/seajs/seajs/2.1.1/sea.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/config.js?201910090446"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="http://ibs.o.com/assets/lib/layui_config.js"></script>
+    <title>IBS企业管理系统</title>
+    <script type="text/javascript">
+        //JavaScript代码区域
+        layui.use(['form','element'], function(){
+            var element = layui.element;
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header-ibs">
+        <a class="logo" href="/" title="IBS企业管理系统"></a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-layout-left">
+            <div class="title">
+                <i class="ico-huoju vm"></i>苏州火炬创新创业孵化管理有限公司
+                <a class="switchover" href="#">[切换公司]</a>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="" title="待办">
+                    <i class="iconfont ibs-ico-filetime"></i>
+                    <!-- 如果有新消息，则显示小圆点 -->
+                    <script type="text/html" template="" lay-url="./json/message/new.js">
+                    {{# if(d.data.newmsg){ }} 
+                    <span class="layui-badge">12</span>
+                    {{# } }}
+                    </script>
+                    <span class="layui-badge">12</span>  
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="#" title="帮助"><i class="iconfont ibs-ico-helpnormal"></i></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://ibs.o.com/assets/css/images/photo-demo.jpg" class="layui-nav-img">
+                    张飞
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item"><a href="javascript:;">工作台</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">房源</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">房源</a></dd>
+                        <dd><a href="javascript:;">电表管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">系统设置</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-ibs">
+            <!-- 面包屑 -->
+            <div class="layui-breadcrumb" style="visibility: visible;">
+                <a href="#"><cite>主页</cite></a>
+                <span lay-separator="">/</span>
+                <a><cite>房源</cite></a>
+            </div>
+            <div class="right-box">
+                <i class="iconfont ibs-ico-locationnormal c-gray-light mr-5 vm"></i>
+                <span class="vm mr-5">博济·盐城大学科技园</span>
+                <a href="#" class="c-link vm">[切换园区]</a>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            房源管理
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="house-hd clearfix">
+                                <div class="house-plan">
+                                    <!-- 缩略图 -->
+                                    <a href="#" class="hidden">
+                                        <img src="http://ibs.o.com/assets/css/images/house/demo-plan.jpg">
+                                        <span class="txt">房源平面图</span>
+                                    </a>
+                                    <!-- 上传 -->
+                                    <button class="upload">
+                                        <i class="iconfont ibs-ico-add plus"></i>
+                                        <span class="c-gray-light">上传园区平面图</span>
+                                    </button>
+                                    <!-- 无图无权上传
+                                    <button class="upload disabled">
+                                        <span class="c-gray-light">暂无园区平面图</span>
+                                    </button> -->
+                                </div>
+                                <div class="house-hd-info">
+                                    <div class="hd-title">博济·五星汽车后市场文化创意园</div>
+                                    <ul class="layui-row layui-col-space10 statistics">
+                                        <li class="layui-col-xs3">
+                                          <div>
+                                            <h3>房源总面积(㎡)<i class="iconfont ibs-ico-helpnormal font-12 ml-5" title="昨日收入"></i></h3>
+                                            <p>53340</p>
+                                          </div>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                          <div>
+                                            <h3>待租面积(㎡)<i class="iconfont ibs-ico-helpnormal font-12 ml-5" title="昨日招商"></i></h3>
+                                            <p>7101</p>
+                                          </div>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                          <div>
+                                            <h3>已租面积(㎡)<i class="iconfont ibs-ico-helpnormal font-12 ml-5" title="昨日续租"></i></h3>
+                                            <p>45673</p>
+                                          </div>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                          <div>
+                                            <h3>出租率<i class="iconfont ibs-ico-helpnormal font-12 ml-5" title="昨日退租"></i></h3>
+                                            <p>85.63%</p>
+                                          </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="house-btn">
+                                    <a href="#" class="layui-btn">管理楼宇</a>
+                                    <span href="#" class="layui-btn more">
+                                        <i class="iconfont ibs-ico-down mr-5 ml-5 vm"></i>
+                                        <dl class="layui-anim layui-anim-upbit">
+                                            <dd><a href="#">管理电表</a></dd>
+                                            <dd><a href="#">管理虚拟孵化房源</a></dd>
+                                            <dd><a href="#">管理会议室</a></dd>
+                                            <dd><a href="#">设置费用标准</a></dd>
+                                            <dd><a href="#">查看日志</a></dd>
+                                            <dd><a href="#">房源导出</a></dd>
+                                        </dl>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="house-search">
+                                <div class="condition">
+                                    <span class="title">状态</span>
+                                    <div class="content">
+                                        <a href="#" class="active">不限</a>
+                                        <a href="#">已租</a>
+                                        <a href="#">待租</a>
+                                        <a href="#">自用</a>
+                                        <a href="#">销控</a>
+                                    </div>
+                                    <div class="search-box">
+                                        <input type="text" name="title" placeholder="按房间号搜索" autocomplete="off" class="layui-input">
+                                        <a href="javascript:;" class="btn-input"><i class="iconfont ibs-ico-buttonsearch"></i></a>
+                                    </div>
+                                </div>
+                                <div class="condition">
+                                    <span class="title">面积</span>
+                                    <div class="content">
+                                        <a href="#" class="active">不限</a>
+                                        <a href="#">100㎡以下</a>
+                                        <a href="#">100-200㎡</a>
+                                        <a href="#">200-300㎡</a>
+                                        <a href="#">300-500㎡</a>
+                                        <a href="#">500-1000㎡</a>
+                                        <a href="#">1000㎡以上</a>
+                                    </div>
+                                </div>
+                                <div class="condition">
+                                    <span class="title">楼宇</span>
+                                    <div class="content h-unfold">
+                                        <a href="#" class="active">不限</a>
+                                        <a href="#">摩羯座</a>
+                                        <a href="#">狮子座</a>
+                                        <a href="#">北濠大楼C幢</a>
+                                        <a href="#">北濠大楼D幢</a>
+                                        <a href="#">北濠大楼E幢</a>
+                                        <a href="#">北濠大楼F幢</a>
+                                        <a href="#">北濠大楼G幢</a>
+                                        <a href="#">棉麻仓库1号楼</a>
+                                        <a href="#">棉麻仓库2号楼</a>
+                                        <a href="#">棉麻仓库3号楼</a>
+                                        <a href="#">棉麻仓库4号楼</a>
+                                        <a href="#">棉麻仓库5号楼</a>
+                                        <a href="#">棉麻仓库6号楼</a>
+                                        <a href="#">棉麻仓库7号楼</a>
+                                        <a href="#">棉麻仓库8号楼</a>
+                                        <a href="#">棉麻仓库9号楼</a>
+                                        <a href="#">棉麻仓库10号楼</a>
+                                    </div>
+                                    <a class="iconfont ibs-ico-folddown inline-block" href="javascript:;" title="展开"></a>
+                                    <a class="iconfont ibs-ico-foldup hidden" href="javascript:;" title="收起"></a>
+                                </div>
+                            </div>
+                            <div class="house-list">
+                                <div class="ibs-collapse">
+                                    <div class="no-data">
+                                        <i class="iconfont ibs-ico-tips font-22 vm mr-10 c-gray-light2"></i>
+                                        暂无房源信息，请先<a class="c-blue">添加楼宇</a>
+                                    </div>
+                                </div>
+
+                                <div class="ibs-collapse">
+                                    <h2 class="ibs-colla-title">
+                                        <span class="font-b">1号楼</span>
+                                        <a href="#" class="iconfont ibs-ico-foldup" title="收起"></a>
+                                        <div class="group-right">
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">管理楼层</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置底价</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置销控</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置自用</a>
+                                        </div>
+                                    </h2>
+                                    <div class="ibs-colla-content block">
+                                        <dl class="floor">
+                                            <dt class="title">
+                                                <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i>1层
+                                                <span class="ml-20">
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">显示平面图</a>
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">管理房间</a>
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">管理工位</a>
+                                                </span>
+                                            </dt>
+                                            <dd class="content">
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>房间（0~2.3元/㎡/天）</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <a href="#" class="room no-price">
+                                                                <span>101</span>
+                                                                <div class="info lh-40">103.25㎡</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>102</span>
+                                                                <i class="ico-expire active"></i>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room for-rent">
+                                                                <span>103</span>
+                                                                <i class="ico-control active"></i>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room self-use">
+                                                                <span>104</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <i class="ico-return active"></i>
+                                                                <span>105</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <span>106</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <span>107</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <span>108</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>联合办公A区（500~800元/月）</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <span>114</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <span>115</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <span>116</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <span>117</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room">
+                                                                <span>118</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                            </dd>
+                                        </dl>
+                                        <dl class="floor">
+                                            <dt class="title">
+                                                <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i>2层
+                                                <span class="ml-20">
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">上传平面图</a>
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">管理房间</a>
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">管理工位</a>
+                                                </span>
+                                            </dt>
+                                            <dd class="content">
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>房间（0~2.3元/㎡/天）</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>104</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>105</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>106</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>107</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>108</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>联合办公A区（500~800元/月）</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>114</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>115</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>116</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>117</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room rented">
+                                                                <span>118</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                            </dd>
+                                        </dl>
+                                        <dl class="floor">
+                                            <dt class="title">
+                                                <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i>3层
+                                                <span class="ml-20">
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">隐藏平面图</a>
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">管理房间</a>
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">管理工位</a>
+                                                </span>
+                                            </dt>
+                                            <dd class="content">
+                                                <fieldset class="layui-elem-field">
+                                                    <legend>联合办公B区（0~500元/月）</legend>
+                                                    <ul class="layui-field-box clearfix">
+                                                        <li>
+                                                            <a href="#" class="room for-rent">
+                                                                <span>104</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room for-rent">
+                                                                <span>105</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room for-rent">
+                                                                <span>106</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room for-rent">
+                                                                <span>107</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="room for-rent">
+                                                                <span>108</span>
+                                                                <div class="info">103.25㎡<br>2.3元/㎡/天</div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </fieldset>
+                                                <div class="floor-plan">
+                                                    <img src="http://ibs.o.com/assets/css/images/house/demo-plan.jpg">
+                                                    <div class="btn-group">
+                                                        <a href="#" class="layui-btn layui-btn-primary layui-btn-sm">查看原图</a>
+                                                        <a href="#" class="layui-btn layui-btn-primary layui-btn-sm">更换</a>
+                                                        <a href="#" class="layui-btn layui-btn-primary layui-btn-sm">隐藏</a>
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                        <dl class="floor">
+                                            <dt class="title">
+                                                <i class="iconfont ibs-ico-floor mr-5 vm font-18"></i>3层
+                                                <span class="ml-20">
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">隐藏平面图</a>
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">管理房间</a>
+                                                    <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs">管理工位</a>
+                                                </span>
+                                            </dt>
+                                            <dd class="content">
+                                                <div class="no-data"><i class="iconfont ibs-ico-tips font-22 vm mr-10 c-gray-light2"></i>此楼层暂无房源数据</div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <div class="ibs-collapse">
+                                    <h2 class="ibs-colla-title">
+                                        <span class="font-b">2号楼</span>
+                                        <a href="#" class="iconfont ibs-ico-foldup" title="收起"></a>
+                                        <div class="group-right">
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">管理楼层</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置底价</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置销控</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置自用</a>
+                                        </div>
+                                    </h2>
+                                    <div class="ibs-colla-content block">
+                                        <div class="no-data"><i class="iconfont ibs-ico-tips font-22 vm mr-10 c-gray-light2"></i>此楼宇下暂无数据，请先添加楼层再添加房间</div>
+                                    </div>
+                                </div>
+
+                                <div class="ibs-collapse">
+                                    <h2 class="ibs-colla-title">
+                                        <span class="font-b">3号楼</span>
+                                        <a href="#" class="iconfont ibs-ico-folddown" title="展开"></a>
+                                        <div class="group-right">
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">管理楼层</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置底价</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置销控</a>
+                                            <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm">设置自用</a>
+                                        </div>
+                                    </h2>
+                                    <div class="ibs-colla-content">
+                                        <div class="no-data"><i class="iconfont ibs-ico-tips font-22 vm mr-10 c-gray-light2"></i>此楼宇下暂无数据，请先添加楼层再添加房间</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
