@@ -153,7 +153,7 @@ layui.use(['element', 'form', 'Dialog', 'Req', 'Common', 'OTree', 'Print', 'Rege
         } else {
             compareData.fixed = initHouseRelatedData();
         }
-        // console.log(compareData);
+        console.log(compareData);
     }
 
 
